@@ -15,6 +15,7 @@
 		10A4380220BA173A006B12BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A4380020BA173A006B12BC /* LaunchScreen.storyboard */; };
 		41E3EFDDC2183AB73004EA98 /* Pods_FitPhotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A988870400DC7C0234E6C009 /* Pods_FitPhotage.framework */; };
 		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
+		99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		10A4380320BA173A006B12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF3C6B736152613013CA963 /* Pods-FitPhotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.release.xcconfig"; sourceTree = "<group>"; };
 		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
 		9AA3534CE516804ECB1B7C89 /* Pods-FitPhotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.debug.xcconfig"; sourceTree = "<group>"; };
 		A988870400DC7C0234E6C009 /* Pods_FitPhotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitPhotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -47,6 +49,7 @@
 		1026609220BA376500B0598A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */,
+				99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,
 			);

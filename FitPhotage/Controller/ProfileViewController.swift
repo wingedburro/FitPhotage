@@ -15,6 +15,11 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupGradient()
+        setupLogoutButton()
+    }
+    
+    private func setupGradient() {
         //Gradient size assignment
         let xcoord = self.view.frame.size.width
         let ycoord = self.view.frame.size.height
@@ -23,6 +28,20 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate {
         let ground = profileBackground(frame: back)
         view.insertSubview(ground, at: 0)
         ground.layer.shouldRasterize = false
+    }
+    
+    private func setupLogoutButton() {
+        let logoutButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: view.frame.height/2 - 24, width: 200, height: 48))
+        logoutButton.backgroundColor = UIColor.orange
+        logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.setTitleColor(UIColor.white, for: .normal)
+        logoutButton.addTarget(self, action: #selector(googleLogoutHandler), for: .touchUpInside)
+        view.addSubview(logoutButton)
+    }
+    
+    @objc private func googleLogoutHandler() {
+        GIDSignIn.sharedInstance().signOut()
+        performSegue(withIdentifier: "unwindToLogin", sender: self)
     }
     
     

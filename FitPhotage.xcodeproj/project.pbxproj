@@ -14,6 +14,7 @@
 		10A437FF20BA173A006B12BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A437FE20BA173A006B12BC /* Assets.xcassets */; };
 		10A4380220BA173A006B12BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A4380020BA173A006B12BC /* LaunchScreen.storyboard */; };
 		41E3EFDDC2183AB73004EA98 /* Pods_FitPhotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A988870400DC7C0234E6C009 /* Pods_FitPhotage.framework */; };
+		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		10A4380120BA173A006B12BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10A4380320BA173A006B12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4DF3C6B736152613013CA963 /* Pods-FitPhotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.release.xcconfig"; sourceTree = "<group>"; };
+		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9AA3534CE516804ECB1B7C89 /* Pods-FitPhotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.debug.xcconfig"; sourceTree = "<group>"; };
 		A988870400DC7C0234E6C009 /* Pods_FitPhotage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitPhotage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				10A437F920BA1736006B12BC /* LoginViewController.swift */,
+				99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,
 			);

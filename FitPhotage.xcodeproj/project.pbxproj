@@ -13,6 +13,7 @@
 		10A437FD20BA1736006B12BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A437FB20BA1736006B12BC /* Main.storyboard */; };
 		10A437FF20BA173A006B12BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A437FE20BA173A006B12BC /* Assets.xcassets */; };
 		10A4380220BA173A006B12BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A4380020BA173A006B12BC /* LaunchScreen.storyboard */; };
+		10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD431B20BA473800E2DA1A /* Extensions.swift */; };
 		41E3EFDDC2183AB73004EA98 /* Pods_FitPhotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A988870400DC7C0234E6C009 /* Pods_FitPhotage.framework */; };
 		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		10A437FE20BA173A006B12BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		10A4380120BA173A006B12BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10A4380320BA173A006B12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		10DD431B20BA473800E2DA1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4DF3C6B736152613013CA963 /* Pods-FitPhotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.release.xcconfig"; sourceTree = "<group>"; };
 		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9AA3534CE516804ECB1B7C89 /* Pods-FitPhotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 		10A437F620BA1736006B12BC /* FitPhotage */ = {
 			isa = PBXGroup;
 			children = (
+				10DD431A20BA471100E2DA1A /* Helpers */,
 				1026609420BA377D00B0598A /* Controller */,
 				1026609320BA377400B0598A /* View */,
 				1026609220BA376500B0598A /* Model */,
@@ -99,6 +102,14 @@
 				10A4380320BA173A006B12BC /* Info.plist */,
 			);
 			path = FitPhotage;
+			sourceTree = "<group>";
+		};
+		10DD431A20BA471100E2DA1A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				10DD431B20BA473800E2DA1A /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		2E93F056026A64462408A04A /* Frameworks */ = {
@@ -258,6 +269,7 @@
 			files = (
 				99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
+				10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

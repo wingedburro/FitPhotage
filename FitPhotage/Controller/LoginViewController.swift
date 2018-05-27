@@ -47,6 +47,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         view.addConstraintsWithFormat(format: "V:|-\(view.frame.height/2 - 24)-[v0]", views: googleSignInButton)
     }
 
+    @IBAction func unwindToLogin(segue:UIStoryboardSegue) { }
 
 }
 

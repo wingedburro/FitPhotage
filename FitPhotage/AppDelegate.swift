@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         // Enable Google Sign In
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self as! GIDSignInDelegate
+        GIDSignIn.sharedInstance().delegate = self
         return true
     }
     
@@ -37,10 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     // Handle Google sign in process
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
-            return
-        }
-        
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
@@ -48,7 +44,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if let error = error {
                 return
             }
-            // User is signed in
+            
+            self.segueToMain()
             
         }
     }
@@ -78,6 +75,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func segueToMain() {
+        // Access the storyboard and fetch an instance of the view controller
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileViewController")
+        
+        // Push that view controller onto the navigation stack
+        let rootViewController = self.window!.rootViewController!
+        rootViewController.present(profileViewController, animated: true, completion: nil)
     }
 
 

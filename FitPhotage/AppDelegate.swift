@@ -25,32 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Light status bar
         application.statusBarStyle = .lightContent
         
-        setupNavigationBar()
-        
         return true
-    }
-    
-    func setupNavigationBar() {
-        // Use programming instead of storyboard
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        
-        // Set root view controller
-        window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
-        
-        // Modify Navigation Bar color
-        UINavigationBar.appearance().barTintColor = UIColor.black
-        
-//        // Get rid of black bar underneath nav bar
-//        UINavigationBar.appearance().shadowImage = UIImage()
-//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        
-        let statusBarBackgroundView = UIView()
-        statusBarBackgroundView.backgroundColor = UIColor.black
-        
-        window?.addSubview(statusBarBackgroundView)
-        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        window?.addConstraintsWithFormat(format: "V:|[v0(40)]|", views: statusBarBackgroundView)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {

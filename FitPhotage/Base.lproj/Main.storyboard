@@ -23,7 +23,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="aij-8s-1fW" kind="presentation" id="DJF-OL-1d3"/>
+                                    <segue destination="aij-8s-1fW" kind="presentation" id="dYp-qh-j9f"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -55,6 +55,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="LmS-yN-dWr"/>
                     </view>
+                    <navigationItem key="navigationItem" id="B03-MO-r4x"/>
                     <connections>
                         <segue destination="Bb2-cS-7Xi" kind="unwind" identifier="unwindToLogin" unwindAction="unwindToLoginWithSegue:" id="ocB-Ou-nCN"/>
                     </connections>
@@ -62,7 +63,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YzO-1T-ufz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Bb2-cS-7Xi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="119"/>
+            <point key="canvasLocation" x="1009" y="119"/>
         </scene>
     </scenes>
 </document>

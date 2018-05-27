@@ -10,29 +10,53 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ProfileViewController: UIViewController, GIDSignInUIDelegate {
+class ProfileViewController: UITabBarController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupGradient()
+        setupNavBar()
+        tabBarController?.tabBar.barTintColor = UIColor.green
+        setupTabBar()
+        
         setupLogoutButton()
         
+    }
+    
+    // Gradient Color Assignment
+    private func setupGradient() {
+        let color1 = UIColor(red:1.00, green:0.32, blue:0.18, alpha:1.0).cgColor
+        let color2 = UIColor(red: 0.94, green: 0.60, blue: 0.1, alpha: 1.0).cgColor
+        let ground = profileBackground(frame: view.bounds, color1: color1, color2: color2)
+        view.insertSubview(ground, at: 0)
+        ground.layer.shouldRasterize = false
+    }
+    
+    // Navigation Bar Assignment
+    private func setupNavBar() {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
         titleLabel.text = "Profile"
         titleLabel.textColor = UIColor.white
         titleLabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titleLabel
     }
-
     
-    private func setupGradient() {
-        // Gradient Color Assignment
-        let color1 = UIColor(red:1.00, green:0.32, blue:0.18, alpha:1.0).cgColor
-        let color2 = UIColor(red: 0.94, green: 0.60, blue: 0.1, alpha: 1.0).cgColor
-        let ground = profileBackground(frame: view.bounds, color1: color1, color2: color2)
-        view.insertSubview(ground, at: 0)
-        ground.layer.shouldRasterize = false
+    // Tab Bar Assignement
+    private func setupTabBar() {
+//        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+//        profileViewController.tabBarItem.image = UIImage(named: "BackButton")
+//        profileViewController.tabBarItem.selectedImage = UIImage(named: "LivFit")
+        
+        let informationViewController = UINavigationController(rootViewController: InformationViewController())
+        informationViewController.tabBarItem.image = UIImage(named: "LivFit")
+        informationViewController.tabBarItem.selectedImage = UIImage(named: "BackButton")
+        
+        let loginViewController = UINavigationController(rootViewController: LoginViewController())
+        loginViewController.tabBarItem.image = UIImage(named: "LivFit")
+        loginViewController.tabBarItem.selectedImage = UIImage(named: "BackButton")
+        
+        viewControllers = [loginViewController,informationViewController]
     }
     
     private func setupLogoutButton() {

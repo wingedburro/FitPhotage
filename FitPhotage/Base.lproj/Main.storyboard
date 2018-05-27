@@ -44,7 +44,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="afA-H7-Eh1">
-                                <rect key="frame" x="164" y="484" width="46" height="30"/>
+                                <rect key="frame" x="164" y="484" width="46" height="27"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
@@ -62,7 +62,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YzO-1T-ufz" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Bb2-cS-7Xi" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1012" y="119"/>
+            <point key="canvasLocation" x="1012" y="118.29085457271366"/>
         </scene>
     </scenes>
 </document>

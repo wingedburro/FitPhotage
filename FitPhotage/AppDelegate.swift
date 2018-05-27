@@ -25,12 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Light status bar
         application.statusBarStyle = .lightContent
         
-        setupNavigationBar()
-        
-        return true
-    }
-    
-    func setupNavigationBar() {
         // Use programming instead of storyboard
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -38,10 +32,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Set root view controller
         window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
         
+        setupNavigationBar()
+        setupTabBar()
+        
+        return true
+    }
+    
+    func setupNavigationBar() {
         // Modify Navigation Bar color
         UINavigationBar.appearance().barTintColor = UIColor.black
         
-//        // Get rid of black bar underneath nav bar
+//        Get rid of black bar underneath nav bar
 //        UINavigationBar.appearance().shadowImage = UIImage()
 //        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
@@ -52,6 +53,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
         window?.addConstraintsWithFormat(format: "V:|[v0(40)]|", views: statusBarBackgroundView)
     }
+    
+    func setupTabBar() {
+        let viewController = UIViewController()
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.tabBarItem.title = "Words"
+        navController.tabBarItem.image = UIImage(named: "BackButton")
+    }
+
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         

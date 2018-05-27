@@ -15,7 +15,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
       
-              //Gradient size assignment
+        //Gradient size assignment
         let xcoord = self.view.frame.size.width
         let ycoord = self.view.frame.size.height
         
@@ -24,13 +24,12 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         view.insertSubview(ground, at: 0)
         ground.layer.shouldRasterize = false
         
-        GIDSignIn.sharedInstance().uiDelegate = self
-        
         setupGoogleLogin()
     }
     
     private func setupGoogleLogin() {
         let googleSignInButton = GIDSignInButton()
+        GIDSignIn.sharedInstance().uiDelegate = self
         googleSignInButton.addTarget(self, action: #selector(googleLoginIn), for: .touchUpInside)
         view.addSubview(googleSignInButton)
         view.addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: googleSignInButton)

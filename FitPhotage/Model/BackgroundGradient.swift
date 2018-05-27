@@ -10,26 +10,18 @@ import UIKit
 
 class profileBackground: UIView {
     
-    let shapeLayer = CAShapeLayer()
+    // Delaration of Gradient Layer
     let gradLayer = CAGradientLayer()
-    let lab = CATextLayer()
-    let indicationLabel = CATextLayer()
-    //let label1 = UILabel()
     
-    
-    override init(frame: CGRect) {
+    init(frame: CGRect, color1: CGColor, color2: CGColor) {
         super.init(frame: frame)
         
-        // Gradient Layer for Circle
-        
+        // Initialization of Gradient Layer
         layer.addSublayer(gradLayer)
         gradLayer.frame = bounds
+        gradLayer.colors = [color1, color2]
         
-        let grey = UIColor.init(red: 25/255, green: 25/255, blue: 25/255, alpha: 1)
-        let black = UIColor.black.cgColor
-        //let blue = UIColor.blue.cgColor
-        gradLayer.colors = [grey, black]
-        
+        // Optional Animation
         /*
          // Fade in Animation on Center Text
          gradLayer.opacity = 0
@@ -46,15 +38,6 @@ class profileBackground: UIView {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    /*
-     // Only override draw() if you perform custom drawing.
-     // An empty implementation adversely affects performance during animation.
-     override func draw(_ rect: CGRect) {
-     // Drawing code
-     }
-     */
     
 }
 

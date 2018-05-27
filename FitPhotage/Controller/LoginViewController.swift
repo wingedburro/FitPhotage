@@ -11,10 +11,15 @@ import Firebase
 import GoogleSignIn
 
 class LoginViewController: UIViewController, GIDSignInUIDelegate {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-      
+        
+        setupGradient()
+        setupGoogleLogin()
+    }
+    
+    private func setupGradient() {
         //Gradient size assignment
         let xcoord = self.view.frame.size.width
         let ycoord = self.view.frame.size.height
@@ -23,21 +28,18 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         let ground = profileBackground(frame: back)
         view.insertSubview(ground, at: 0)
         ground.layer.shouldRasterize = false
-        
-        setupGoogleLogin()
     }
     
     private func setupGoogleLogin() {
-        let googleSignInButton = GIDSignInButton()
         GIDSignIn.sharedInstance().uiDelegate = self
-        googleSignInButton.addTarget(self, action: #selector(googleLoginIn), for: .touchUpInside)
+        let googleSignInButton = GIDSignInButton()
+        
+        googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
+        googleSignInButton.style = .wide
+        
         view.addSubview(googleSignInButton)
-        view.addConstraintsWithFormat(format: "H:|-20-[v0]-20-|", views: googleSignInButton)
-        view.addConstraintsWithFormat(format: "V:|-150-[v0(50)]-150-|", views: googleSignInButton)
-    }
-    
-    @objc private func googleLoginIn() {
-        GIDSignIn.sharedInstance().signIn()
+        view.addConstraintsWithFormat(format: "H:|-\(view.frame.width/2 - 100)-[v0(200)]", views: googleSignInButton)
+        view.addConstraintsWithFormat(format: "V:|-\(view.frame.height/2 - 24)-[v0]", views: googleSignInButton)
     }
 
 

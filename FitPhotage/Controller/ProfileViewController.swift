@@ -43,5 +43,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate {
         performSegue(withIdentifier: "unwindToLogin", sender: self)
     }
     
+    @IBAction func backToLogin(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
     
 }

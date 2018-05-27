@@ -8,12 +8,12 @@
 
 import UIKit
 import Firebase
+import FirebaseDatabase
 import GoogleSignIn
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure() //Enable Firebase
@@ -21,7 +21,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Enable Google Sign In
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
         GIDSignIn.sharedInstance().delegate = self
+        
+        // Light status bar
+        application.statusBarStyle = .lightContent
+        
+        setupNavigationBar()
+        
         return true
+    }
+    
+    func setupNavigationBar() {
+        // Use programming instead of storyboard
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.makeKeyAndVisible()
+        
+        // Set root view controller
+        window?.rootViewController = UINavigationController(rootViewController: ProfileViewController())
+        
+        // Modify Navigation Bar color
+        UINavigationBar.appearance().barTintColor = UIColor.black
+        
+//        // Get rid of black bar underneath nav bar
+//        UINavigationBar.appearance().shadowImage = UIImage()
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.black
+        
+        window?.addSubview(statusBarBackgroundView)
+        window?.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
+        window?.addConstraintsWithFormat(format: "V:|[v0(40)]|", views: statusBarBackgroundView)
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -37,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     
     // Handle Google sign in process
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
-        if let error = error {
+        if error != nil {
             return
         }
         
@@ -45,11 +74,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
-            if let error = error {
+            if error != nil {
                 return
             }
             
-            self.segueToMain()
+            if user != nil {
+                let databaseRef = Database.database().reference()
+                let uid = Auth.auth().currentUser?.uid
+                let userReference = databaseRef.child("Users").child(uid!)
+                userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                    if snapshot.hasChild("Name") {
+                        if let dictionary = snapshot.value as? [String: AnyObject] {
+                            Main.appUser.name = dictionary["Name"] as? String
+                            Main.appUser.email = dictionary["Email"] as? String
+                            self.segueToMain()
+                        }
+                    } else {
+                        Main.appUser.name = user.profile.name
+                        Main.appUser.email = user.profile.email
+                        let values = ["Name": Main.appUser.name, "Email": Main.appUser.email]
+                        userReference.updateChildValues(values as Any as! [AnyHashable : Any], withCompletionBlock: { (error, ref) in
+                            if error != nil {
+                                print("Error signing in with Google")
+                            }
+                        })
+                        self.segueToMain()
+                    }
+                })
+            }
             
         }
     }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1026609520BA3D4800B0598A /* GoogleService-Info.plist */; };
+		10810DDB20BB1F6400BE941D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10810DDA20BB1F6400BE941D /* User.swift */; };
+		10810DDD20BB21C300BE941D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10810DDC20BB21C300BE941D /* Main.swift */; };
 		10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A437F720BA1736006B12BC /* AppDelegate.swift */; };
 		10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A437F920BA1736006B12BC /* LoginViewController.swift */; };
 		10A437FD20BA1736006B12BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A437FB20BA1736006B12BC /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 
 /* Begin PBXFileReference section */
 		1026609520BA3D4800B0598A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		10810DDA20BB1F6400BE941D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = FitPhotage/Model/User.swift; sourceTree = SOURCE_ROOT; };
+		10810DDC20BB21C300BE941D /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Main.swift; path = FitPhotage/Model/Main.swift; sourceTree = SOURCE_ROOT; };
 		10A437F420BA1736006B12BC /* FitPhotage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitPhotage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A437F720BA1736006B12BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		10A437F920BA1736006B12BC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -48,13 +52,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1026609220BA376500B0598A /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		1026609320BA377400B0598A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +67,15 @@
 				99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		10810DE020BB220800BE941D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				10810DDA20BB1F6400BE941D /* User.swift */,
+				10810DDC20BB21C300BE941D /* Main.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		10A437EB20BA1736006B12BC = {
@@ -93,10 +99,10 @@
 		10A437F620BA1736006B12BC /* FitPhotage */ = {
 			isa = PBXGroup;
 			children = (
+				10810DE020BB220800BE941D /* Model */,
 				10DD431A20BA471100E2DA1A /* Helpers */,
 				1026609420BA377D00B0598A /* Controller */,
 				1026609320BA377400B0598A /* View */,
-				1026609220BA376500B0598A /* Model */,
 				10A437F720BA1736006B12BC /* AppDelegate.swift */,
 				10A437FB20BA1736006B12BC /* Main.storyboard */,
 				10A437FE20BA173A006B12BC /* Assets.xcassets */,
@@ -231,6 +237,7 @@
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -238,6 +245,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,8 +280,10 @@
 			files = (
 				99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */,
 				99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */,
+				10810DDB20BB1F6400BE941D /* User.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */,
+				10810DDD20BB21C300BE941D /* Main.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,10 +432,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6U7ND8D4U;
 				INFOPLIST_FILE = FitPhotage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wingedburrostudios.FitPhotage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -441,10 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6U7ND8D4U;
 				INFOPLIST_FILE = FitPhotage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = wingedburrostudios.FitPhotage;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -17,6 +17,12 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate {
         
         setupGradient()
         setupLogoutButton()
+        
+        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
+        titleLabel.text = "Profile"
+        titleLabel.textColor = UIColor.white
+        titleLabel.font = UIFont.systemFont(ofSize: 20)
+        navigationItem.titleView = titleLabel
     }
 
     

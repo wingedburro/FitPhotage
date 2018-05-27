@@ -21,7 +21,6 @@ class ProfileViewController: UITabBarController, GIDSignInUIDelegate {
         setupTabBar()
         
         setupLogoutButton()
-        
     }
     
     // Gradient Color Assignment

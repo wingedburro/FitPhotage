@@ -60,8 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         navController.tabBarItem.title = "Words"
         navController.tabBarItem.image = UIImage(named: "BackButton")
     }
-
-    
+  
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
         // Google Sign In

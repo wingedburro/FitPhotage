@@ -12,13 +12,6 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     
     private let reuseIdentifier = "Cell"
     private let cellsPerRow = 2
-    
-    let statusBarBackgroundView: UIView = {
-        let status = UIView()
-        status.translatesAutoresizingMaskIntoConstraints = false
-        status.backgroundColor = UIColor.black
-        return status
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +21,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         setupCollectionFlowLayout()
-        setupNavbar()
+        self.setupNavbar()
 
         // Do any additional setup after loading the view.
     }
@@ -38,25 +31,6 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
         flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
-    }
-    
-    private func setupNavbar() {
-        view.addSubview(statusBarBackgroundView)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        view.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarBackgroundView)
-        
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 44))
-        navBar.backgroundColor = UIColor.black
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navBar.titleTextAttributes = textAttributes
-        navBar.shadowImage = UIImage()
-        navBar.setBackgroundImage(UIImage(), for: .default)
-        navigationItem.title = "LivFit"
-        navBar.items = [navigationItem]
-        view.addSubview(navBar)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: navBar)
-        view.addConstraintsWithFormat(format: "V:|-20-[v0]", views: navBar)
     }
     
     // Necessary to get perfect columns

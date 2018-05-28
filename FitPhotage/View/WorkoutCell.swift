@@ -9,11 +9,6 @@
 import UIKit
 
 class WorkoutCell: UICollectionViewCell {
-    override init(frame: CGRect){
-        super.init(frame: frame)
-        setupViews()
-    }
-    
     let thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.black
@@ -32,6 +27,11 @@ class WorkoutCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
+    
+    override init(frame: CGRect){
+        super.init(frame: frame)
+        setupViews()
+    }
     
     func setupViews() {
         backgroundColor = UIColor.green

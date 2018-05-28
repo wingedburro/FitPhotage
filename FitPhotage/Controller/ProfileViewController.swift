@@ -12,77 +12,13 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    let statusBarBackgroundView: UIView = {
-        let status = UIView()
-        status.translatesAutoresizingMaskIntoConstraints = false
-        status.backgroundColor = UIColor.black
-        return status
-    }()
-    
-    let phoneCell: UITableViewCell = {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.blue
-        cell.textLabel?.text = "Phone Number"
-        cell.tintColor = UIColor.white
-        return cell
-    }()
-    
-    let emailCell: UITableViewCell = {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.green
-        cell.textLabel?.text = "Email"
-        cell.tintColor = UIColor.white
-        return cell
-    }()
-    
-    let programsCell: UITableViewCell = {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.orange
-        cell.textLabel?.text = "Programs"
-        cell.tintColor = UIColor.white
-        return cell
-    }()
-    
-    let birthCell: UITableViewCell = {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.black
-        cell.textLabel?.text = "Date of Birth"
-        cell.tintColor = UIColor.white
-        return cell
-    }()
-    
-    let genderCell: UITableViewCell = {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.purple
-        cell.textLabel?.text = "Gender"
-        cell.tintColor = UIColor.white
-        return cell
-    }()
-    
-    let logoutCell: UITableViewCell = {
-        let cell = UITableViewCell()
-        cell.backgroundColor = UIColor.cyan
-        cell.textLabel?.text = "Log out"
-        cell.tintColor = UIColor.white
-        return cell
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupGradient()
+        view.backgroundColor = UIColor.darkGray
 //        setupLogoutButton()
         loadProfileInfo()
-        setupNavbar()
-    }
-    
-    // Gradient Color Assignment
-    private func setupGradient() {
-        let color1 = UIColor(red:1.00, green:0.32, blue:0.18, alpha:1.0).cgColor
-        let color2 = UIColor(red: 0.94, green: 0.60, blue: 0.1, alpha: 1.0).cgColor
-        let ground = profileBackground(frame: view.bounds, color1: color1, color2: color2)
-        view.insertSubview(ground, at: 0)
-        ground.layer.shouldRasterize = false
+        self.setupNavbar()
     }
     
     private func setupLogoutButton() {
@@ -92,25 +28,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         logoutButton.setTitleColor(UIColor.white, for: .normal)
         logoutButton.addTarget(self, action: #selector(googleLogoutHandler), for: .touchUpInside)
         view.addSubview(logoutButton)
-    }
-    
-    private func setupNavbar() {
-        view.addSubview(statusBarBackgroundView)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        view.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarBackgroundView)
-        
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 44))
-        navBar.backgroundColor = UIColor.black
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navBar.titleTextAttributes = textAttributes
-        navBar.shadowImage = UIImage()
-        navBar.setBackgroundImage(UIImage(), for: .default)
-        navigationItem.title = Main.appUser.name
-        navBar.items = [navigationItem]
-        view.addSubview(navBar)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: navBar)
-        view.addConstraintsWithFormat(format: "V:|-20-[v0]", views: navBar)
     }
     
     @objc private func googleLogoutHandler() {
@@ -123,15 +40,16 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         let imageWidth = view.frame.height/5
         let profileImageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
+        profileImageView.backgroundColor = UIColor.blue
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.backgroundColor = UIColor.blue
+        tableView.backgroundColor = UIColor.darkGray
         view.addSubview(profileImageView)
         view.addSubview(tableView)
         view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(view.frame.height/5))]-\((view.frame.width+imageWidth)/2)-|", views: profileImageView)
-        view.addConstraintsWithFormat(format: "V:|-79-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
+        view.addConstraintsWithFormat(format: "V:|-85-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
     }
     
@@ -151,16 +69,23 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 0: return self.phoneCell
-            case 1: return self.emailCell
-            case 2: return self.programsCell
-            case 3: return self.birthCell
-            case 4: return self.genderCell
+            case 0: return ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone")
+            case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email")
+            case 2: return ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs")
+            case 3: return ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth")
+            case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender")
             default: fatalError("Unknown section")
             }
-        case 1: return self.logoutCell
+        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out")
         default: fatalError("Unknown section")
         }
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "Your Information"
+        }
+        return ""
     }
     
     

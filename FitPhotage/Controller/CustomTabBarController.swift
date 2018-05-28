@@ -18,18 +18,24 @@ class CustomTabBarController: UITabBarController {
     }
     
     private func setupViews() {
+        
+        //Profile Tab
         let profileViewController = ProfileViewController()
         profileViewController.tabBarItem.image = UIImage(named: "profile_icon")
         profileViewController.title = "Profile"
         
-        let workoutsViewController = UIViewController()
+        //Workouts Tab
+        let layout = UICollectionViewFlowLayout()
+        let workoutsViewController = UINavigationController(rootViewController: WorkoutsViewController(collectionViewLayout: layout))
         workoutsViewController.tabBarItem.image = UIImage(named: "workouts_icon")
         workoutsViewController.title = "Workouts"
         
+        //Documents Tab
         let documentsViewController = UIViewController()
         documentsViewController.tabBarItem.image = UIImage(named: "documents_icon")
         documentsViewController.title = "Documents"
         
+        // Tasks Tab
         let tasksViewController = UIViewController()
         tasksViewController.tabBarItem.image = UIImage(named: "tasks_icon")
         tasksViewController.title = "Tasks"

@@ -25,16 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Light status bar
         application.statusBarStyle = .lightContent
         
-        setupTabBar()
+        // Tab bar customizations
+        UITabBar.appearance().tintColor = UIColor.orange
+        UITabBar.appearance().barTintColor = UIColor.black
         
         return true
-    }
-    
-    func setupTabBar() {
-        let viewController = UIViewController()
-        let navController = UINavigationController(rootViewController: viewController)
-        navController.tabBarItem.title = "Words"
-        navController.tabBarItem.image = UIImage(named: "BackButton")
     }
   
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
@@ -120,11 +115,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     func segueToMain() {
         // Access the storyboard and fetch an instance of the view controller
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        let profileViewController = storyboard.instantiateViewController(withIdentifier: "profileViewController")
+        let customTabBarController = storyboard.instantiateViewController(withIdentifier: "customTabBarController")
         
         // Push that view controller onto the navigation stack
         let rootViewController = self.window!.rootViewController!
-        rootViewController.present(profileViewController, animated: true, completion: nil)
+        rootViewController.present(customTabBarController, animated: true, completion: nil)
     }
 
 

@@ -10,17 +10,16 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ProfileViewController: UITabBarController, GIDSignInUIDelegate {
+class ProfileViewController: UIViewController, GIDSignInUIDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupGradient()
-        setupNavBar()
-        tabBarController?.tabBar.barTintColor = UIColor.green
-        setupTabBar()
-        
         setupLogoutButton()
+        loadProfileInfo()
+        setupNavbar()
+        
     }
     
     // Gradient Color Assignment
@@ -32,32 +31,6 @@ class ProfileViewController: UITabBarController, GIDSignInUIDelegate {
         ground.layer.shouldRasterize = false
     }
     
-    // Navigation Bar Assignment
-    private func setupNavBar() {
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width - 32, height: view.frame.height))
-        titleLabel.text = "Profile"
-        titleLabel.textColor = UIColor.white
-        titleLabel.font = UIFont.systemFont(ofSize: 20)
-        navigationItem.titleView = titleLabel
-    }
-    
-    // Tab Bar Assignement
-    private func setupTabBar() {
-//        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
-//        profileViewController.tabBarItem.image = UIImage(named: "BackButton")
-//        profileViewController.tabBarItem.selectedImage = UIImage(named: "LivFit")
-        
-        let informationViewController = UINavigationController(rootViewController: InformationViewController())
-        informationViewController.tabBarItem.image = UIImage(named: "LivFit")
-        informationViewController.tabBarItem.selectedImage = UIImage(named: "BackButton")
-        
-        let loginViewController = UINavigationController(rootViewController: LoginViewController())
-        loginViewController.tabBarItem.image = UIImage(named: "LivFit")
-        loginViewController.tabBarItem.selectedImage = UIImage(named: "BackButton")
-        
-        viewControllers = [loginViewController,informationViewController]
-    }
-    
     private func setupLogoutButton() {
         let logoutButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: view.frame.height/2 - 24, width: 200, height: 48))
         logoutButton.backgroundColor = UIColor.orange
@@ -67,13 +40,36 @@ class ProfileViewController: UITabBarController, GIDSignInUIDelegate {
         view.addSubview(logoutButton)
     }
     
-    @objc private func googleLogoutHandler() {
-        GIDSignIn.sharedInstance().signOut()
-        performSegue(withIdentifier: "unwindToLogin", sender: self)
+    private func setupNavbar() {
+        let statusBarBackgroundView = UIView()
+        statusBarBackgroundView.backgroundColor = UIColor.black
+        
+        view.addSubview(statusBarBackgroundView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
+        view.addConstraintsWithFormat(format: "V:|[v0(20)]|", views: statusBarBackgroundView)
+        
+        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 50))
+        navBar.backgroundColor = UIColor.black
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navBar.titleTextAttributes = textAttributes
+        navBar.shadowImage = UIImage()
+        navBar.setBackgroundImage(UIImage(), for: .default)
+        navigationItem.title = "Profile"
+        navBar.items = [navigationItem]
+        view.addSubview(navBar)
     }
     
-    @IBAction func backToLogin(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @objc private func googleLogoutHandler() {
+        GIDSignIn.sharedInstance().signOut()
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    private func loadProfileInfo() {
+        let profileImageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        profileImageView.backgroundColor = UIColor.blue
+        view.addSubview(profileImageView)
+        view.addConstraintsWithFormat(format: "H:|-20-[v0(150)]", views: profileImageView)
+        view.addConstraintsWithFormat(format: "V:|-90-[v0(150)]", views: profileImageView)
     }
     
 }

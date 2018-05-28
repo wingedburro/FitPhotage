@@ -11,6 +11,7 @@ import UIKit
 class WorkoutsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let reuseIdentifier = "Cell"
+    
     private let cellsPerRow = 2
 
     override func viewDidLoad() {

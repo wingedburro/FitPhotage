@@ -32,14 +32,23 @@ class WorkoutCell: UICollectionViewCell {
         super.init(frame: frame)
         setupViews()
     }
+  
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.orange
+        return imageView
+    }()
     
     func setupViews() {
         backgroundColor = UIColor.green
+        addSubview(backgroundImageView)
         addSubview(thumbnailImageView)
         addSubview(completionImageView)
         addSubview(descriptionLabelView)
         
         //Black Image inside of framing Rectangle
+        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: backgroundImageView)
+        addConstraintsWithFormat(format: "V:|-16-[v0]-16-|", views: backgroundImageView)
         addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
         addConstraintsWithFormat(format: "V:|-16-[v0]-8-[v1(50)]-16-|", views: thumbnailImageView, completionImageView, descriptionLabelView)
         addConstraintsWithFormat(format: "H:|-16-[v0]-8-[v1(50)]-16-|", views: descriptionLabelView, completionImageView)

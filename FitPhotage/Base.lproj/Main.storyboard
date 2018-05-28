@@ -54,7 +54,6 @@
         <!--ProfileViewController-->
         <scene sceneID="WTv-HO-ju8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LqE-3L-4V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="profileViewController" title="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vag-5c-5KT" customClass="ProfileViewController" customModule="FitPhotage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xms-cL-RjD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -64,8 +63,9 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="cRs-UP-VY8"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LqE-3L-4V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1668" y="-513"/>
+            <point key="canvasLocation" x="1668" y="-513.19340329835086"/>
         </scene>
         <!--Custom Tab Bar Controller-->
         <scene sceneID="Bx6-oZ-xXC">

@@ -10,13 +10,14 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String?, text: String?) {
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, text: String?, textHighlightColor: UIColor?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.textLabel?.text = text
         self.backgroundColor = UIColor.black
         self.textLabel?.textColor = UIColor.white
+        self.textLabel?.highlightedTextColor = textHighlightColor
         let customSelectColor = UIView()
-        customSelectColor.backgroundColor = UIColor.orange
+        customSelectColor.backgroundColor = UIColor.black
         self.selectedBackgroundView = customSelectColor
     }
     

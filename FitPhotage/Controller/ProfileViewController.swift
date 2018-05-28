@@ -18,6 +18,9 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         view.backgroundColor = UIColor.darkGray
 //        setupLogoutButton()
         loadProfileInfo()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         self.setupNavbar()
     }
     
@@ -66,17 +69,18 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let textHighlightColor = UIColor.orange
         switch indexPath.section {
         case 0:
             switch indexPath.row {
-            case 0: return ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone")
-            case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email")
-            case 2: return ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs")
-            case 3: return ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth")
-            case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender")
+            case 0: return ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone", textHighlightColor: textHighlightColor)
+            case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email", textHighlightColor: textHighlightColor)
+            case 2: return ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs", textHighlightColor: textHighlightColor)
+            case 3: return ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth", textHighlightColor: textHighlightColor)
+            case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor)
             default: fatalError("Unknown section")
             }
-        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out")
+        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor)
         default: fatalError("Unknown section")
         }
     }

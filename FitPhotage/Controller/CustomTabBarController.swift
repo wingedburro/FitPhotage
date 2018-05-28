@@ -40,7 +40,12 @@ class CustomTabBarController: UITabBarController {
         tasksViewController.tabBarItem.image = UIImage(named: "tasks_icon")
         tasksViewController.title = "Tasks"
         
-        viewControllers = [profileViewController, workoutsViewController, documentsViewController, tasksViewController]
+        // Progress Tab
+        let progressViewController = UIViewController()
+        progressViewController.tabBarItem.image = UIImage(named: "progress_icon")
+        progressViewController.title = "Progress"
+        
+        viewControllers = [profileViewController, workoutsViewController, documentsViewController, tasksViewController, progressViewController]
         
         tabBar.isTranslucent = false
     }

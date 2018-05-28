@@ -51,10 +51,44 @@
             </objects>
             <point key="canvasLocation" x="1668" y="151"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="G4M-eW-OPX">
+            <objects>
+                <collectionViewController id="1Lm-MF-ozf" customClass="WorkoutsViewController" customModule="FitPhotage" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ES2-3v-rLM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8NB-f9-Qc8">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uJd-t6-U6O">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </view>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="1Lm-MF-ozf" id="e6i-sh-Mr1"/>
+                            <outlet property="delegate" destination="1Lm-MF-ozf" id="gf0-JM-CkR"/>
+                        </connections>
+                    </collectionView>
+                    <tabBarItem key="tabBarItem" title="Item" id="hLi-aq-DCt"/>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bne-tU-LsJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1668" y="957"/>
+        </scene>
         <!--ProfileViewController-->
         <scene sceneID="WTv-HO-ju8">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LqE-3L-4V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="profileViewController" title="ProfileViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vag-5c-5KT" customClass="ProfileViewController" customModule="FitPhotage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Xms-cL-RjD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
@@ -64,6 +98,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="cRs-UP-VY8"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LqE-3L-4V9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1668" y="-513"/>
         </scene>
@@ -79,6 +114,7 @@
                     <connections>
                         <segue destination="Vag-5c-5KT" kind="relationship" relationship="viewControllers" id="Pu7-AV-3vb"/>
                         <segue destination="i1g-My-njM" kind="relationship" relationship="viewControllers" id="zUF-N5-gcl"/>
+                        <segue destination="1Lm-MF-ozf" kind="relationship" relationship="viewControllers" id="vCW-f2-G1x"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fjF-yI-Tck" userLabel="First Responder" sceneMemberID="firstResponder"/>

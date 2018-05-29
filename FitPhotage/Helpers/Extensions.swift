@@ -73,7 +73,7 @@ extension UIImageView {
 
 extension UIViewController {
     
-    func setupNavbar(navBarColor: UIColor?, statusBarColor: UIColor?) {
+    func setupNavbar(navBarColor: UIColor?, statusBarColor: UIColor?, title: String?) {
         statusBarBackgroundView.backgroundColor = statusBarColor
         self.view.addSubview(statusBarBackgroundView)
         self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
@@ -86,7 +86,7 @@ extension UIViewController {
         navBar.titleTextAttributes = textAttributes
         navBar.shadowImage = UIImage()
         navBar.setBackgroundImage(UIImage(), for: .default)
-        navigationItem.title = Main.appUser.name
+        navigationItem.title = title
         navBar.items = [navigationItem]
         self.view.addSubview(navBar)
         self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: navBar)

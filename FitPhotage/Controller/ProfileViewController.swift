@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.setupNavbar(navBarColor: UIColor.CustomColors.lead, statusBarColor: UIColor.CustomColors.lead)
+        self.setupNavbar(navBarColor: UIColor.CustomColors.lead, statusBarColor: UIColor.CustomColors.lead, title: Main.appUser.name)
     }
     
     private func setupLogoutButton() {

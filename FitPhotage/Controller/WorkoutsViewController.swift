@@ -16,8 +16,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        collectionView?.backgroundColor = UIColor.blue
+        navigationController?.navigationBar.backgroundColor = UIColor.black
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

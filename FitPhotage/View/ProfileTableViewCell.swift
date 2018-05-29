@@ -17,7 +17,7 @@ class ProfileTableViewCell: UITableViewCell {
         self.textLabel?.textColor = UIColor.white
         self.textLabel?.highlightedTextColor = textHighlightColor
         let customSelectColor = UIView()
-        customSelectColor.backgroundColor = UIColor.black
+        customSelectColor.backgroundColor = UIColor.darkGray
         self.selectedBackgroundView = customSelectColor
     }
     

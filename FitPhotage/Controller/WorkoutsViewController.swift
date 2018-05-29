@@ -22,7 +22,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         setupCollectionFlowLayout()
-        self.setupNavbar()
+        self.setupNavbar(navBarColor: UIColor.CustomColors.lead, statusBarColor: UIColor.CustomColors.lead)
 
         // Do any additional setup after loading the view.
     }

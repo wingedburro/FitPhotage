@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     
     @objc private func googleLogoutHandler() {
         GIDSignIn.sharedInstance().signOut()
-        self.dismiss(animated: true, completion: nil)
+        AppDelegate.shared.rootViewController.switchToLoginScreen()
     }
     
     private func loadProfileInfo() {
@@ -107,6 +107,14 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             }
         case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor)
         default: fatalError("Unknown section")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            if indexPath.row == 0{
+                googleLogoutHandler()
+            }
         }
     }
     

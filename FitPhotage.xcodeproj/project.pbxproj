@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1026609520BA3D4800B0598A /* GoogleService-Info.plist */; };
 		1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */; };
+		1052884E20BE461800DA8511 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052884D20BE461800DA8511 /* RootViewController.swift */; };
 		1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056165A20BC73C3006E8286 /* WorkoutCell.swift */; };
 		10810DDB20BB1F6400BE941D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10810DDA20BB1F6400BE941D /* User.swift */; };
 		10810DDD20BB21C300BE941D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10810DDC20BB21C300BE941D /* Main.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		1026609520BA3D4800B0598A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		1052884D20BE461800DA8511 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1056165A20BC73C3006E8286 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		10810DDA20BB1F6400BE941D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = FitPhotage/Model/User.swift; sourceTree = SOURCE_ROOT; };
 		10810DDC20BB21C300BE941D /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Main.swift; path = FitPhotage/Model/Main.swift; sourceTree = SOURCE_ROOT; };
@@ -80,6 +82,7 @@
 				99088E2C20BC52FC004DDF49 /* WorkoutsViewController.swift */,
 				99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */,
 				10FD274120BB9683004E05FE /* CustomTabBarController.swift */,
+				1052884D20BE461800DA8511 /* RootViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */,
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				10810DDB20BB1F6400BE941D /* User.swift in Sources */,
+				1052884E20BE461800DA8511 /* RootViewController.swift in Sources */,
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,

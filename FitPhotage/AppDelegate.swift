@@ -29,6 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UITabBar.appearance().tintColor = UIColor.orange
         UITabBar.appearance().barTintColor = UIColor.black
         
+        // Set root view controller
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = RootViewController()
+        window?.makeKeyAndVisible()
+        
         return true
     }
   
@@ -113,13 +118,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     }
     
     func segueToMain() {
-        // Access the storyboard and fetch an instance of the view controller
-        let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        let customTabBarController = storyboard.instantiateViewController(withIdentifier: "customTabBarController")
-        
-        // Push that view controller onto the navigation stack
-        let rootViewController = self.window!.rootViewController!
-        rootViewController.present(customTabBarController, animated: true, completion: nil)
+//        // Access the storyboard and fetch an instance of the view controller
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+//        let customTabBarController = storyboard.instantiateViewController(withIdentifier: "customTabBarController")
+//
+//        // Push that view controller onto the navigation stack
+//        let rootViewController = self.window!.rootViewController!
+//        rootViewController.present(customTabBarController, animated: true, completion: nil)
+        self.rootViewController.switchToMainView()
     }
 
 

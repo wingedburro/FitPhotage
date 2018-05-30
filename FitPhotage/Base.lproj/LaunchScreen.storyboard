@@ -15,11 +15,11 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" contentMode="scaleAspectFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LivFit" translatesAutoresizingMaskIntoConstraints="NO" id="oJE-Kt-ffi">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LivFit" translatesAutoresizingMaskIntoConstraints="NO" id="oJE-Kt-ffi">
                                 <rect key="frame" x="87" y="243.5" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="oJE-Kt-ffi" secondAttribute="height" multiplier="1:1" id="159-8y-z5w"/>

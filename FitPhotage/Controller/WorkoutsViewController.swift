@@ -16,6 +16,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.rgb(red: 30, green: 30, blue: 30)
         navigationController?.navigationBar.barTintColor = UIColor.CustomColors.lead
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
@@ -55,8 +56,8 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WorkoutCell
+        return cell!
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

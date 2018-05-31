@@ -9,46 +9,53 @@
 import UIKit
 
 class WorkoutCell: UICollectionViewCell {
-    let thumbnailImageView: UIImageView = {
+    var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.black
+        imageView.image = UIImage(named: "profile_icon")
         return imageView
     }()
     
-    let completionImageView: UIImageView = {
+    var completionImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.backgroundColor = UIColor.red
-        let tintImage = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
+        let tintImage = UIImage.init(named: "checklist_icon")?.withRenderingMode(.alwaysTemplate)
         imageView.image = tintImage
         imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
         return imageView
     }()
     
-    let descriptionLabelView: UILabel = {
+    var descriptionLabelView: UILabel = {
         let label = UILabel()
-//        label.backgroundColor = UIColor.purple
         label.font = UIFont(descriptor: label.font.fontDescriptor, size: 14)
-//        label.textColor = UIColor.white
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 3
-        label.text = "Bicep Curls"
+        label.text = "N/A"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    override init(frame: CGRect){
-        super.init(frame: frame)
-        setupViews()
-    }
-  
-    let backgroundImageView: UIImageView = {
+    var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.cyan
+        imageView.backgroundColor = UIColor.white
         return imageView
     }()
     
-    func setupViews() {
-        backgroundColor = UIColor.rgb(red: 30, green: 30, blue: 30)
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"))
+    }
+    
+    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect) {
+        super.init(frame: frame)
+        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage)
+    }
+    
+    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?) {
+        thumbnailImageView.image = thumbnail
+        backgroundImageView.backgroundColor = backgroundColor
+        descriptionLabelView.text = description
+        completionImageView.image = completedImage
+        
         addSubview(backgroundImageView)
         addSubview(thumbnailImageView)
         addSubview(completionImageView)

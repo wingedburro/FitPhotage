@@ -27,6 +27,23 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         setupCollectionFlowLayout()
     }
     
+    // Enable rotation of screen
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        appdelegate.enableRotation = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.enableRotation = false
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
     override func viewWillLayoutSubviews() {
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
         let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)

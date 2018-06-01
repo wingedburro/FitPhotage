@@ -31,7 +31,7 @@ class CustomTabBarController: UITabBarController {
         workoutsViewController.title = "Workouts"
         
         //Documents Tab
-        let documentsViewController = UIViewController()
+       let documentsViewController = UINavigationController(rootViewController: DocumentsViewController(collectionViewLayout: layout))
         documentsViewController.tabBarItem.image = UIImage(named: "documents_icon")
         documentsViewController.title = "Documents"
         

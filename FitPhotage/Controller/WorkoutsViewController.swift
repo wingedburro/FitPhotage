@@ -16,8 +16,8 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.CustomColors.lead
-        navigationController?.navigationBar.barTintColor = UIColor.CustomColors.lead
+        collectionView?.backgroundColor = UIColor.CustomColors.lead
+        navigationController?.navigationBar.barTintColor = UIColor.black
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -25,23 +25,6 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         setupCollectionFlowLayout()
-    }
-    
-    // Enable rotation of screen
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        let appdelegate = UIApplication.shared.delegate as! AppDelegate
-        appdelegate.enableRotation = true
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.enableRotation = false
-        
-        let value = UIInterfaceOrientation.portrait.rawValue
-        UIDevice.current.setValue(value, forKey: "orientation")
     }
     
     override func viewWillLayoutSubviews() {

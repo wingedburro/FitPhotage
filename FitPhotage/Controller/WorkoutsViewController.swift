@@ -16,7 +16,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.rgb(red: 30, green: 30, blue: 30)
+        view.backgroundColor = UIColor.CustomColors.lead
         navigationController?.navigationBar.barTintColor = UIColor.CustomColors.lead
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]

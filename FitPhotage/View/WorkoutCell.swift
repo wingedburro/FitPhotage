@@ -12,14 +12,12 @@ class WorkoutCell: UICollectionViewCell {
     var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.black
-        imageView.image = UIImage(named: "profile_icon")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     var completionImageView: UIImageView = {
         let imageView = UIImageView()
-        let tintImage = UIImage.init(named: "checklist_icon")?.withRenderingMode(.alwaysTemplate)
-        imageView.image = tintImage
         imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
         return imageView
     }()
@@ -29,7 +27,6 @@ class WorkoutCell: UICollectionViewCell {
         label.font = UIFont(descriptor: label.font.fontDescriptor, size: 14)
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 3
-        label.text = "N/A"
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -42,19 +39,23 @@ class WorkoutCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"))
+        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"), isComplete: false)
     }
     
-    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect) {
+    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect, isComplete: Bool) {
         super.init(frame: frame)
-        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage)
+        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage, isComplete: isComplete)
     }
     
-    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?) {
+    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, isComplete: Bool) {
         thumbnailImageView.image = thumbnail
         backgroundImageView.backgroundColor = backgroundColor
         descriptionLabelView.text = description
-        completionImageView.image = completedImage
+        if isComplete {
+            completionImageView.image = completedImage?.withRenderingMode(.alwaysTemplate)
+        } else {
+            completionImageView.image = completedImage
+        }
         
         addSubview(backgroundImageView)
         addSubview(thumbnailImageView)

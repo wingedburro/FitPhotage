@@ -9,15 +9,15 @@ import UIKit
 
 class DocumentsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let reuseIdentifier = "Cell"
+    private let reuseIdentifier = "DocumentCell"
     
-    private let cellsPerRow = 2
+    private let cellsPerRow = 3
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.rgb(red: 30, green: 30, blue: 30)
-        navigationController?.navigationBar.barTintColor = UIColor.CustomColors.lead
-        navigationItem.title = "LivFit"
+        collectionView?.backgroundColor = UIColor.CustomColors.lead
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationItem.title = "Documents"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
@@ -40,7 +40,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
         flowLayout.minimumLineSpacing = 0
         
         collectionView.contentInsetAdjustmentBehavior = .always
-        collectionView.register(WorkoutCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(DocumentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -55,7 +55,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WorkoutCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? DocumentCell
         return cell!
     }
     

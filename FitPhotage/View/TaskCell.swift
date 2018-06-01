@@ -42,19 +42,23 @@ class TaskCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"))
+        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"), isComplete: false)
     }
     
-    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect) {
+    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect, isComplete: Bool) {
         super.init(frame: frame)
-        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage)
+        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage, isComplete: isComplete)
     }
     
-    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?) {
+    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, isComplete: Bool) {
         thumbnailImageView.image = thumbnail
         backgroundImageView.backgroundColor = backgroundColor
         descriptionLabelView.text = description
-        completionImageView.image = completedImage
+        if isComplete {
+            completionImageView.image = completedImage?.withRenderingMode(.alwaysTemplate)
+        } else {
+            completionImageView.image = completedImage
+        }
         
         addSubview(backgroundImageView)
         addSubview(thumbnailImageView)

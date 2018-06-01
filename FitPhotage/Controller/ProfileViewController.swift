@@ -1,5 +1,5 @@
 //
-//  ProfiileViewController.swift
+//  ProfileViewController.swift
 //  FitPhotage
 //
 //  Created by Weston Mauz on 5/26/18.

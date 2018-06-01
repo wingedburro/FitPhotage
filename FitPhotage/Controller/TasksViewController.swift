@@ -12,7 +12,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     
     private let reuseIdentifier = "Cell"
     
-    private let cellsPerRow = 2
+    private let cellsPerRow = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         flowLayout.minimumLineSpacing = 0
         
         collectionView.contentInsetAdjustmentBehavior = .always
-        collectionView.register(WorkoutCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(TaskCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -56,7 +56,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WorkoutCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? TaskCell
         return cell!
     }
     

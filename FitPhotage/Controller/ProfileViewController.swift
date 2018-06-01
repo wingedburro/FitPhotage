@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         super.viewDidLoad()
         
         view.backgroundColor = UIColor.CustomColors.lead
-//        setupLogoutButton()
         loadProfileInfo()
     }
     
@@ -124,7 +123,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         }
         return ""
     }
-    
     
     
 }

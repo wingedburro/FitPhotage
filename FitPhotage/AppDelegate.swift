@@ -14,6 +14,7 @@ import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     var window: UIWindow?
+    var enableRotation = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure() //Enable Firebase
@@ -126,6 +127,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        let rootViewController = self.window!.rootViewController!
 //        rootViewController.present(customTabBarController, animated: true, completion: nil)
         self.rootViewController.switchToMainView()
+    }
+    
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if (enableRotation == true) {
+            return UIInterfaceOrientationMask.allButUpsideDown
+        }
+        return UIInterfaceOrientationMask.portrait
     }
 
 

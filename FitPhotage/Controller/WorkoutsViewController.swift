@@ -16,15 +16,19 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        customizeView()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+        setupCollectionFlowLayout()
+    }
+    
+    private func customizeView() {
         collectionView?.backgroundColor = UIColor.CustomColors.lead
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        setupCollectionFlowLayout()
     }
     
     override func viewWillLayoutSubviews() {

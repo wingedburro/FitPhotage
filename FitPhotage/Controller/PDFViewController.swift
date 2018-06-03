@@ -17,6 +17,7 @@ class PDFViewController: UIViewController {
         super.viewDidLoad()
         let pdfView = PDFView(frame: view.bounds)
         pdfView.translatesAutoresizingMaskIntoConstraints = false
+        self.edgesForExtendedLayout = []
         view.addSubview(pdfView)
         view.addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: pdfView)
         view.addConstraintsWithFormat(format: "V:|-0-[v0]-0-|", views: pdfView)

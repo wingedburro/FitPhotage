@@ -19,6 +19,7 @@ class WorkoutCell: UICollectionViewCell {
     var completionImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     

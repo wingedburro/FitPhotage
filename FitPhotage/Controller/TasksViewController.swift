@@ -18,17 +18,21 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.CustomColors.lead
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationItem.title = "LivFit"
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        customizeView()
         
         arrayOfViews = [ProfileViewController()]
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         setupCollectionFlowLayout()
+    }
+    
+    private func customizeView() {
+        collectionView?.backgroundColor = UIColor.CustomColors.lead
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationItem.title = "Tasks"
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     override func viewWillLayoutSubviews() {

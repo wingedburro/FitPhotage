@@ -14,13 +14,22 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.CustomColors.lead
+
         loadProfileInfo()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.setupNavbar(navBarColor: UIColor.CustomColors.lead, statusBarColor: UIColor.CustomColors.lead, title: Main.appUser.name ?? "You")
+    override func viewWillAppear(_ animated: Bool) {
+        customizeView()
+    }
+    
+    private func customizeView() {
+        view.backgroundColor = UIColor.CustomColors.lead
+        navigationController?.navigationBar.barTintColor = UIColor.CustomColors.lead
+        navigationItem.title = Main.appUser.name ?? "You"
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
     private func setupLogoutButton() {
@@ -57,7 +66,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         view.addSubview(profileImageView)
         view.addSubview(tableView)
         view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(view.frame.height/5))]-\((view.frame.width+imageWidth)/2)-|", views: profileImageView)
-        view.addConstraintsWithFormat(format: "V:|-85-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
+        view.addConstraintsWithFormat(format: "V:|-100-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
     }
     

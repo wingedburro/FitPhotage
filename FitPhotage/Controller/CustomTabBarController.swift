@@ -20,7 +20,7 @@ class CustomTabBarController: UITabBarController {
     private func setupViews() {
         
         //Profile Tab
-        let profileViewController = ProfileViewController()
+        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
         profileViewController.tabBarItem.image = UIImage(named: "profile_icon")
         profileViewController.title = "Profile"
         

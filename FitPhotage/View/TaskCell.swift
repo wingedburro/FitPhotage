@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class TaskCell: UICollectionViewCell {
     var thumbnailImageView: UIImageView = {
@@ -55,7 +56,7 @@ class TaskCell: UICollectionViewCell {
     
     var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
-//        imageView.backgroundColor = UIColor.blue
+        imageView.backgroundColor = UIColor.blue
         imageView.layer.borderColor = UIColor.orange.cgColor
         imageView.layer.borderWidth = 2
         return imageView
@@ -63,7 +64,7 @@ class TaskCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "one_icon"), isComplete: false)
+        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.clear, description: "N/A", completedImage: UIImage(named: "one_icon"), isComplete: false)
     }
     
     init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect, isComplete: Bool) {

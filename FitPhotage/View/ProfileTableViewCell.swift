@@ -10,7 +10,7 @@ import UIKit
 
 class ProfileTableViewCell: UITableViewCell {
     
-    init(style: UITableViewCellStyle, reuseIdentifier: String?, text: String?, textHighlightColor: UIColor?) {
+    init(style: UITableViewCellStyle, reuseIdentifier: String?, text: String?, textHighlightColor: UIColor?, disclosure: Bool) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.textLabel?.text = text
         self.backgroundColor = UIColor.black
@@ -19,6 +19,9 @@ class ProfileTableViewCell: UITableViewCell {
         let customSelectColor = UIView()
         customSelectColor.backgroundColor = UIColor.darkGray
         self.selectedBackgroundView = customSelectColor
+        if disclosure == true {
+            self.accessoryType = .disclosureIndicator
+        }
     }
     
     

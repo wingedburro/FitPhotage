@@ -95,25 +95,25 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone", textHighlightColor: textHighlightColor)
+                let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone", textHighlightColor: textHighlightColor, disclosure: false)
                 phoneCell.addSubview(createCustomSeparator(cellHeight: phoneCell.frame.height))
                 return phoneCell
             case 1:
-                let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email", textHighlightColor: textHighlightColor)
+                let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email", textHighlightColor: textHighlightColor, disclosure: false)
                 emailCell.addSubview(createCustomSeparator(cellHeight: emailCell.frame.height))
                 return emailCell
             case 2:
-                let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs", textHighlightColor: textHighlightColor)
+                let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs", textHighlightColor: textHighlightColor, disclosure: false)
                 programsCell.addSubview(createCustomSeparator(cellHeight: programsCell.frame.height))
                 return programsCell
             case 3:
-                let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth", textHighlightColor: textHighlightColor)
+                let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth", textHighlightColor: textHighlightColor, disclosure: false)
                 birthCell.addSubview(createCustomSeparator(cellHeight: birthCell.frame.height))
                 return birthCell
-            case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor)
+            case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor, disclosure: false)
             default: fatalError("Unknown section")
             }
-        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor)
+        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor, disclosure: true)
         default: fatalError("Unknown section")
         }
     }

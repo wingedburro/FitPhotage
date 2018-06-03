@@ -43,6 +43,14 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
         collectionView.register(DocumentCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
+    @objc func showPDF() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil);
+        let pdfViewController = storyboard.instantiateViewController(withIdentifier: "PDFViewController")
+        
+        self.present(pdfViewController, animated: true, completion: nil)
+        
+    }
+    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -56,6 +64,8 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? DocumentCell
+        
+        cell?.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(showPDF)))
         return cell!
     }
     

@@ -10,6 +10,8 @@ import UIKit
 
 class TasksViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
+    var arrayOfViews = [UIViewController]()
+    
     private let reuseIdentifier = "Cell"
     
     private let cellsPerRow = 1
@@ -21,6 +23,8 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
+        
+        arrayOfViews = [ProfileViewController()]
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -42,6 +46,10 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         
         collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

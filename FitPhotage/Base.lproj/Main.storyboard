@@ -102,35 +102,5 @@
             </objects>
             <point key="canvasLocation" x="1585" y="888"/>
         </scene>
-        <!--PDFViewController-->
-        <scene sceneID="Zg4-WX-Uu5">
-            <objects>
-                <viewController storyboardIdentifier="PDFViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hip-Bm-GSP" userLabel="PDFViewController" customClass="PDFViewController" customModule="FitPhotage" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iMp-NN-krq">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCM-tc-5Kz" customClass="PDFView" customModule="FitPhotage" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="yH9-KM-R9k" firstAttribute="trailing" secondItem="NCM-tc-5Kz" secondAttribute="trailing" id="K81-G8-wv1"/>
-                            <constraint firstItem="NCM-tc-5Kz" firstAttribute="top" secondItem="yH9-KM-R9k" secondAttribute="top" id="VDQ-gF-6IX"/>
-                            <constraint firstItem="NCM-tc-5Kz" firstAttribute="leading" secondItem="yH9-KM-R9k" secondAttribute="leading" id="i2b-Xv-TXC"/>
-                            <constraint firstItem="yH9-KM-R9k" firstAttribute="bottom" secondItem="NCM-tc-5Kz" secondAttribute="bottom" id="pDo-ku-5ZP"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="yH9-KM-R9k"/>
-                    </view>
-                    <connections>
-                        <outlet property="pdfView" destination="NCM-tc-5Kz" id="bF1-Fu-2Ud"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x7i-Ki-5cR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2375" y="889"/>
-        </scene>
     </scenes>
 </document>

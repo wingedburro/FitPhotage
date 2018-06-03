@@ -10,13 +10,16 @@ import UIKit
 import PDFKit
 
 class PDFViewController: UIViewController {
-
-    @IBOutlet weak var pdfView: PDFView!
+    
     let pdfTitle = "Sample-Qns-Exam2"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("pdf view did load")
+        let pdfView = PDFView(frame: view.bounds)
+        pdfView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(pdfView)
+        view.addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: pdfView)
+        view.addConstraintsWithFormat(format: "V:|-0-[v0]-0-|", views: pdfView)
 
         // Get pdf url
         if let path = Bundle.main.path(forResource: pdfTitle, ofType: "pdf") {

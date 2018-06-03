@@ -49,7 +49,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {

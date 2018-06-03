@@ -11,6 +11,8 @@
 		1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */; };
 		1052884E20BE461800DA8511 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052884D20BE461800DA8511 /* RootViewController.swift */; };
 		1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056165A20BC73C3006E8286 /* WorkoutCell.swift */; };
+		1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077C07520C2F9A100139C48 /* PDFViewController.swift */; };
+		1077C07820C30B4500139C48 /* Sample-Qns-Exam2.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1077C07720C30B4500139C48 /* Sample-Qns-Exam2.pdf */; };
 		10810DDB20BB1F6400BE941D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10810DDA20BB1F6400BE941D /* User.swift */; };
 		10810DDD20BB21C300BE941D /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10810DDC20BB21C300BE941D /* Main.swift */; };
 		10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A437F720BA1736006B12BC /* AppDelegate.swift */; };
@@ -36,6 +38,8 @@
 		1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1052884D20BE461800DA8511 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1056165A20BC73C3006E8286 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
+		1077C07520C2F9A100139C48 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
+		1077C07720C30B4500139C48 /* Sample-Qns-Exam2.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; name = "Sample-Qns-Exam2.pdf"; path = "../../GaTech Archives/semester4_spring_2018/cs3510/Sample-Qns-Exam2.pdf"; sourceTree = "<group>"; };
 		10810DDA20BB1F6400BE941D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = FitPhotage/Model/User.swift; sourceTree = SOURCE_ROOT; };
 		10810DDC20BB21C300BE941D /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Main.swift; path = FitPhotage/Model/Main.swift; sourceTree = SOURCE_ROOT; };
 		10A437F420BA1736006B12BC /* FitPhotage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitPhotage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,6 +99,7 @@
 				10FD274120BB9683004E05FE /* CustomTabBarController.swift */,
 				1052884D20BE461800DA8511 /* RootViewController.swift */,
 				9941293920C1F5BA00F38704 /* DocumentsViewController.swift */,
+				1077C07520C2F9A100139C48 /* PDFViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 		10A437F620BA1736006B12BC /* FitPhotage */ = {
 			isa = PBXGroup;
 			children = (
+				1077C07720C30B4500139C48 /* Sample-Qns-Exam2.pdf */,
 				10810DE020BB220800BE941D /* Model */,
 				10DD431A20BA471100E2DA1A /* Helpers */,
 				1026609420BA377D00B0598A /* Controller */,
@@ -233,6 +239,7 @@
 				1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */,
 				10A437FF20BA173A006B12BC /* Assets.xcassets in Resources */,
 				10A437FD20BA1736006B12BC /* Main.storyboard in Resources */,
+				1077C07820C30B4500139C48 /* Sample-Qns-Exam2.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -317,6 +324,7 @@
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
+				1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */,
 				9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */,
 				990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */,
 				99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */,

@@ -17,21 +17,21 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>wingedburrostudios.FitPhotage</string>
+	<string>wingedburrostudios.FitPhotage14</string>
 	<key>PROJECT_ID</key>
 	<string>fitphotage</string>
 	<key>STORAGE_BUCKET</key>
 	<string>fitphotage.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:373240375316:ios:220a2fb572f45182</string>
 	<key>DATABASE_URL</key>

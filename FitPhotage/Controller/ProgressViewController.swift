@@ -19,10 +19,6 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
         loadProfileInfo()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.setupNavbar(navBarColor: UIColor.CustomColors.lead, statusBarColor: UIColor.CustomColors.lead, title: "Weekly Check-in")
-    }
-    
     private func createTableView() -> UITableView {
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
         tableView.delegate = self

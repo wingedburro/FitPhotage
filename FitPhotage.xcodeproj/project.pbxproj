@@ -33,6 +33,7 @@
 		990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990AE07220BFA23800B2E088 /* TasksViewController.swift */; };
 		9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293920C1F5BA00F38704 /* DocumentsViewController.swift */; };
 		9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293B20C1F5FE00F38704 /* DocumentCell.swift */; };
+		9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */; };
 		99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */; };
 		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
 		99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */; };
@@ -67,6 +68,7 @@
 		990AE07220BFA23800B2E088 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		9941293920C1F5BA00F38704 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		9941293B20C1F5FE00F38704 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
+		9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				1056165A20BC73C3006E8286 /* WorkoutCell.swift */,
 				990AE07020BFA11E00B2E088 /* TaskCell.swift */,
 				1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */,
+				9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */,
 				9941293B20C1F5FE00F38704 /* DocumentCell.swift */,
 			);
 			path = View;
@@ -352,6 +355,7 @@
 			files = (
 				99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */,
 				99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */,
+				9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */,
 				990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */,
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				10810DDB20BB1F6400BE941D /* User.swift in Sources */,

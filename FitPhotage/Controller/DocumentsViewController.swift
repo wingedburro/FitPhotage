@@ -12,6 +12,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     private let reuseIdentifier = "DocumentCell"
     
     private let cellsPerRow = 3
+    private let pdfList = ["Body Metrics Tracking Form", "Health History Questionnaire", "Lifestyle Questionnaire", "LivFit Waiver", "PARQ"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,16 +56,19 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 8
+        return 5
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? DocumentCell
+        cell?.setupViews(thumbnail: UIImage(named: "pdf_icon"), description: self.pdfList[indexPath.row], isComplete: false)
         return cell!
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(PDFViewController(), animated: true)
+        let pdfViewController = PDFViewController()
+        pdfViewController.pdfTitle = self.pdfList[indexPath.row]
+        self.navigationController?.pushViewController(pdfViewController, animated: true)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

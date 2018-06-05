@@ -11,7 +11,7 @@ import UIKit
 class DocumentCell: UICollectionViewCell {
     var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.CustomColors.lead
+        imageView.backgroundColor = UIColor.white
         imageView.layer.borderColor = UIColor.black.cgColor
         imageView.layer.borderWidth = 1
         imageView.contentMode = .scaleAspectFit
@@ -39,6 +39,7 @@ class DocumentCell: UICollectionViewCell {
     var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.layer.borderColor = UIColor.black.cgColor
+        imageView.backgroundColor = UIColor.white
         imageView.layer.borderWidth = 1
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -46,22 +47,16 @@ class DocumentCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"), isComplete: false)
+        setupViews(thumbnail: UIImage(named: "pdf_icon"), description: "N/A", isComplete: false)
     }
     
-    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect, isComplete: Bool) {
-        super.init(frame: frame)
-        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage, isComplete: isComplete)
-    }
-    
-    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, isComplete: Bool) {
+    func setupViews(thumbnail: UIImage?, description: String?, isComplete: Bool) {
         thumbnailImageView.image = thumbnail
-        backgroundImageView.backgroundColor = backgroundColor
         descriptionLabelView.text = description
         if isComplete {
-            completionImageView.image = completedImage?.withRenderingMode(.alwaysTemplate)
+            completionImageView.image = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
-            completionImageView.image = completedImage
+            completionImageView.image = UIImage(named: "checklist_icon")
         }
         
         addSubview(backgroundImageView)

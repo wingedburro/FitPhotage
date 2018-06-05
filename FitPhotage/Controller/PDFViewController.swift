@@ -11,17 +11,18 @@ import PDFKit
 
 class PDFViewController: UIViewController {
     
-    let pdfTitle = "Sample-Qns-Exam2"
+    var pdfTitle = "Body Metrics Tracking"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = pdfTitle
         let pdfView = PDFView(frame: view.bounds)
         pdfView.translatesAutoresizingMaskIntoConstraints = false
         self.edgesForExtendedLayout = []
         view.addSubview(pdfView)
         view.addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: pdfView)
         view.addConstraintsWithFormat(format: "V:|-0-[v0]-0-|", views: pdfView)
-
+    
         // Get pdf url
         if let path = Bundle.main.path(forResource: pdfTitle, ofType: "pdf") {
             let url = URL(fileURLWithPath: path)

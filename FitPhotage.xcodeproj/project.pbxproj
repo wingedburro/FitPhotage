@@ -12,6 +12,7 @@
 		1003EB9720C6208800599588 /* LivFit Waiver.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9220C6208800599588 /* LivFit Waiver.pdf */; };
 		1003EB9820C6208800599588 /* PARQ.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9320C6208800599588 /* PARQ.pdf */; };
 		1003EB9920C6208800599588 /* Body Metrics Tracking Form.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */; };
+		1003EB9C20C6300100599588 /* MeasurementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003EB9B20C6300100599588 /* MeasurementsViewController.swift */; };
 		1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1026609520BA3D4800B0598A /* GoogleService-Info.plist */; };
 		1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */; };
 		1052884E20BE461800DA8511 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052884D20BE461800DA8511 /* RootViewController.swift */; };
@@ -44,6 +45,7 @@
 		1003EB9220C6208800599588 /* LivFit Waiver.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "LivFit Waiver.pdf"; sourceTree = "<group>"; };
 		1003EB9320C6208800599588 /* PARQ.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PARQ.pdf; sourceTree = "<group>"; };
 		1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Body Metrics Tracking Form.pdf"; sourceTree = "<group>"; };
+		1003EB9B20C6300100599588 /* MeasurementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsViewController.swift; sourceTree = "<group>"; };
 		1026609520BA3D4800B0598A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1052884D20BE461800DA8511 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				9941293920C1F5BA00F38704 /* DocumentsViewController.swift */,
 				1077C07520C2F9A100139C48 /* PDFViewController.swift */,
 				99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */,
+				1003EB9B20C6300100599588 /* MeasurementsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */,
+				1003EB9C20C6300100599588 /* MeasurementsViewController.swift in Sources */,
 				9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */,
 				99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */,
 				990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */,

@@ -90,7 +90,7 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
             handleSelectProfileImage()
         }
         if indexPath.section == 2 {
-//            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+            self.navigationController?.pushViewController(MeasurementsViewController(), animated: true)
         }
     }
     

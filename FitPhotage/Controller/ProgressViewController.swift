@@ -1,5 +1,5 @@
 //
-//  ProfileViewController.swift
+//  ProgressViewController.swift
 //  FitPhotage
 //
 //  Created by Weston Mauz on 5/26/18.
@@ -40,16 +40,10 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
     }
     
     private func loadProfileInfo() {
-        let imageHeight = view.frame.height/5
-        let imageWidth = view.frame.height/5
-        let profileImageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.backgroundColor = UIColor.blue
         let tableView = createTableView()
-        view.addSubview(profileImageView)
         view.addSubview(tableView)
-        view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(view.frame.height/5))]-\((view.frame.width+imageWidth)/2)-|", views: profileImageView)
-        view.addConstraintsWithFormat(format: "V:|-85-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
+
+        view.addConstraintsWithFormat(format: "V:|-25-[v0]-|", views: tableView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
     }
     
@@ -61,7 +55,7 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 5
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,9 +69,11 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let textHighlightColor = UIColor.orange
         switch indexPath.section {
-        case 0: return ProfileTableViewCell(style: .default, reuseIdentifier: "FrontCell", text: "Upload Picture", textHighlightColor: textHighlightColor, disclosure: true)
-        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "BackCell", text: "Upload Picture", textHighlightColor: textHighlightColor, disclosure: true)
-        case 2: return ProfileTableViewCell(style: .default, reuseIdentifier: "MeasurementCell", text: "Input Measurements", textHighlightColor: textHighlightColor, disclosure: true)
+        case 0: return ProgressTableViewCell(style: .default, reuseIdentifier: "FrontCell", text: "Upload Picture", textHighlightColor: textHighlightColor, disclosure: true, progress: #imageLiteral(resourceName: "completed_icon"))
+        case 1: return ProgressTableViewCell(style: .default, reuseIdentifier: "BackCell", text: "Upload Picture", textHighlightColor: textHighlightColor, disclosure: true, progress: #imageLiteral(resourceName: "check_icon"))
+        case 2: return ProgressTableViewCell(style: .default, reuseIdentifier: "MeasurementCell", text: "Input Measurements", textHighlightColor: textHighlightColor, disclosure: true, progress: #imageLiteral(resourceName: "pending_icon2"))
+        case 3: return ProgressTableViewCell(style: .default, reuseIdentifier: "BodyMetricsCell", text: "Input Body Metrics", textHighlightColor: textHighlightColor, disclosure: true, progress: #imageLiteral(resourceName: "pending_icon2"))
+        case 4: return ProgressTableViewCell(style: .default, reuseIdentifier: "WeightCell", text: "Input Body Weight", textHighlightColor: textHighlightColor, disclosure: true, progress: #imageLiteral(resourceName: "timer_icon"))
         default: fatalError("Unknown section")
         }
     }
@@ -92,6 +88,12 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
         if indexPath.section == 2 {
             self.navigationController?.pushViewController(MeasurementsViewController(), animated: true)
         }
+        if indexPath.section == 3 {
+//            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        }
+        if indexPath.section == 4 {
+//            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -103,6 +105,12 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
         }
         if section == 2 {
             return "Measurements"
+        }
+        if section == 3 {
+            return "Metrics"
+        }
+        if section == 4 {
+            return "Weight"
         }
         return ""
     }

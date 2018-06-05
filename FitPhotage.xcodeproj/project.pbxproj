@@ -86,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1003EB9A20C62D2200599588 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				1052884D20BE461800DA8511 /* RootViewController.swift */,
+				10FD274120BB9683004E05FE /* CustomTabBarController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		1026609320BA377400B0598A /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,12 +111,11 @@
 		1026609420BA377D00B0598A /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				1003EB9A20C62D2200599588 /* Main */,
 				990AE07220BFA23800B2E088 /* TasksViewController.swift */,
 				10A437F920BA1736006B12BC /* LoginViewController.swift */,
 				99088E2C20BC52FC004DDF49 /* WorkoutsViewController.swift */,
 				99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */,
-				10FD274120BB9683004E05FE /* CustomTabBarController.swift */,
-				1052884D20BE461800DA8511 /* RootViewController.swift */,
 				9941293920C1F5BA00F38704 /* DocumentsViewController.swift */,
 				1077C07520C2F9A100139C48 /* PDFViewController.swift */,
 				99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */,

@@ -41,7 +41,7 @@ class CustomTabBarController: UITabBarController {
         tasksViewController.title = "Tasks"
         
         // Progress Tab
-        let progressViewController = ProgressViewController()
+        let progressViewController = UINavigationController(rootViewController: ProgressViewController())
         progressViewController.tabBarItem.image = UIImage(named: "progress_icon")
         progressViewController.title = "Progress"
         

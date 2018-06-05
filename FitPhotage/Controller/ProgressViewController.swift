@@ -15,7 +15,7 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.CustomColors.lead
+        customizeView()
         loadProfileInfo()
     }
     
@@ -33,6 +33,15 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
         return tableView
     }
     
+    private func customizeView() {
+        view.backgroundColor = UIColor.CustomColors.lead
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationItem.title = "Your Progress"
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+    }
     
     private func loadProfileInfo() {
         let imageHeight = view.frame.height/5

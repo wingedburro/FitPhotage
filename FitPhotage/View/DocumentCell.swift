@@ -33,7 +33,7 @@ class DocumentCell: UICollectionViewCell {
     }
     
     func setupViews(thumbnail: UIImage?, description: String?) {
-        createHoverEffect()
+        self.createHoverEffect()
         
         thumbnailImageView.image = thumbnail
         descriptionLabelView.text = description
@@ -45,20 +45,6 @@ class DocumentCell: UICollectionViewCell {
         addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: thumbnailImageView)
         addConstraintsWithFormat(format: "V:|-4-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, descriptionLabelView)
         addConstraintsWithFormat(format: "H:|-8-[v0]-8-|", views: descriptionLabelView)
-    }
-    
-    func createHoverEffect() {
-        self.contentView.layer.cornerRadius = 2.5
-        self.contentView.layer.borderWidth = 1.0
-        self.contentView.layer.borderColor = UIColor.clear.cgColor
-        self.contentView.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.gray.cgColor
-        self.layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        self.layer.shadowRadius = 2.5
-        self.layer.shadowOpacity = 1.0
-        self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.contentView.layer.cornerRadius).cgPath
-        self.backgroundColor = UIColor.white
     }
     
     required init?(coder aDecoder: NSCoder) {

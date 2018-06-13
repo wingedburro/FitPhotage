@@ -24,7 +24,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     }
     
     private func customizeView() {
-        collectionView?.backgroundColor = UIColor.CustomColors.lead
+        collectionView?.backgroundColor = UIColor.white
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationItem.title = "Documents"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
@@ -35,14 +35,18 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
         let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 16)
     }
     
     // Necessary to get perfect columns
     private func setupCollectionFlowLayout() {
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 16
+        flowLayout.minimumLineSpacing = 24
+        flowLayout.sectionInset.top = 16
+        flowLayout.sectionInset.bottom = 16
+        flowLayout.sectionInset.left = 16
+        flowLayout.sectionInset.right = 16
         
         collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.register(DocumentCell.self, forCellWithReuseIdentifier: reuseIdentifier)

@@ -65,7 +65,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         let tableView = createTableView()
         view.addSubview(profileImageView)
         view.addSubview(tableView)
-        view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(view.frame.height/5))]-\((view.frame.width+imageWidth)/2)-|", views: profileImageView)
+        view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(view.frame.height/5))]", views: profileImageView)
         view.addConstraintsWithFormat(format: "V:|-100-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
     }

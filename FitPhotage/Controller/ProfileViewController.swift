@@ -12,9 +12,12 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
+    var databaseRef = Database.database().reference()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         loadProfileInfo()
     }
     

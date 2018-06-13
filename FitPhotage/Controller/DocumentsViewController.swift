@@ -65,7 +65,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? DocumentCell
-        cell?.setupViews(thumbnail: UIImage(named: "pdf_icon"), description: self.pdfList[indexPath.row], isComplete: false)
+        cell?.setupViews(thumbnail: UIImage(named: "pdf_icon"), description: self.pdfList[indexPath.row])
         return cell!
     }
     

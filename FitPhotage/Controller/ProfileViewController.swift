@@ -17,8 +17,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         loadProfileInfo()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,10 +122,24 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
-            if indexPath.row == 0{
-                googleLogoutHandler()
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                updateField(childText: "phone",description: "Update Phone Number", board: UIKeyboardType.numberPad)
+            case 1:
+                updateField(childText: "email", description: "Update Email Address", board: UIKeyboardType.emailAddress)
+            case 2:
+                return
+            case 3:
+                return
+            case 4:
+                return
+            default: fatalError("Unknown section")
             }
+        case 1:
+           googleLogoutHandler()
+        default: fatalError("Unknown section")
         }
     }
     
@@ -134,6 +148,35 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             return "Your Information"
         }
         return ""
+    }
+    
+    func updateField(childText: String?, description: String?,board: UIKeyboardType) {
+        
+        let uid = Auth.auth().currentUser?.uid
+        let userReference = Database.database().reference().child("Users").child(uid!).child(childText!)
+        
+        let promptPopUp = UIAlertController(title: description, message: nil, preferredStyle: .alert)
+        
+        promptPopUp.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [promptPopUp] (_) in
+            
+            promptPopUp.dismiss(animated: true, completion: nil)
+            promptPopUp.dismiss(animated: true, completion: nil)
+            let textField = promptPopUp.textFields?[0]
+            let actualText = String((textField?.text)!)
+            userReference.setValue(actualText)
+            
+        }))
+        promptPopUp.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [promptPopUp] (_) in
+            promptPopUp.dismiss(animated: true, completion: nil)
+        }))
+        
+        promptPopUp.addTextField { (textField) in
+//            textField.keyboardType = UIKeyboardType.alphabet
+            textField.keyboardType = board
+            textField.text = nil
+        }
+        
+        self.present(promptPopUp, animated: true, completion: nil)
     }
     
     

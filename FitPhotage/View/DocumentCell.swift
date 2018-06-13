@@ -17,14 +17,6 @@ class DocumentCell: UICollectionViewCell {
         return imageView
     }()
     
-//    var completionImageView: UIImageView = {
-//        let imageView = UIImageView()
-//        imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
-//        imageView.contentMode = .scaleAspectFit
-//        imageView.translatesAutoresizingMaskIntoConstraints = false
-//        return imageView
-//    }()
-    
     var descriptionLabelView: UILabel = {
         let label = UILabel()
         label.font = UIFont(descriptor: label.font.fontDescriptor, size: 12)
@@ -37,31 +29,22 @@ class DocumentCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "pdf_icon"), description: "N/A", isComplete: false)
+        setupViews(thumbnail: UIImage(named: "pdf_icon"), description: "N/A")
     }
     
-    func setupViews(thumbnail: UIImage?, description: String?, isComplete: Bool) {
+    func setupViews(thumbnail: UIImage?, description: String?) {
         createHoverEffect()
         
         thumbnailImageView.image = thumbnail
         descriptionLabelView.text = description
-//        if isComplete {
-//            completionImageView.image = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
-//        } else {
-//            completionImageView.image = UIImage(named: "checklist_icon")
-//        }
         
         addSubview(thumbnailImageView)
-//        addSubview(completionImageView)
         addSubview(descriptionLabelView)
         
         //Black Image inside of framing Rectangle
         addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: thumbnailImageView)
-//        addConstraintsWithFormat(format: "V:|-4-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, completionImageView)
         addConstraintsWithFormat(format: "V:|-4-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, descriptionLabelView)
         addConstraintsWithFormat(format: "H:|-8-[v0]-8-|", views: descriptionLabelView)
-//        addConstraint(NSLayoutConstraint(item: descriptionLabelView, attribute: .top, relatedBy: .equal, toItem: completionImageView, attribute: .top, multiplier: 1, constant: 0))
-//        addConstraint(NSLayoutConstraint(item: descriptionLabelView, attribute: .bottom, relatedBy: .equal, toItem: completionImageView, attribute: .bottom, multiplier: 1, constant: 9))
     }
     
     func createHoverEffect() {

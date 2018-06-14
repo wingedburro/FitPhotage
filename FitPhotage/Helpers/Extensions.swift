@@ -8,12 +8,6 @@
 
 import UIKit
 
-let statusBarBackgroundView: UIView = {
-    let status = UIView()
-    status.translatesAutoresizingMaskIntoConstraints = false
-    return status
-}()
-
 extension AppDelegate {
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate

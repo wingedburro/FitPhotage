@@ -24,11 +24,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         GIDSignIn.sharedInstance().delegate = self
         
         // Light status bar
-        application.statusBarStyle = .lightContent
+        application.statusBarStyle = .default
         
         // Tab bar customizations
-        UITabBar.appearance().tintColor = UIColor.orange
-        UITabBar.appearance().barTintColor = UIColor.black
+        UITabBar.appearance().tintColor = UIColor.CustomColors.customOrange
+        UITabBar.appearance().barTintColor = UIColor.white
+        
+        // Nav bar customizations
+        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 1.0)
+        UINavigationBar.appearance().layer.shadowRadius = 3
+        UINavigationBar.appearance().layer.shadowColor = UIColor.gray.cgColor
+        UINavigationBar.appearance().layer.shadowOpacity = 0.3
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = UIColor.CustomColors.customLightOrange
         
         // Set root view controller
         window = UIWindow(frame: UIScreen.main.bounds)

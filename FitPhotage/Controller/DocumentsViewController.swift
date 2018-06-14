@@ -25,9 +25,8 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     
     private func customizeView() {
         collectionView?.backgroundColor = UIColor.white
-        navigationController?.navigationBar.barTintColor = UIColor.black
         navigationItem.title = "Documents"
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     

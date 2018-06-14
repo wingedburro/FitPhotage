@@ -17,6 +17,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
+        self.navigationController?.hidesBarsOnSwipe = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -24,10 +25,9 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     private func customizeView() {
-        collectionView?.backgroundColor = UIColor.CustomColors.lead
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        collectionView?.backgroundColor = UIColor.white
         navigationItem.title = "LivFit"
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
@@ -35,14 +35,18 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
         let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 8)
     }
     
     // Necessary to get perfect columns
     private func setupCollectionFlowLayout() {
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
-        flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 16
+        flowLayout.minimumLineSpacing = 24
+        flowLayout.sectionInset.top = 16
+        flowLayout.sectionInset.bottom = 16
+        flowLayout.sectionInset.left = 16
+        flowLayout.sectionInset.right = 16
         
         collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.register(WorkoutCell.self, forCellWithReuseIdentifier: reuseIdentifier)

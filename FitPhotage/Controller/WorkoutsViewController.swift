@@ -25,6 +25,14 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     private func customizeView() {
+        let statusBarBackgroundView: UIView = {
+            let status = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 20))
+            status.backgroundColor = UIColor.CustomColors.customLightOrange
+            status.translatesAutoresizingMaskIntoConstraints = false
+            return status
+        }()
+        
+        view.addSubview(statusBarBackgroundView)
         collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

@@ -25,7 +25,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     private func customizeView() {
-        collectionView?.backgroundColor = UIColor.white
+        collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes

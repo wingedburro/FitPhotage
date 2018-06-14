@@ -27,7 +27,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
 //    }
     
     private func customizeView() {
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = Main.appUser.name ?? "You"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -47,8 +47,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor.white
-        tableView.separatorColor = UIColor.CustomColors.lead
+        tableView.backgroundColor = UIColor.CustomColors.whiteSmoke
+        tableView.separatorColor = UIColor.clear
         return tableView
     }
     
@@ -62,12 +62,11 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         let imageWidth = view.frame.height/5
         let profileImageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.backgroundColor = UIColor.blue
+        profileImageView.image = UIImage(named: "profile_icon")
         let tableView = createTableView()
         view.addSubview(profileImageView)
         view.addSubview(tableView)
         view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(imageWidth))]", views: profileImageView)
-        //view.addConstraintsWithFormat(format: "V:|[v0(\(imageHeight))]-8-[v1]-0-|", views: profileImageView, tableView)
         view.addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: tableView)
         view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .height, relatedBy: .equal, toItem: profileImageView, attribute: .width, multiplier: 1, constant: 1))
         view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .top, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 16))
@@ -76,9 +75,9 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     private func createCustomSeparator(cellHeight: CGFloat) -> UIView {
-        let separatorHeight = CGFloat(2.0)
+        let separatorHeight = CGFloat(1.5)
         let customSeparator = UIView.init(frame: CGRect(x: 0, y: cellHeight-separatorHeight, width: view.frame.width, height: separatorHeight))
-        customSeparator.backgroundColor = UIColor.CustomColors.lead
+        customSeparator.backgroundColor = UIColor.CustomColors.whiteSmoke
         return customSeparator
     }
     
@@ -95,7 +94,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let textHighlightColor = UIColor.orange
+        let textHighlightColor = UIColor.CustomColors.customOrange
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -118,7 +117,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor, disclosure: false)
             default: fatalError("Unknown section")
             }
-        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor, disclosure: true)
+        case 1:
+            return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor, disclosure: true)
         default: fatalError("Unknown section")
         }
     }

@@ -30,6 +30,8 @@ extension UIColor {
         static let customLightOrange = UIColor.rgb(red: 255, green: 138, blue: 101)
         static let customOrange = UIColor.rgb(red: 255, green: 112, blue: 67)
         static let customDarkOrange = UIColor.rgb(red: 244, green: 81, blue: 30)
+        static let whiteSmoke = UIColor.rgb(red: 245, green: 245, blue: 245)
+        static let ghostWhite = UIColor.rgb(red: 248, green: 248, blue: 255)
     }
     
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {

@@ -34,6 +34,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             return status
         }()
         
+        view.addSubview(statusBarBackgroundView)
         view.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = Main.appUser.name ?? "You"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
     private var currentView: UIViewController
     
     init() {
-        self.currentView = LoginViewController()
+        self.currentView = SplashViewController()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -36,6 +36,11 @@ class RootViewController: UIViewController {
     }
     
     func switchToLoginScreen() {
+        let loginViewController = LoginViewController()
+        animateFadeTransition(newController: loginViewController)
+    }
+    
+    func goToLogout() {
         let loginViewController = LoginViewController()
         animateDismissTransition(newController: loginViewController)
     }

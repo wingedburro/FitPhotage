@@ -12,6 +12,7 @@ class ProfileImageView: UIImageView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.contentMode = .scaleAspectFit
         
         createRoundBorder()
     }

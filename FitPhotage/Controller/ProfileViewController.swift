@@ -18,20 +18,18 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         super.viewDidLoad()
         
         loadProfileInfo()
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         customizeView()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        loadProfileInfo()
+//        customizeView()
+//    }
+    
     private func customizeView() {
-        view.backgroundColor = UIColor.CustomColors.lead
-        navigationController?.navigationBar.barTintColor = UIColor.CustomColors.lead
+        view.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = Main.appUser.name ?? "You"
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
     
@@ -45,18 +43,18 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     private func createTableView() -> UITableView {
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8 - 8), style: .grouped)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor.CustomColors.lead
-        tableView.separatorColor = UIColor.CustomColors.lead
+        tableView.backgroundColor = UIColor.CustomColors.whiteSmoke
+        tableView.separatorColor = UIColor.clear
         return tableView
     }
     
     @objc private func googleLogoutHandler() {
         GIDSignIn.sharedInstance().signOut()
-        AppDelegate.shared.rootViewController.switchToLoginScreen()
+        AppDelegate.shared.rootViewController.goToLogout()
     }
     
     private func loadProfileInfo() {
@@ -64,19 +62,22 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         let imageWidth = view.frame.height/5
         let profileImageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
         profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.backgroundColor = UIColor.blue
+        profileImageView.image = UIImage(named: "profile_icon")
         let tableView = createTableView()
         view.addSubview(profileImageView)
         view.addSubview(tableView)
-        view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(view.frame.height/5))]", views: profileImageView)
-        view.addConstraintsWithFormat(format: "V:|-100-[v0(\(imageHeight))]-16-[v1]-0-|", views: profileImageView, tableView)
-        view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
+        view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(imageWidth))]", views: profileImageView)
+        view.addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: tableView)
+        view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .height, relatedBy: .equal, toItem: profileImageView, attribute: .width, multiplier: 1, constant: 1))
+        view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .top, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 16))
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: profileImageView, attribute: .bottom, multiplier: 1, constant: 8))
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0))
     }
     
     private func createCustomSeparator(cellHeight: CGFloat) -> UIView {
-        let separatorHeight = CGFloat(2.0)
+        let separatorHeight = CGFloat(1.5)
         let customSeparator = UIView.init(frame: CGRect(x: 0, y: cellHeight-separatorHeight, width: view.frame.width, height: separatorHeight))
-        customSeparator.backgroundColor = UIColor.CustomColors.lead
+        customSeparator.backgroundColor = UIColor.CustomColors.whiteSmoke
         return customSeparator
     }
     
@@ -93,7 +94,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let textHighlightColor = UIColor.orange
+        let textHighlightColor = UIColor.CustomColors.customOrange
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -116,7 +117,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor, disclosure: false)
             default: fatalError("Unknown section")
             }
-        case 1: return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor, disclosure: true)
+        case 1:
+            return ProfileTableViewCell(style: .default, reuseIdentifier: "logoutCell", text: "Log out", textHighlightColor: textHighlightColor, disclosure: true)
         default: fatalError("Unknown section")
         }
     }

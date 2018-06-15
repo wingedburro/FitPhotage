@@ -8,12 +8,6 @@
 
 import UIKit
 
-let statusBarBackgroundView: UIView = {
-    let status = UIView()
-    status.translatesAutoresizingMaskIntoConstraints = false
-    return status
-}()
-
 extension AppDelegate {
     static var shared: AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
@@ -26,7 +20,12 @@ extension AppDelegate {
 extension UIColor {
     
     struct CustomColors {
-        static let lead = UIColor(red: 30/255, green: 30/255, blue: 30/255, alpha: 1)
+        static let lead = UIColor.rgb(red: 30, green: 30, blue: 30)
+        static let customLightOrange = UIColor.rgb(red: 255, green: 138, blue: 101)
+        static let customOrange = UIColor.rgb(red: 255, green: 112, blue: 67)
+        static let customDarkOrange = UIColor.rgb(red: 244, green: 81, blue: 30)
+        static let whiteSmoke = UIColor.rgb(red: 245, green: 245, blue: 245)
+        static let ghostWhite = UIColor.rgb(red: 248, green: 248, blue: 255)
     }
     
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {
@@ -80,28 +79,28 @@ extension UIImageView {
     }
 }
 
-extension UIViewController {
-    
-    func setupNavbar(navBarColor: UIColor?, statusBarColor: UIColor?, title: String?) {
-        statusBarBackgroundView.backgroundColor = statusBarColor
-        self.view.addSubview(statusBarBackgroundView)
-        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        self.view.addConstraintsWithFormat(format: "V:|[v0(26)]|", views: statusBarBackgroundView)
-        
-        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 44))
-        navBar.backgroundColor = navBarColor
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        navBar.titleTextAttributes = textAttributes
-        navBar.shadowImage = UIImage()
-        navBar.setBackgroundImage(UIImage(), for: .default)
-        navigationItem.title = title
-        navBar.items = [navigationItem]
-        self.view.addSubview(navBar)
-        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: navBar)
-        self.view.addConstraintsWithFormat(format: "V:|-26-[v0]", views: navBar)
-    }
-}
+//extension UIViewController {
+//
+//    func setupNavbar(navBarColor: UIColor?, statusBarColor: UIColor?, title: String?) {
+//        statusBarBackgroundView.backgroundColor = statusBarColor
+//        self.view.addSubview(statusBarBackgroundView)
+//        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
+//        self.view.addConstraintsWithFormat(format: "V:|[v0(26)]|", views: statusBarBackgroundView)
+//
+//        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 44))
+//        navBar.backgroundColor = navBarColor
+//        navBar.translatesAutoresizingMaskIntoConstraints = false
+//        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+//        navBar.titleTextAttributes = textAttributes
+//        navBar.shadowImage = UIImage()
+//        navBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationItem.title = title
+//        navBar.items = [navigationItem]
+//        self.view.addSubview(navBar)
+//        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: navBar)
+//        self.view.addConstraintsWithFormat(format: "V:|-26-[v0]", views: navBar)
+//    }
+//}
 
 extension UICollectionViewCell {
     

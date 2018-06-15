@@ -11,8 +11,9 @@ import UIKit
 class WorkoutCell: UICollectionViewCell {
     var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.black
+        imageView.backgroundColor = UIColor.white
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -20,6 +21,7 @@ class WorkoutCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -27,50 +29,41 @@ class WorkoutCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont(descriptor: label.font.fontDescriptor, size: 14)
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 3
+        label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    var backgroundImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.white
-        return imageView
-    }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.white, description: "N/A", completedImage: UIImage(named: "checklist_icon"), isComplete: false)
+        setupViews(thumbnail: UIImage(named: "profile_icon"), description: "N/A", isComplete: false)
     }
     
-    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect, isComplete: Bool) {
+    init(thumbnail: UIImage?, description: String?, frame: CGRect, isComplete: Bool) {
         super.init(frame: frame)
-        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage, isComplete: isComplete)
+        setupViews(thumbnail: thumbnail, description: description, isComplete: isComplete)
     }
     
-    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, isComplete: Bool) {
+    func setupViews(thumbnail: UIImage?, description: String?, isComplete: Bool) {
+        self.createHoverEffect()
+        
         thumbnailImageView.image = thumbnail
-        backgroundImageView.backgroundColor = backgroundColor
         descriptionLabelView.text = description
         if isComplete {
-            completionImageView.image = completedImage?.withRenderingMode(.alwaysTemplate)
+            completionImageView.image = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
         } else {
-            completionImageView.image = completedImage
+            completionImageView.image = UIImage(named: "checklist_icon")
         }
         
-        addSubview(backgroundImageView)
         addSubview(thumbnailImageView)
         addSubview(completionImageView)
         addSubview(descriptionLabelView)
         
         //Black Image inside of framing Rectangle
-        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: backgroundImageView)
-        addConstraintsWithFormat(format: "V:|-16-[v0]-16-|", views: backgroundImageView)
-        addConstraintsWithFormat(format: "H:|-16-[v0]-16-|", views: thumbnailImageView)
-        addConstraintsWithFormat(format: "V:|-16-[v0]-10-[v1(30)]-25-|", views: thumbnailImageView, completionImageView)
-        addConstraintsWithFormat(format: "H:|-16-[v0]-8-[v1(30)]-25-|", views: descriptionLabelView, completionImageView)
-        addConstraint(NSLayoutConstraint(item: descriptionLabelView, attribute: .top, relatedBy: .equal, toItem: completionImageView, attribute: .top, multiplier: 1, constant: -10))
-        addConstraint(NSLayoutConstraint(item: descriptionLabelView, attribute: .bottom, relatedBy: .equal, toItem: completionImageView, attribute: .bottom, multiplier: 1, constant: 9))
+        addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: thumbnailImageView)
+        addConstraintsWithFormat(format: "V:|-0-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, completionImageView)
+        addConstraintsWithFormat(format: "V:|-0-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, descriptionLabelView)
+        addConstraintsWithFormat(format: "H:|-8-[v0(\(self.frame.width * 0.7))]-4-[v1]-8-|", views: descriptionLabelView, completionImageView)
     }
     
     required init?(coder aDecoder: NSCoder) {

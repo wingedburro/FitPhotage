@@ -14,6 +14,7 @@
 		1003EB9920C6208800599588 /* Body Metrics Tracking Form.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */; };
 		1003EB9C20C6300100599588 /* MeasurementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003EB9B20C6300100599588 /* MeasurementsViewController.swift */; };
 		1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1026609520BA3D4800B0598A /* GoogleService-Info.plist */; };
+		104446F920D40DA1004DB595 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104446F820D40DA1004DB595 /* SplashViewController.swift */; };
 		1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */; };
 		1052884E20BE461800DA8511 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052884D20BE461800DA8511 /* RootViewController.swift */; };
 		1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056165A20BC73C3006E8286 /* WorkoutCell.swift */; };
@@ -48,6 +49,7 @@
 		1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Body Metrics Tracking Form.pdf"; sourceTree = "<group>"; };
 		1003EB9B20C6300100599588 /* MeasurementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsViewController.swift; sourceTree = "<group>"; };
 		1026609520BA3D4800B0598A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		104446F820D40DA1004DB595 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		1052884D20BE461800DA8511 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1056165A20BC73C3006E8286 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				1052884D20BE461800DA8511 /* RootViewController.swift */,
 				10FD274120BB9683004E05FE /* CustomTabBarController.swift */,
+				104446F820D40DA1004DB595 /* SplashViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 				1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */,
 				10810DDD20BB21C300BE941D /* Main.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,
+				104446F920D40DA1004DB595 /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

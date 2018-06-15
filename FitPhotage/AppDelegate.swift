@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     // Handle Google sign in process
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
         if error != nil {
+            self.rootViewController.switchToLoginScreen()
             return
         }
         
@@ -68,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         Auth.auth().signInAndRetrieveData(with: credential) { (authResult, error) in
             if error != nil {
+                self.rootViewController.switchToLoginScreen()
                 return
             }
             
@@ -80,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                         if let dictionary = snapshot.value as? [String: AnyObject] {
                             Main.appUser.name = dictionary["Name"] as? String
                             Main.appUser.email = dictionary["Email"] as? String
-                            self.segueToMain()
+                            self.rootViewController.switchToMainView()
                         }
                     } else {
                         Main.appUser.name = user.profile.name
@@ -91,9 +93,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
                                 print("Error signing in with Google")
                             }
                         })
-                        self.segueToMain()
+                        self.rootViewController.switchToMainView()
                     }
                 })
+            } else {
+                self.rootViewController.switchToLoginScreen()
             }
             
         }
@@ -124,17 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-    
-    func segueToMain() {
-//        // Access the storyboard and fetch an instance of the view controller
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil);
-//        let customTabBarController = storyboard.instantiateViewController(withIdentifier: "customTabBarController")
-//
-//        // Push that view controller onto the navigation stack
-//        let rootViewController = self.window!.rootViewController!
-//        rootViewController.present(customTabBarController, animated: true, completion: nil)
-        self.rootViewController.switchToMainView()
     }
     
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {

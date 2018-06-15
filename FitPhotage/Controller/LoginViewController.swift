@@ -30,7 +30,6 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
     
     private func setupGoogleLogin() {
         GIDSignIn.sharedInstance().uiDelegate = self
-        GIDSignIn.sharedInstance().signInSilently()
         let googleSignInButton = GIDSignInButton()
         
         googleSignInButton.translatesAutoresizingMaskIntoConstraints = false

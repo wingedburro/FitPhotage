@@ -54,7 +54,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     
     @objc private func googleLogoutHandler() {
         GIDSignIn.sharedInstance().signOut()
-        AppDelegate.shared.rootViewController.switchToLoginScreen()
+        AppDelegate.shared.rootViewController.goToLogout()
     }
     
     private func loadProfileInfo() {

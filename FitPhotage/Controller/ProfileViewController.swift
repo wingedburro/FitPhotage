@@ -12,12 +12,29 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var databaseRef = Database.database().reference()
+    let databaseRef = Database.database().reference()
+    let profileImageView: ProfileImageView = {
+        let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.image = UIImage(named: "profile_icon")
+        return imageView
+    }()
+    
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor.CustomColors.whiteSmoke
+        tableView.separatorColor = UIColor.clear
+        return tableView
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadProfileInfo()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        setupConstraints()
         customizeView()
     }
     
@@ -42,28 +59,15 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         view.addSubview(logoutButton)
     }
     
-    private func createTableView() -> UITableView {
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height * 0.8 - 8), style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor.CustomColors.whiteSmoke
-        tableView.separatorColor = UIColor.clear
-        return tableView
-    }
-    
     @objc private func googleLogoutHandler() {
         GIDSignIn.sharedInstance().signOut()
         AppDelegate.shared.rootViewController.goToLogout()
     }
     
-    private func loadProfileInfo() {
-        let imageHeight = view.frame.height/5
-        let imageWidth = view.frame.height/5
-        let profileImageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: imageWidth, height: imageHeight))
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.image = UIImage(named: "profile_icon")
-        let tableView = createTableView()
+    private func setupConstraints() {
+        let imageWidth = view.frame.height / 5
+        
+        // Set up page constraints
         view.addSubview(profileImageView)
         view.addSubview(tableView)
         view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(imageWidth))]", views: profileImageView)

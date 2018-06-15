@@ -14,16 +14,14 @@ class ProfileImageView: UIImageView {
         super.init(frame: frame)
         self.contentMode = .scaleAspectFit
         
-        createRoundBorder()
+        // Create round border
+        self.layer.cornerRadius = self.frame.size.width / 2
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func createRoundBorder() {
-        self.layer.cornerRadius = self.frame.size.width / 2
-        self.clipsToBounds = true
-        self.layer.masksToBounds = true
-    }
 }

@@ -40,6 +40,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     // Necessary to get perfect columns
     private func setupCollectionFlowLayout() {
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
+        
         flowLayout.minimumInteritemSpacing = 16
         flowLayout.minimumLineSpacing = 24
         flowLayout.sectionInset.top = 16

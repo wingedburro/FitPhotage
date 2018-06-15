@@ -15,6 +15,7 @@ extension AppDelegate {
     var rootViewController: RootViewController {
         return window!.rootViewController as! RootViewController
     }
+    
 }
 
 extension UIColor {

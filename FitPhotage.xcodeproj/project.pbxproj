@@ -37,6 +37,8 @@
 		9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293B20C1F5FE00F38704 /* DocumentCell.swift */; };
 		9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */; };
 		99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */; };
+		99F921E520D741D800E3797A /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F921E420D741D800E3797A /* PickerView.swift */; };
+		99F921E920D742EC00E3797A /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F921E820D742EC00E3797A /* Data.swift */; };
 		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
 		99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */; };
 /* End PBXBuildFile section */
@@ -74,6 +76,8 @@
 		9941293B20C1F5FE00F38704 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
 		9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		99F921E420D741D800E3797A /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
+		99F921E820D742EC00E3797A /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
 		9AA3534CE516804ECB1B7C89 /* Pods-FitPhotage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.debug.xcconfig"; sourceTree = "<group>"; };
@@ -112,6 +116,7 @@
 				1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */,
 				9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */,
 				9941293B20C1F5FE00F38704 /* DocumentCell.swift */,
+				99F921E420D741D800E3797A /* PickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			children = (
 				10810DDA20BB1F6400BE941D /* User.swift */,
 				10810DDC20BB21C300BE941D /* Main.swift */,
+				99F921E820D742EC00E3797A /* Data.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -366,12 +372,14 @@
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				10810DDB20BB1F6400BE941D /* User.swift in Sources */,
 				1052884E20BE461800DA8511 /* RootViewController.swift in Sources */,
+				99F921E920D742EC00E3797A /* Data.swift in Sources */,
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */,
 				1003EB9C20C6300100599588 /* MeasurementsViewController.swift in Sources */,
 				9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */,
+				99F921E520D741D800E3797A /* PickerView.swift in Sources */,
 				99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */,
 				990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */,
 				99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */,

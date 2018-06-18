@@ -10,7 +10,10 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
+class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource{
+    
+    var informationPicker: InformationPicker!
+    let pickerView = UIPickerView()
     
     let databaseRef = Database.database().reference()
     let profileImageView: ProfileImageView = {
@@ -30,6 +33,10 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        informationPicker = InformationPicker()
+        pickerView.delegate = informationPicker
+        pickerView.dataSource = informationPicker
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -136,6 +143,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             case 1:
                 updateField(childText: "email", description: "Update Email Address", board: UIKeyboardType.emailAddress)
             case 2:
+                self.view.addSubview(pickerView)
                 return
             case 3:
                 return

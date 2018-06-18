@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     let profileImageView: ProfileImageView = {
         let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "profile_icon")
         return imageView
     }()
     
@@ -24,7 +23,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = UIColor.CustomColors.whiteSmoke
-        tableView.separatorColor = UIColor.clear
+        tableView.separatorColor = UIColor.CustomColors.whiteSmoke
+        tableView.separatorInset = UIEdgeInsetsMake(0, 8, 0, 0)
         return tableView
     }()
     
@@ -38,10 +38,13 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         customizeView()
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        loadProfileInfo()
-//        customizeView()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        if let imageUrl = Main.appUser.profileImageUrl {
+            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        } else {
+            profileImageView.loadImagesUsingCacheWithUrlString(urlString: "https://firebasestorage.googleapis.com/v0/b/fitphotage.appspot.com/o/workout_images%2Fcropped_1.jpg?alt=media&token=6ec70f07-ed4d-43d7-9beb-69d781739260")
+        }
+    }
     
     private func customizeView() {
         view.backgroundColor = UIColor.CustomColors.whiteSmoke
@@ -78,13 +81,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0))
     }
     
-    private func createCustomSeparator(cellHeight: CGFloat) -> UIView {
-        let separatorHeight = CGFloat(1.5)
-        let customSeparator = UIView.init(frame: CGRect(x: 0, y: cellHeight-separatorHeight, width: view.frame.width, height: separatorHeight))
-        customSeparator.backgroundColor = UIColor.CustomColors.whiteSmoke
-        return customSeparator
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -104,19 +100,15 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             switch indexPath.row {
             case 0:
                 let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone", textHighlightColor: textHighlightColor, disclosure: false)
-                phoneCell.addSubview(createCustomSeparator(cellHeight: phoneCell.frame.height))
                 return phoneCell
             case 1:
                 let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email", textHighlightColor: textHighlightColor, disclosure: false)
-                emailCell.addSubview(createCustomSeparator(cellHeight: emailCell.frame.height))
                 return emailCell
             case 2:
                 let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs", textHighlightColor: textHighlightColor, disclosure: false)
-                programsCell.addSubview(createCustomSeparator(cellHeight: programsCell.frame.height))
                 return programsCell
             case 3:
                 let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth", textHighlightColor: textHighlightColor, disclosure: false)
-                birthCell.addSubview(createCustomSeparator(cellHeight: birthCell.frame.height))
                 return birthCell
             case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor, disclosure: false)
             default: fatalError("Unknown section")

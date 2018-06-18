@@ -13,6 +13,7 @@ class User: NSObject {
     var phone: String?
     var email: String?
     var program: FitnessProgram?
+    var profileImageUrl: String?
 }
 
 enum FitnessProgram: String {

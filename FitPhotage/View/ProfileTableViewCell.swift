@@ -17,7 +17,7 @@ class ProfileTableViewCell: UITableViewCell {
         self.textLabel?.textColor = UIColor.black
         self.textLabel?.highlightedTextColor = textHighlightColor
         let customSelectColor = UIView()
-        customSelectColor.backgroundColor = UIColor.CustomColors.whiteSmoke
+        customSelectColor.backgroundColor = UIColor.clear
         self.selectedBackgroundView = customSelectColor
         if disclosure == true {
             self.accessoryType = .disclosureIndicator

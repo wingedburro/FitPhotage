@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     let profileImageView: ProfileImageView = {
         let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "profile_icon")
         return imageView
     }()
     
@@ -37,6 +36,14 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         
         setupConstraints()
         customizeView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let imageUrl = Main.appUser.profileImageUrl {
+            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        } else {
+            profileImageView.loadImagesUsingCacheWithUrlString(urlString: "https://firebasestorage.googleapis.com/v0/b/fitphotage.appspot.com/o/workout_images%2Fcropped_1.jpg?alt=media&token=6ec70f07-ed4d-43d7-9beb-69d781739260")
+        }
     }
     
     private func customizeView() {

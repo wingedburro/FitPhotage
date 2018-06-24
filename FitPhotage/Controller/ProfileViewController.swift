@@ -12,9 +12,6 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource{
     
-    var informationPicker: InformationPicker!
-    let pickerView = UIPickerView()
-    
     let databaseRef = Database.database().reference()
     let profileImageView: ProfileImageView = {
         let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
@@ -34,10 +31,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        informationPicker = InformationPicker()
-        pickerView.delegate = informationPicker
-        pickerView.dataSource = informationPicker
-        
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -46,11 +39,13 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if let imageUrl = Main.appUser.profileImageUrl {
-            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-        } else {
-            profileImageView.loadImagesUsingCacheWithUrlString(urlString: "https://firebasestorage.googleapis.com/v0/b/fitphotage.appspot.com/o/workout_images%2Fcropped_1.jpg?alt=media&token=6ec70f07-ed4d-43d7-9beb-69d781739260")
-        }
+        tableView.reloadData()
+        profileImageView.image = UIImage(named: "profile_icon")
+//        if let imageUrl = Main.appUser.profileImageUrl {
+//            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+//        } else {
+//            profileImageView.loadImagesUsingCacheWithUrlString(urlString: "https://firebasestorage.googleapis.com/v0/b/fitphotage.appspot.com/o/workout_images%2Fcropped_1.jpg?alt=media&token=6ec70f07-ed4d-43d7-9beb-69d781739260")
+//        }
     }
     
     private func customizeView() {
@@ -106,18 +101,24 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: "Phone", textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Phone: \(Main.appUser.phone ?? "Tap to update your phone number")"
+                let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
                 return phoneCell
             case 1:
-                let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: "Email", textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Email: \(Main.appUser.email ?? "N/A")"
+                let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
                 return emailCell
             case 2:
-                let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: "Programs", textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Program: \(Main.appUser.program?.rawValue ?? "Tap to select a program")"
+                let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
                 return programsCell
             case 3:
-                let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: "Date of Birth", textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Date of Birth: "
+                let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
                 return birthCell
-            case 4: return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: "Gender", textHighlightColor: textHighlightColor, disclosure: false)
+            case 4:
+                let cellText = "Gender: \(Main.appUser.gender?.rawValue ?? "Tap to set your gender")"
+                return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
             default: fatalError("Unknown section")
             }
         case 1:
@@ -131,15 +132,26 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                updateField(childText: "phone",description: "Update Phone Number", board: UIKeyboardType.numberPad)
+                updateField(childText: "phone", description: "Update Phone Number", board: UIKeyboardType.numberPad)
             case 1:
-                updateField(childText: "email", description: "Update Email Address", board: UIKeyboardType.emailAddress)
+                return
             case 2:
-                self.view.addSubview(pickerView)
+                self.definesPresentationContext = true
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let fitnessPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
+                fitnessPickerPopup.popupLabelText = "Select Fitness Program"
+                fitnessPickerPopup.popupButtonText = "SET PROGRAM"
+                fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
+                self.present(fitnessPickerPopup, animated: false)
                 return
             case 3:
                 return
             case 4:
+                self.definesPresentationContext = true
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let genderPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
+                genderPickerPopup.customPickerView.modelData = [Gender.male.rawValue, Gender.female.rawValue]
+                self.present(genderPickerPopup, animated: false)
                 return
             default: fatalError("Unknown section")
             }

@@ -8,12 +8,31 @@
 
 import Foundation
 
-var gender = ["Male","Female","Dragon"]
+class Structure {
+    var gender = ["Male","Female"]
+    var program = ["Level 1","XT"]
+    
+    init(gender: [String]){
+        self.gender = gender
+    }
+    
+    init(program: [String]){
+        self.program = program
+    }
+}
 
 //class Genders {
 //    var gender = ["Male","Female"]
 //    
-//    init(gender: String){
-//        self.gender = [gender]
+//    init(gender: [String]){
+//        self.gender = gender
+//    }
+//}
+//
+//class Programs {
+//    var program = ["Level 1","XT"]
+//    
+//    init(program: [String]){
+//        self.program = program
 //    }
 //}

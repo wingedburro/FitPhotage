@@ -9,11 +9,11 @@
 import UIKit
 
 class InformationPicker: UIPickerView {
-    var modelData: [Data]!
+    var modelData: Structure!
     let customHeight:CGFloat = 50
     let customWidth:CGFloat = 100
     let fontSize: CGFloat = 16
-    let textColor:UIColor = UIColor.blue
+    let textColor:UIColor = UIColor.CustomColors.customDarkOrange
 }
 
 extension InformationPicker: UIPickerViewDataSource {
@@ -21,7 +21,8 @@ extension InformationPicker: UIPickerViewDataSource {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return gender.count
+        return 2
+//        return modelData.blinds.count
     }
 }
 
@@ -34,23 +35,18 @@ extension InformationPicker: UIPickerViewDelegate {
         let topLabel = UILabel(frame: CGRect(x: 0, y: 0, width: customWidth, height: customHeight))
         topLabel.textAlignment = .center
         topLabel.textColor = textColor
-        topLabel.text = gender[row]
+        topLabel.text = modelData.gender[row]
         topLabel.font = UIFont.systemFont(ofSize: fontSize)
         view.addSubview(topLabel)
-        view.layer.borderColor = UIColor.green.cgColor
+        view.layer.borderColor = UIColor.CustomColors.lead.cgColor
         view.layer.borderWidth = 2
         
         return view
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        if row == 0 {
-//            return nil
-//        }
-//        if row == 1 {
-//            
-//        }
-//        
-//        return "Hello"
+        if row == 0 {
+            pickerView.isHidden = true
+        }
     }
     
 }

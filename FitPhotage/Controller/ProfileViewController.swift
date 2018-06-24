@@ -12,8 +12,6 @@ import GoogleSignIn
 
 class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource{
     
-    var informationPicker: InformationPicker!
-    let pickerView = UIPickerView()
     
     let databaseRef = Database.database().reference()
     let profileImageView: ProfileImageView = {
@@ -31,12 +29,18 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         return tableView
     }()
     
+    var informationPicker: InformationPicker!
+    let pickerView = UIPickerView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         informationPicker = InformationPicker()
+        
+        //Gender Picker View
         pickerView.delegate = informationPicker
         pickerView.dataSource = informationPicker
+//        informationPicker.modelData = Structure(blinds: ["words", "boooo"])
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -135,12 +139,23 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             case 1:
                 updateField(childText: "email", description: "Update Email Address", board: UIKeyboardType.emailAddress)
             case 2:
-                self.view.addSubview(pickerView)
+//                self.view.addSubview(pickerView)
+//                pickerView.center = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+//                pickerView.isHidden = false
                 return
             case 3:
+//                informationPicker.modelData = Structure(blinds: ["woerds", "booawefaoo"])
+//                self.view.addSubview(pickerView)
+//                pickerView.center = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+//                pickerView.isHidden = false
                 return
             case 4:
+                informationPicker.modelData = Structure(gender: ["Maleeee","Femaleeee"])
+                self.view.addSubview(pickerView)
+                pickerView.center = CGPoint(x: view.frame.width/2, y: view.frame.height/2)
+                pickerView.isHidden = false
                 return
+            
             default: fatalError("Unknown section")
             }
         case 1:

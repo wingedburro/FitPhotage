@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         
         emailSignInButton.translatesAutoresizingMaskIntoConstraints = false
         emailSignInButton.backgroundColor = UIColor.CustomColors.lead
-        emailSignInButton.layer.cornerRadius = 4
+        emailSignInButton.layer.cornerRadius = 2
         emailSignInButton.setTitleColor(UIColor.white, for: .normal)
         emailSignInButton.setImage(UIImage(named: "email_icon"), for: .normal)
         emailSignInButton.setTitle("Sign up with Email",for: .normal)
@@ -47,8 +47,8 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         view.addSubview(googleSignInButton)
         view.addSubview(emailSignInButton)
         view.addConstraintsWithFormat(format: "H:|-\(view.frame.width/2 - 100)-[v0(200)]", views: googleSignInButton)
-        view.addConstraintsWithFormat(format: "H:|-\(view.frame.width/2 - 97)-[v0(194)]", views: emailSignInButton)
-        view.addConstraintsWithFormat(format: "V:|-\(view.frame.height/2 - 40)-[v0]-16-[v1(\(googleSignInButton.frame.height - 6))]", views: googleSignInButton, emailSignInButton)
+        view.addConstraintsWithFormat(format: "H:|-\(view.frame.width/2 - 96)-[v0(192)]", views: emailSignInButton)
+        view.addConstraintsWithFormat(format: "V:|-\(view.frame.height/2 - 40)-[v0]-16-[v1(\(googleSignInButton.frame.height - 9))]", views: googleSignInButton, emailSignInButton)
     }
 
 }

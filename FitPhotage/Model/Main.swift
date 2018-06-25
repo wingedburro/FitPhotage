@@ -15,3 +15,13 @@ class Main {
     
     private init() {}
 }
+
+enum FitnessProgram: String {
+    case level1 = "Level 1"
+    case xt = "XT"
+}
+
+enum Gender: String {
+    case male = "Male"
+    case female = "Female"
+}

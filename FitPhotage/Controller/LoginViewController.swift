@@ -16,7 +16,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         super.viewDidLoad()
         
         setupGradient()
-        setupGoogleLogin()
+        setupLogin()
     }
     
     private func setupGradient() {
@@ -28,16 +28,27 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         ground.layer.shouldRasterize = false
     }
     
-    private func setupGoogleLogin() {
+    private func setupLogin() {
         GIDSignIn.sharedInstance().uiDelegate = self
         let googleSignInButton = GIDSignInButton()
+        let emailSignInButton = ButtonWithImage()
         
         googleSignInButton.translatesAutoresizingMaskIntoConstraints = false
         googleSignInButton.style = .wide
         
+        emailSignInButton.translatesAutoresizingMaskIntoConstraints = false
+        emailSignInButton.backgroundColor = UIColor.CustomColors.lead
+        emailSignInButton.layer.cornerRadius = 2
+        emailSignInButton.setTitleColor(UIColor.white, for: .normal)
+        emailSignInButton.setImage(UIImage(named: "email_icon"), for: .normal)
+        emailSignInButton.setTitle("Sign up with Email",for: .normal)
+        emailSignInButton.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(fontAttributes: [:]), size: 14)
+        
         view.addSubview(googleSignInButton)
+        view.addSubview(emailSignInButton)
         view.addConstraintsWithFormat(format: "H:|-\(view.frame.width/2 - 100)-[v0(200)]", views: googleSignInButton)
-        view.addConstraintsWithFormat(format: "V:|-\(view.frame.height/2 - 24)-[v0]", views: googleSignInButton)
+        view.addConstraintsWithFormat(format: "H:|-\(view.frame.width/2 - 96)-[v0(192)]", views: emailSignInButton)
+        view.addConstraintsWithFormat(format: "V:|-\(view.frame.height/2 - 40)-[v0]-16-[v1(\(googleSignInButton.frame.height - 9))]", views: googleSignInButton, emailSignInButton)
     }
 
 }

@@ -13,10 +13,6 @@ class User: NSObject {
     var phone: String?
     var email: String?
     var program: FitnessProgram?
+    var gender: Gender?
     var profileImageUrl: String?
-}
-
-enum FitnessProgram: String {
-    case level1 = "Level 1"
-    case xt = "XT"
 }

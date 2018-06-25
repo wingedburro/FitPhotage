@@ -38,8 +38,11 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         customizeView()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         profileImageView.image = UIImage(named: "profile_icon")
 //        if let imageUrl = Main.appUser.profileImageUrl {
 //            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
@@ -142,7 +145,9 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 fitnessPickerPopup.popupLabelText = "Select Fitness Program"
                 fitnessPickerPopup.popupButtonText = "SET PROGRAM"
                 fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
-                self.present(fitnessPickerPopup, animated: false)
+                self.present(fitnessPickerPopup, animated: false) {
+                    tableView.reloadData()
+                }
                 return
             case 3:
                 return
@@ -151,7 +156,9 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let genderPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 genderPickerPopup.customPickerView.modelData = [Gender.male.rawValue, Gender.female.rawValue]
-                self.present(genderPickerPopup, animated: false)
+                self.present(genderPickerPopup, animated: false) {
+                    tableView.reloadData()
+                }
                 return
             default: fatalError("Unknown section")
             }

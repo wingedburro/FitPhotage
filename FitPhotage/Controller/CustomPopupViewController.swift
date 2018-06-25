@@ -33,6 +33,11 @@ class CustomPopupViewController: UIViewController {
     }
 
     @IBAction func popupButtonAction(_ sender: Any) {
+        if (popupLabelText == "Select Gender") {
+            Main.appUser.gender = (popupPickerView.selectedRow(inComponent: 0) == 0) ? Gender.male : Gender.female
+        } else {
+            Main.appUser.program = (popupPickerView.selectedRow(inComponent: 0) == 0) ? FitnessProgram.level1 : FitnessProgram.xt
+        }
         self.dismiss(animated: false)
     }
     

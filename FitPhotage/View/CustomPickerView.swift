@@ -17,6 +17,7 @@ extension CustomPickerView: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return modelData.count
     }
@@ -33,23 +34,14 @@ extension CustomPickerView: UIPickerViewDelegate {
         topLabel.textAlignment = .center
         topLabel.textColor = UIColor.black
         topLabel.text = modelData[row]
-//        topLabel.font = UIFont.systemFont(ofSize: fontSize)
         view.addSubview(topLabel)
-//        view.layer.borderColor = UIColor.green.cgColor
-//        view.layer.borderWidth = 2
-
         return view
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
 //        if row == 0 {
-//            return nil
+//            pickerView.isHidden = true
 //        }
-//        if row == 1 {
-//            
-//        }
-//        
-//        return "Hello"
-    }
+//    }
     
 }

@@ -13,6 +13,7 @@ import GoogleSignIn
 class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource{
     
     let databaseRef = Database.database().reference()
+    
     let profileImageView: ProfileImageView = {
         let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -160,6 +161,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                     tableView.reloadData()
                 }
                 return
+            
             default: fatalError("Unknown section")
             }
         case 1:

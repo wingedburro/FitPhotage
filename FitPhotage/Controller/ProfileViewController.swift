@@ -105,24 +105,24 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                let cellText = "Phone: \(Main.appUser.phone ?? "Tap to update your phone number")"
-                let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Phone: \(Main.appUser.phone ?? "N/A")"
+                let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return phoneCell
             case 1:
                 let cellText = "Email: \(Main.appUser.email ?? "N/A")"
-                let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
+                let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return emailCell
             case 2:
-                let cellText = "Program: \(Main.appUser.program?.rawValue ?? "Tap to select a program")"
-                let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Program: \(Main.appUser.program?.rawValue ?? "Tap to select")"
+                let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return programsCell
             case 3:
                 let cellText = "Date of Birth: "
-                let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
+                let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return birthCell
             case 4:
-                let cellText = "Gender: \(Main.appUser.gender?.rawValue ?? "Tap to set your gender")"
-                return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: false)
+                let cellText = "Gender: \(Main.appUser.gender?.rawValue ?? "Tap to select")"
+                return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
             default: fatalError("Unknown section")
             }
         case 1:
@@ -146,9 +146,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 fitnessPickerPopup.popupLabelText = "Select Fitness Program"
                 fitnessPickerPopup.popupButtonText = "SET PROGRAM"
                 fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
-                self.present(fitnessPickerPopup, animated: false) {
-                    tableView.reloadData()
-                }
+                self.present(fitnessPickerPopup, animated: false)
                 return
             case 3:
                 return
@@ -157,9 +155,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let genderPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 genderPickerPopup.customPickerView.modelData = [Gender.male.rawValue, Gender.female.rawValue]
-                self.present(genderPickerPopup, animated: false) {
-                    tableView.reloadData()
-                }
+                self.present(genderPickerPopup, animated: false)
                 return
             
             default: fatalError("Unknown section")

@@ -10,8 +10,6 @@ import UIKit
 
 class TasksViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var arrayOfViews = [UIViewController]()
-    
     private let reuseIdentifier = "Cell"
     
     private let cellsPerRow = 1
@@ -19,8 +17,6 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
-        
-        arrayOfViews = [ProfileViewController()]
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

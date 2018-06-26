@@ -7,11 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1003EB9520C6208800599588 /* Health History Questionnaire.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9020C6208700599588 /* Health History Questionnaire.pdf */; };
-		1003EB9620C6208800599588 /* Lifestyle Questionnaire.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9120C6208700599588 /* Lifestyle Questionnaire.pdf */; };
-		1003EB9720C6208800599588 /* LivFit Waiver.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9220C6208800599588 /* LivFit Waiver.pdf */; };
-		1003EB9820C6208800599588 /* PARQ.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9320C6208800599588 /* PARQ.pdf */; };
-		1003EB9920C6208800599588 /* Body Metrics Tracking Form.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */; };
 		1003EB9C20C6300100599588 /* MeasurementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1003EB9B20C6300100599588 /* MeasurementsViewController.swift */; };
 		1006279520DB3C8100024272 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1006279420DB3C8100024272 /* ButtonWithImage.swift */; };
 		1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1026609520BA3D4800B0598A /* GoogleService-Info.plist */; };
@@ -45,11 +40,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1003EB9020C6208700599588 /* Health History Questionnaire.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Health History Questionnaire.pdf"; sourceTree = "<group>"; };
-		1003EB9120C6208700599588 /* Lifestyle Questionnaire.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Lifestyle Questionnaire.pdf"; sourceTree = "<group>"; };
-		1003EB9220C6208800599588 /* LivFit Waiver.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "LivFit Waiver.pdf"; sourceTree = "<group>"; };
-		1003EB9320C6208800599588 /* PARQ.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = PARQ.pdf; sourceTree = "<group>"; };
-		1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "Body Metrics Tracking Form.pdf"; sourceTree = "<group>"; };
 		1003EB9B20C6300100599588 /* MeasurementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasurementsViewController.swift; sourceTree = "<group>"; };
 		1006279420DB3C8100024272 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		1026609520BA3D4800B0598A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -171,7 +161,6 @@
 		10A437F620BA1736006B12BC /* FitPhotage */ = {
 			isa = PBXGroup;
 			children = (
-				10DA64FD20C61F5600C1B822 /* Documents */,
 				10810DE020BB220800BE941D /* Model */,
 				10DD431A20BA471100E2DA1A /* Helpers */,
 				1026609420BA377D00B0598A /* Controller */,
@@ -184,18 +173,6 @@
 				10A4380320BA173A006B12BC /* Info.plist */,
 			);
 			path = FitPhotage;
-			sourceTree = "<group>";
-		};
-		10DA64FD20C61F5600C1B822 /* Documents */ = {
-			isa = PBXGroup;
-			children = (
-				1003EB9420C6208800599588 /* Body Metrics Tracking Form.pdf */,
-				1003EB9020C6208700599588 /* Health History Questionnaire.pdf */,
-				1003EB9120C6208700599588 /* Lifestyle Questionnaire.pdf */,
-				1003EB9220C6208800599588 /* LivFit Waiver.pdf */,
-				1003EB9320C6208800599588 /* PARQ.pdf */,
-			);
-			path = Documents;
 			sourceTree = "<group>";
 		};
 		10DD431A20BA471100E2DA1A /* Helpers */ = {
@@ -285,14 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				10A4380220BA173A006B12BC /* LaunchScreen.storyboard in Resources */,
-				1003EB9520C6208800599588 /* Health History Questionnaire.pdf in Resources */,
-				1003EB9920C6208800599588 /* Body Metrics Tracking Form.pdf in Resources */,
-				1003EB9620C6208800599588 /* Lifestyle Questionnaire.pdf in Resources */,
 				1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */,
-				1003EB9820C6208800599588 /* PARQ.pdf in Resources */,
 				10A437FF20BA173A006B12BC /* Assets.xcassets in Resources */,
 				10A437FD20BA1736006B12BC /* Main.storyboard in Resources */,
-				1003EB9720C6208800599588 /* LivFit Waiver.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

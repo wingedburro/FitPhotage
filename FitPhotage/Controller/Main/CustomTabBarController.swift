@@ -22,32 +22,28 @@ class CustomTabBarController: UITabBarController {
         //Profile Tab
         let profileViewController = UINavigationController(rootViewController: ProfileViewController())
         profileViewController.tabBarItem.image = UIImage(named: "profile_icon")
-        profileViewController.tabBarItem.imageInsets = UIEdgeInsets(top: -1, left: 1, bottom: 1, right: -1)
         profileViewController.title = "Profile"
         
         //Workouts Tab
         let layout = UICollectionViewFlowLayout()
         let workoutsViewController = UINavigationController(rootViewController: WorkoutsViewController(collectionViewLayout: layout))
         workoutsViewController.tabBarItem.image = UIImage(named: "workouts_icon")
-        workoutsViewController.tabBarItem.imageInsets = UIEdgeInsets(top: -1, left: 1, bottom: 1, right: -1)
         workoutsViewController.title = "Workouts"
         
         //Documents Tab
        let documentsViewController = UINavigationController(rootViewController: DocumentsViewController(collectionViewLayout: layout))
         documentsViewController.tabBarItem.image = UIImage(named: "documents_icon")
-        documentsViewController.tabBarItem.imageInsets = UIEdgeInsets(top: -1, left: 1, bottom: 1, right: -1)
         documentsViewController.title = "Documents"
         
         // Tasks Tab
         let tasksViewController = UINavigationController(rootViewController: TasksViewController(collectionViewLayout: layout))
         tasksViewController.tabBarItem.image = UIImage(named: "tasks_icon")
-        tasksViewController.tabBarItem.imageInsets = UIEdgeInsets(top: -1, left: 1, bottom: 1, right: -1)
+        tasksViewController.tabBarItem.badgeValue = "3"
         tasksViewController.title = "Tasks"
         
         // Progress Tab
         let progressViewController = UINavigationController(rootViewController: ProgressViewController())
         progressViewController.tabBarItem.image = UIImage(named: "progress_icon")
-        progressViewController.tabBarItem.imageInsets = UIEdgeInsets(top: -1, left: 1, bottom: 1, right: -1)
         progressViewController.title = "Progress"
         
         viewControllers = [profileViewController, workoutsViewController, documentsViewController, tasksViewController, progressViewController]

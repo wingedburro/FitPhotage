@@ -12,6 +12,7 @@ class CustomPopupViewController: UIViewController {
     @IBOutlet weak var popupLabel: UILabel!
     @IBOutlet weak var popupButton: UIButton!
     @IBOutlet weak var popupPickerView: UIPickerView!
+    @IBOutlet weak var popupView: UIView!
     
     let customPickerView = CustomPickerView()
     var popupLabelText: String = "Select Gender"
@@ -19,6 +20,9 @@ class CustomPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        popupView.layer.cornerRadius = 10.0
+        popupView.layer.masksToBounds = true
         
         popupPickerView.delegate = customPickerView
         popupPickerView.dataSource = customPickerView

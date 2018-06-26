@@ -158,6 +158,7 @@
                         <outlet property="popupButton" destination="Ht1-YL-k75" id="47T-4k-A3X"/>
                         <outlet property="popupLabel" destination="cYr-0i-GSM" id="91E-yp-WFi"/>
                         <outlet property="popupPickerView" destination="Adj-GS-rjr" id="cyD-lc-bFD"/>
+                        <outlet property="popupView" destination="qSe-1A-elN" id="cq6-gL-ute"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahw-ed-WoI" userLabel="First Responder" sceneMemberID="firstResponder"/>

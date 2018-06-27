@@ -60,7 +60,7 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 5
+        return pdfList.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,6 +73,15 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
         let pdfViewController = PDFViewController()
         pdfViewController.pdfTitle = self.pdfList[indexPath.row]
         self.navigationController?.pushViewController(pdfViewController, animated: true)
+//        let webView = UIWebView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+//        webView.translatesAutoresizingMaskIntoConstraints = false
+//        webView.center = self.view.center
+//
+//        let targetURL = URL(string: "https://firebasestorage.googleapis.com/v0/b/fitphotage.appspot.com/o/documents%2FBody%20Metrics%20Tracking%20Form.pdf?alt=media&token=18b2d3f0-fbb7-4855-820b-8d68b9d51be9")
+//        let request = URLRequest(url: targetURL!)
+//        webView.loadRequest(request)
+//
+//        view.addSubview(webView)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

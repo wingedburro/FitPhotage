@@ -12,46 +12,38 @@ import GoogleSignIn
 
 class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    let tableView: UITableView = {
+        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.backgroundColor = UIColor.CustomColors.whiteSmoke
+        tableView.separatorColor = UIColor.CustomColors.whiteSmoke
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         customizeView()
         loadProfileInfo()
     }
     
-    private func createTableView() -> UITableView {
-        let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = UIColor.CustomColors.lead
-        tableView.separatorColor = UIColor.CustomColors.lead
-        return tableView
-    }
-    
     private func customizeView() {
-        view.backgroundColor = UIColor.CustomColors.lead
-        navigationController?.navigationBar.barTintColor = UIColor.black
+        view.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "Your Progress"
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        navigationController?.navigationBar.shadowImage = UIImage()
+//        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
     }
     
     private func loadProfileInfo() {
-        let tableView = createTableView()
         view.addSubview(tableView)
 
         view.addConstraintsWithFormat(format: "V:|-25-[v0]-|", views: tableView)
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
-    }
-    
-    private func createCustomSeparator(cellHeight: CGFloat) -> UIView {
-        let separatorHeight = CGFloat(2.0)
-        let customSeparator = UIView.init(frame: CGRect(x: 0, y: cellHeight-separatorHeight, width: view.frame.width, height: separatorHeight))
-        customSeparator.backgroundColor = UIColor.CustomColors.lead
-        return customSeparator
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

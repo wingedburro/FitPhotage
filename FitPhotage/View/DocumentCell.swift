@@ -9,11 +9,20 @@
 import UIKit
 
 class DocumentCell: UICollectionViewCell {
+    override var isSelected: Bool {
+        didSet {
+            //self.transform = isSelected ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
+            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : nil
+            self.thumbnailImageView.backgroundColor = isSelected ? UIColor.lightGray : nil
+        }
+    }
+    
     var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.white
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 5.0
         return imageView
     }()
     
@@ -29,6 +38,7 @@ class DocumentCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.layer.cornerRadius = 5.0
         setupViews(thumbnail: UIImage(named: "pdf_icon"), description: "N/A")
     }
     

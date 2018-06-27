@@ -10,6 +10,14 @@ import UIKit
 import Foundation
 
 class TaskCell: UICollectionViewCell {
+    override var isSelected: Bool {
+        didSet {
+            //self.transform = isSelected ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
+            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : nil
+            self.thumbnailImageView.backgroundColor = isSelected ? UIColor.lightGray : nil
+        }
+    }
+    
     var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.green

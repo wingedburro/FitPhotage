@@ -107,7 +107,7 @@ extension UICollectionViewCell {
     
     // Create floating card effect
     func createHoverEffect() {
-        self.contentView.layer.cornerRadius = 2.5
+        self.contentView.layer.cornerRadius = 5
         self.contentView.layer.borderWidth = 1.0
         self.contentView.layer.borderColor = UIColor.clear.cgColor
         self.contentView.layer.masksToBounds = false

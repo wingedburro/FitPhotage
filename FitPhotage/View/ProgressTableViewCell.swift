@@ -13,11 +13,10 @@ class ProgressTableViewCell: UITableViewCell {
     init(style: UITableViewCellStyle, reuseIdentifier: String?, text: String?, textHighlightColor: UIColor?, disclosure: Bool?, progress: UIImage?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.textLabel?.text = text
-        self.backgroundColor = UIColor.black
-        self.textLabel?.textColor = UIColor.white
+        self.textLabel?.textColor = UIColor.black
         self.textLabel?.highlightedTextColor = textHighlightColor
         let customSelectColor = UIView()
-        customSelectColor.backgroundColor = UIColor.darkGray
+        customSelectColor.backgroundColor = UIColor.clear
         self.selectedBackgroundView = customSelectColor
         if disclosure == true {
             self.accessoryType = .disclosureIndicator

@@ -8,15 +8,24 @@
 
 import UIKit
 import Firebase
+import FirebaseAuthUI
 import GoogleSignIn
 
-class LoginViewController: UIViewController, GIDSignInUIDelegate {
+class LoginViewController: UIViewController, GIDSignInUIDelegate, FUIAuthDelegate {
+    
+    fileprivate(set) var auth:Auth?
+    fileprivate(set) var authUI: FUIAuth? //only set internally but get externally
+    fileprivate(set) var authStateListenerHandle: AuthStateDidChangeListenerHandle?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupGradient()
         setupLogin()
+        
+        self.auth = Auth.auth()
+        self.authUI = FUIAuth.defaultAuthUI()
+        self.authUI?.delegate = self
     }
     
     private func setupGradient() {
@@ -26,6 +35,11 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         let ground = profileBackground(frame: view.bounds, color1: color1, color2: color2)
         view.insertSubview(ground, at: 0)
         ground.layer.shouldRasterize = false
+    }
+    
+    @objc private func emailLoginAction() {
+        let authViewController = authUI?.authViewController();
+        self.present(authViewController!, animated: true, completion: nil)
     }
     
     private func setupLogin() {
@@ -43,6 +57,7 @@ class LoginViewController: UIViewController, GIDSignInUIDelegate {
         emailSignInButton.setImage(UIImage(named: "email_icon"), for: .normal)
         emailSignInButton.setTitle("Sign up with Email",for: .normal)
         emailSignInButton.titleLabel?.font = UIFont(descriptor: UIFontDescriptor(fontAttributes: [:]), size: 14)
+        emailSignInButton.addTarget(self, action: #selector(emailLoginAction), for: .touchUpInside)
         
         view.addSubview(googleSignInButton)
         view.addSubview(emailSignInButton)

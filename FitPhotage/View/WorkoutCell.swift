@@ -72,9 +72,10 @@ class WorkoutCell: UICollectionViewCell {
         
         //Black Image inside of framing Rectangle
         addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: thumbnailImageView)
-        addConstraintsWithFormat(format: "V:|-0-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, completionImageView)
         addConstraintsWithFormat(format: "V:|-0-[v0(\(self.frame.height / 2))]-8-[v1]-8-|", views: thumbnailImageView, descriptionLabelView)
-        addConstraintsWithFormat(format: "H:|-8-[v0(\(self.frame.width * 0.7))]-4-[v1]-8-|", views: descriptionLabelView, completionImageView)
+        addConstraint(NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: completionImageView, attribute: .bottom, multiplier: 1, constant: 8))
+        addConstraint(NSLayoutConstraint(item: completionImageView, attribute: .height, relatedBy: .equal, toItem: completionImageView, attribute: .width, multiplier: 1, constant: 0))
+        addConstraintsWithFormat(format: "H:|-8-[v0]-4-[v1(25)]-8-|", views: descriptionLabelView, completionImageView)
     }
     
     required init?(coder aDecoder: NSCoder) {

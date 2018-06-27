@@ -7,6 +7,10 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseAuthUI
+
+let userID = Auth.auth().currentUser
 
 class User: NSObject {
     var name: String?
@@ -15,4 +19,12 @@ class User: NSObject {
     var program: FitnessProgram?
     var gender: Gender?
     var profileImageUrl: String?
+    
+    let uid = userID?.uid
+    
+    
+    var phoneDef = UserDefaults.standard.object(forKey: "Phone")
+    var genderDef = UserDefaults.standard.object(forKey: "Gender")
+//    let photoURL = userID?.photoURL
+//    let email2 = userID?.email
 }

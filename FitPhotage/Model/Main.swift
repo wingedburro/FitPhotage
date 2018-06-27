@@ -7,11 +7,13 @@
 //
 
 import Foundation
+import Firebase
 
 class Main {
     
     // Global Variables
     static let appUser = User()
+    static let databaseRef = Database.database().reference()
     
     private init() {}
 }

@@ -105,7 +105,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                let cellText = "Phone: \(Main.appUser.phone ?? "N/A")"
+                let cellText = "Phone: \(Main.appUser.phoneDef ?? "N/A")"
                 let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return phoneCell
             case 1:
@@ -136,7 +136,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                updateField(childText: "phone", description: "Update Phone Number", board: UIKeyboardType.numberPad)
+                updateField(keyText: "Phone", description: "Update Phone Number", board: UIKeyboardType.numberPad)
             case 1:
                 return
             case 2:
@@ -149,6 +149,10 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 self.present(fitnessPickerPopup, animated: false)
                 return
             case 3:
+                let datePicker: UIDatePicker = UIDatePicker()
+                datePicker.frame = CGRect(x: 10, y: 50, width: self.view.frame.width, height: 200)
+                self.view.addSubview(datePicker)
+                datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(_sender:)), for: .valueChanged)
                 return
             case 4:
                 self.definesPresentationContext = true
@@ -166,6 +170,13 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         }
     }
     
+    @objc func datePickerValueChanged(_sender: UIDatePicker){
+        let dateFormatter: DateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        let selectedData: String = dateFormatter.string(from: _sender.date)
+        print(selectedData)
+    }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
             return "Your Information"
@@ -173,10 +184,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         return ""
     }
     
-    func updateField(childText: String?, description: String?,board: UIKeyboardType) {
-        
-        let uid = Auth.auth().currentUser?.uid
-        let userReference = Database.database().reference().child("Users").child(uid!).child(childText!)
+    func updateField(keyText: String?, description: String?,board: UIKeyboardType) {
         
         let promptPopUp = UIAlertController(title: description, message: nil, preferredStyle: .alert)
         
@@ -185,21 +193,27 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             promptPopUp.dismiss(animated: true, completion: nil)
             promptPopUp.dismiss(animated: true, completion: nil)
             let textField = promptPopUp.textFields?[0]
-            let actualText = String((textField?.text)!)
-            userReference.setValue(actualText)
-            
+            let valueText = String((textField?.text)!)
+            Main.appUser.phone = valueText
+        Main.databaseRef.child("Users").child(Main.appUser.uid!).child(keyText!).setValue(Main.appUser.phone)
+            UserDefaults.standard.set(Main.appUser.phone, forKey: keyText!)
+            Main.appUser.phoneDef = Main.appUser.phone
+            self.updateUI()
         }))
         promptPopUp.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [promptPopUp] (_) in
             promptPopUp.dismiss(animated: true, completion: nil)
         }))
         
         promptPopUp.addTextField { (textField) in
-//            textField.keyboardType = UIKeyboardType.alphabet
             textField.keyboardType = board
             textField.text = nil
         }
         
         self.present(promptPopUp, animated: true, completion: nil)
+    }
+    
+    func updateUI() {
+        tableView.reloadData() //Viewdidappear() instead?
     }
     
     

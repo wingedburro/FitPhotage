@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CustomPopupViewController: UIViewController {
     @IBOutlet weak var popupLabel: UILabel!
@@ -35,10 +36,15 @@ class CustomPopupViewController: UIViewController {
         popupLabel.text = popupLabelText
         popupButton.setTitle(popupButtonText, for: .normal)
     }
+    
+//    Main.databaseRef.child("Users").child(Main.appUser.uid!).child("Gender").setValue("Male")
+//    UserDefaults.standard.set("Male", forKey: "Gender")
+//    Main.appUser.genderDef = "Male"
 
     @IBAction func popupButtonAction(_ sender: Any) {
         if (popupLabelText == "Select Gender") {
             Main.appUser.gender = (popupPickerView.selectedRow(inComponent: 0) == 0) ? Gender.male : Gender.female
+            
         } else {
             Main.appUser.program = (popupPickerView.selectedRow(inComponent: 0) == 0) ? FitnessProgram.level1 : FitnessProgram.xt
         }

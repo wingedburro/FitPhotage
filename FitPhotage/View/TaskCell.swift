@@ -87,7 +87,7 @@ class TaskCell: CustomCollectionViewCell {
         //Constraints
         addConstraintsWithFormat(format: "H:|[v0]|", views: categoryLabelView)
         addConstraintsWithFormat(format: "H:|[v0(40)]-8-[v1]|", views: thumbnailImageView, descriptionLabelView)
-        addConstraintsWithFormat(format: "V:|[v0]-8-[v1(50)]-8-[v2(25)]-4-[v3(1)]|", views: categoryLabelView, descriptionLabelView, completionImageView, separatorView)
+        addConstraintsWithFormat(format: "V:|[v0]-8-[v1(50)]-8-[v2(25)]-16-[v3(1)]|", views: categoryLabelView, descriptionLabelView, completionImageView, separatorView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: separatorView)
         addConstraintsWithFormat(format: "H:[v0]|", views: completionImageView)
         

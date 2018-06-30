@@ -37,7 +37,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
         let marginsAndInsets = flowLayout.sectionInset.left + flowLayout.sectionInset.right + collectionView.safeAreaInsets.left + collectionView.safeAreaInsets.right + flowLayout.minimumInteritemSpacing * CGFloat(cellsPerRow - 1)
         let itemWidth = ((collectionView.bounds.size.width - marginsAndInsets) / CGFloat(cellsPerRow)).rounded(.down)
-        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth/3)
+        flowLayout.itemSize = CGSize(width: itemWidth, height: 125) // 125 comes from manual constraint calculation
     }
     
     // Necessary to get perfect columns

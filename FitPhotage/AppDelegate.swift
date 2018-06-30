@@ -31,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         UITabBar.appearance().barTintColor = UIColor.white
         
         // Nav bar customizations
-        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 1.0)
-        UINavigationBar.appearance().layer.shadowRadius = 3
-        UINavigationBar.appearance().layer.shadowColor = UIColor.gray.cgColor
-        UINavigationBar.appearance().layer.shadowOpacity = 0.3
+//        UINavigationBar.appearance().layer.shadowOffset = CGSize(width: 0, height: 1.0)
+//        UINavigationBar.appearance().layer.shadowRadius = 3
+//        UINavigationBar.appearance().layer.shadowColor = UIColor.gray.cgColor
+//        UINavigationBar.appearance().layer.shadowOpacity = 0.3
         UINavigationBar.appearance().tintColor = UIColor.black
         UINavigationBar.appearance().barTintColor = UIColor.CustomColors.customLightOrange
         

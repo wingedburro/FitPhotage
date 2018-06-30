@@ -17,6 +17,9 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
+        TaskFunctions.getTasks { [unowned self] in
+            self.collectionView?.reloadData()
+        }
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -25,7 +28,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     
     private func customizeView() {
         collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
-        navigationItem.title = "Daily Tasks"
+        navigationItem.title = "Today's Tasks"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
@@ -41,7 +44,11 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     private func setupCollectionFlowLayout() {
         guard let collectionView = collectionView, let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { return }
         flowLayout.minimumInteritemSpacing = 0
-        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumLineSpacing = 16
+        flowLayout.sectionInset.top = 16
+        flowLayout.sectionInset.bottom = 16
+        flowLayout.sectionInset.left = 16
+        flowLayout.sectionInset.right = 16
         
         collectionView.contentInsetAdjustmentBehavior = .always
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: reuseIdentifier)
@@ -59,11 +66,12 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 8
+        return Data.userTasks.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? TaskCell
+        cell?.task = Data.userTasks[indexPath.row]
         return cell!
     }
     

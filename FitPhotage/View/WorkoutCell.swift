@@ -22,7 +22,7 @@ class WorkoutCell: UICollectionViewCell {
         imageView.backgroundColor = UIColor.white
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 5.0
+        imageView.layer.cornerRadius = 7.0
         return imageView
     }()
     
@@ -30,6 +30,7 @@ class WorkoutCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
         imageView.contentMode = .scaleAspectFit
+        imageView.tintColor = UIColor.CustomColors.customOrange
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -38,25 +39,24 @@ class WorkoutCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont(descriptor: label.font.fontDescriptor, size: 14)
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
+        label.numberOfLines = 3
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 5.0
         setupViews(thumbnail: UIImage(named: "profile_icon"), description: "N/A", isComplete: false)
     }
     
     init(thumbnail: UIImage?, description: String?, frame: CGRect, isComplete: Bool) {
         super.init(frame: frame)
-        self.layer.cornerRadius = 5.0
         setupViews(thumbnail: thumbnail, description: description, isComplete: isComplete)
     }
     
     func setupViews(thumbnail: UIImage?, description: String?, isComplete: Bool) {
         self.createHoverEffect()
+        self.layer.cornerRadius = 7.0
         
         thumbnailImageView.image = thumbnail
         descriptionLabelView.text = description

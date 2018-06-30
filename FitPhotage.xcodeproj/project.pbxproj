@@ -12,6 +12,10 @@
 		1026609620BA3D4800B0598A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1026609520BA3D4800B0598A /* GoogleService-Info.plist */; };
 		104446F920D40DA1004DB595 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104446F820D40DA1004DB595 /* SplashViewController.swift */; };
 		1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */; };
+		104FAB0720E71333006EC6A7 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FAB0620E71333006EC6A7 /* Task.swift */; };
+		104FAB0920E71BE8006EC6A7 /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FAB0820E71BE8006EC6A7 /* CustomCollectionViewCell.swift */; };
+		104FAB0C20E72C95006EC6A7 /* TaskFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FAB0B20E72C95006EC6A7 /* TaskFunctions.swift */; };
+		104FAB0F20E72FFA006EC6A7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104FAB0E20E72FFA006EC6A7 /* Data.swift */; };
 		1052884E20BE461800DA8511 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1052884D20BE461800DA8511 /* RootViewController.swift */; };
 		1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056165A20BC73C3006E8286 /* WorkoutCell.swift */; };
 		1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1077C07520C2F9A100139C48 /* PDFViewController.swift */; };
@@ -45,6 +49,10 @@
 		1026609520BA3D4800B0598A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		104446F820D40DA1004DB595 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		1046FB1020BC8F7500370749 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		104FAB0620E71333006EC6A7 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		104FAB0820E71BE8006EC6A7 /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
+		104FAB0B20E72C95006EC6A7 /* TaskFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFunctions.swift; sourceTree = "<group>"; };
+		104FAB0E20E72FFA006EC6A7 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		1052884D20BE461800DA8511 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		1056165A20BC73C3006E8286 /* WorkoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCell.swift; sourceTree = "<group>"; };
 		1077C07520C2F9A100139C48 /* PDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +118,7 @@
 				9941293B20C1F5FE00F38704 /* DocumentCell.swift */,
 				99F921E420D741D800E3797A /* CustomPickerView.swift */,
 				1006279420DB3C8100024272 /* ButtonWithImage.swift */,
+				104FAB0820E71BE8006EC6A7 /* CustomCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,11 +140,22 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		104FAB0D20E72FDE006EC6A7 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				104FAB0620E71333006EC6A7 /* Task.swift */,
+				104FAB0B20E72C95006EC6A7 /* TaskFunctions.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		10810DE020BB220800BE941D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				10810DDA20BB1F6400BE941D /* User.swift */,
 				10810DDC20BB21C300BE941D /* Main.swift */,
+				104FAB0E20E72FFA006EC6A7 /* Data.swift */,
+				104FAB0D20E72FDE006EC6A7 /* Tasks */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +370,7 @@
 				1006279520DB3C8100024272 /* ButtonWithImage.swift in Sources */,
 				10810DDB20BB1F6400BE941D /* User.swift in Sources */,
 				1052884E20BE461800DA8511 /* RootViewController.swift in Sources */,
+				104FAB0720E71333006EC6A7 /* Task.swift in Sources */,
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
 				10A392DA20E0360C00A80240 /* CustomPopupViewController.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
@@ -359,7 +380,10 @@
 				9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */,
 				99F921E520D741D800E3797A /* CustomPickerView.swift in Sources */,
 				99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */,
+				104FAB0F20E72FFA006EC6A7 /* Data.swift in Sources */,
+				104FAB0C20E72C95006EC6A7 /* TaskFunctions.swift in Sources */,
 				990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */,
+				104FAB0920E71BE8006EC6A7 /* CustomCollectionViewCell.swift in Sources */,
 				99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */,
 				10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */,
 				9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */,
@@ -514,7 +538,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6U7ND8D4U;
 				INFOPLIST_FILE = FitPhotage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = wingedburrostudios.FitPhotage14;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -530,7 +557,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y6U7ND8D4U;
 				INFOPLIST_FILE = FitPhotage/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = wingedburrostudios.FitPhotage14;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

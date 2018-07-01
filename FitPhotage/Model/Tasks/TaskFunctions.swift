@@ -23,4 +23,14 @@ class TaskFunctions {
             }
         }
     }
+    
+    static func updateTask(index: Int, isComplete: Bool, completion: @escaping () -> ()) {
+        DispatchQueue.global(qos: .userInteractive).async {
+            Data.userTasks[index].isComplete = isComplete
+            
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+    }
 }

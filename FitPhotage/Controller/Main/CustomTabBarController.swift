@@ -38,7 +38,7 @@ class CustomTabBarController: UITabBarController {
         // Tasks Tab
         let tasksViewController = UINavigationController(rootViewController: TasksViewController(collectionViewLayout: layout))
         tasksViewController.tabBarItem.image = UIImage(named: "tasks_icon")
-        TaskFunctions.getTasks {
+        TaskFunctions.getTasks { [unowned tasksViewController] in
             tasksViewController.tabBarItem.badgeValue = "\(Data.userTasks.count)"
         }
         tasksViewController.title = "Tasks"

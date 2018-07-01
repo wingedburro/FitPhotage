@@ -12,9 +12,9 @@ import Foundation
 class TaskCell: CustomCollectionViewCell {
     override var isSelected: Bool {
         didSet {
-            //self.transform = isSelected ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
-            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : nil
-            self.thumbnailImageView.backgroundColor = isSelected ? UIColor.lightGray : nil
+//            self.transform = isSelected ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
+//            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : nil
+//            self.thumbnailImageView.backgroundColor = isSelected ? UIColor.lightGray : nil
         }
     }
     
@@ -77,22 +77,34 @@ class TaskCell: CustomCollectionViewCell {
         return label
     }()
     
+    var optionsButton: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "three_dots_icon")
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    
     override func setupViews() {
         addSubview(thumbnailImageView)
         addSubview(completionImageView)
         addSubview(descriptionLabelView)
         addSubview(categoryLabelView)
+        addSubview(optionsButton)
         addSubview(separatorView)
         
         //Constraints
         addConstraintsWithFormat(format: "H:|[v0]|", views: categoryLabelView)
         addConstraintsWithFormat(format: "H:|[v0(40)]-8-[v1]|", views: thumbnailImageView, descriptionLabelView)
         addConstraintsWithFormat(format: "V:|[v0]-8-[v1(50)]-8-[v2(25)]-16-[v3(1)]|", views: categoryLabelView, descriptionLabelView, completionImageView, separatorView)
+        addConstraintsWithFormat(format: "V:|[v0]-8-[v1(50)]-8-[v2(25)]-16-[v3(1)]|", views: categoryLabelView, descriptionLabelView, optionsButton, separatorView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: separatorView)
         addConstraintsWithFormat(format: "H:[v0]|", views: completionImageView)
+        addConstraintsWithFormat(format: "H:|[v0]", views: optionsButton)
         
         addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .top, relatedBy: .equal, toItem: descriptionLabelView, attribute: .top, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: completionImageView, attribute: .width, relatedBy: .equal, toItem: completionImageView, attribute: .height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: optionsButton, attribute: .width, relatedBy: .equal, toItem: optionsButton, attribute: .height, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .height, relatedBy: .equal, toItem: thumbnailImageView, attribute: .width, multiplier: 1, constant: 0))
     }
 }

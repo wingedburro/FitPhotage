@@ -148,7 +148,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 fitnessPickerPopup.popupLabelText = "Select Fitness Program"
                 fitnessPickerPopup.popupButtonText = "SET PROGRAM"
                 fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
-                self.present(fitnessPickerPopup, animated: false)
+                self.present(fitnessPickerPopup, animated: true)
                 fitnessPickerPopup.onSet = { [unowned self] in
                     self.tableView.reloadData()
                 }
@@ -164,7 +164,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let genderPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 genderPickerPopup.customPickerView.modelData = [Gender.male.rawValue, Gender.female.rawValue]
-                self.present(genderPickerPopup, animated: false)
+                self.present(genderPickerPopup, animated: true)
                 genderPickerPopup.onSet = { [unowned self] in
                     self.tableView.reloadData()
                 }

@@ -19,6 +19,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         customizeView()
         TaskFunctions.getTasks { [unowned self] in
             self.collectionView?.reloadData()
+            self.collectionView?.collectionViewLayout.invalidateLayout()
         }
         
         // Uncomment the following line to preserve selection between presentations
@@ -54,10 +55,6 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         collectionView.register(TaskCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.navigationController?.pushViewController(ProfileViewController(), animated: true)
-    }
-    
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -73,6 +70,22 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? TaskCell
         cell?.task = Data.userTasks[indexPath.row]
         return cell!
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        self.definesPresentationContext = true
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let tasksPopup = sb.instantiateViewController(withIdentifier: "TaskPopupViewController") as! TaskPopupViewController
+        tasksPopup.didSet = { (isComplete) in
+            TaskFunctions.updateTask(index: indexPath.row, isComplete: isComplete, completion: { [unowned self] in
+                self.collectionView?.reloadData()
+                self.collectionView?.collectionViewLayout.invalidateLayout()
+            })
+        }
+        
+        self.present(tasksPopup, animated: true, completion: nil)
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -54,7 +54,7 @@ class CustomPopupViewController: UIViewController {
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
     
     

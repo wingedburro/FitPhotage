@@ -68,7 +68,9 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? TaskCell
-        cell?.task = Data.userTasks[indexPath.row]
+        if indexPath.row < Data.userTasks.count {
+            cell?.task = Data.userTasks[indexPath.row]
+        }
         return cell!
     }
     

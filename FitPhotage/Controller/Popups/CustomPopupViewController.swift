@@ -24,6 +24,8 @@ class CustomPopupViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissController)))
+        
         popupView.layer.cornerRadius = 10.0
         popupView.layer.masksToBounds = true
         
@@ -32,6 +34,10 @@ class CustomPopupViewController: UIViewController {
 
         popupLabel.lineBreakMode = .byWordWrapping
         popupLabel.numberOfLines = 0
+    }
+    
+    @objc func dismissController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {

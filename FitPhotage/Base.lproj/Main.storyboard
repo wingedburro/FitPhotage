@@ -187,16 +187,16 @@
         <!--Task Popup View Controller-->
         <scene sceneID="GoX-TV-9Uq">
             <objects>
-                <viewController storyboardIdentifier="TaskPopupViewController" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IZb-Qx-56Z" customClass="TaskPopupViewController" customModule="FitPhotage" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskPopupViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IZb-Qx-56Z" customClass="TaskPopupViewController" customModule="FitPhotage" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1xB-FW-p7a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="YsB-OS-BVq">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="YsB-OS-BVq">
                                 <rect key="frame" x="0.0" y="540" width="375" height="111"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ngd-fw-wlq">
-                                        <rect key="frame" x="30" y="0.0" width="315" height="55.5"/>
+                                        <rect key="frame" x="16" y="0.0" width="343" height="54.5"/>
                                         <color key="backgroundColor" red="1" green="0.4392156862745098" blue="0.2627450980392157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Mark as complete">
                                             <color key="titleColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -206,7 +206,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fag-Zb-8Te">
-                                        <rect key="frame" x="30" y="55.5" width="315" height="55.5"/>
+                                        <rect key="frame" x="16" y="56.5" width="343" height="54.5"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -218,16 +218,16 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="fag-Zb-8Te" firstAttribute="leading" secondItem="YsB-OS-BVq" secondAttribute="leadingMargin" constant="30" id="D7s-Vi-jIG"/>
-                                    <constraint firstItem="ngd-fw-wlq" firstAttribute="leading" secondItem="YsB-OS-BVq" secondAttribute="leadingMargin" constant="30" id="I0c-hz-qWF"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="ngd-fw-wlq" secondAttribute="trailing" constant="30" id="OZR-bL-Qmg"/>
-                                    <constraint firstAttribute="trailingMargin" secondItem="fag-Zb-8Te" secondAttribute="trailing" constant="30" id="XCZ-B3-a33"/>
+                                    <constraint firstItem="fag-Zb-8Te" firstAttribute="leading" secondItem="YsB-OS-BVq" secondAttribute="leadingMargin" constant="16" id="D7s-Vi-jIG"/>
+                                    <constraint firstItem="ngd-fw-wlq" firstAttribute="leading" secondItem="YsB-OS-BVq" secondAttribute="leadingMargin" constant="16" id="I0c-hz-qWF"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="ngd-fw-wlq" secondAttribute="trailing" constant="16" id="OZR-bL-Qmg"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="fag-Zb-8Te" secondAttribute="trailing" constant="16" id="XCZ-B3-a33"/>
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.054179152397260275" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.55404537671232879" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="YsB-OS-BVq" firstAttribute="bottom" secondItem="86r-1r-VAA" secondAttribute="bottom" constant="-16" id="2va-ge-mFJ"/>
+                            <constraint firstItem="86r-1r-VAA" firstAttribute="bottom" secondItem="YsB-OS-BVq" secondAttribute="bottom" constant="16" id="3gx-uj-lJm"/>
                             <constraint firstItem="YsB-OS-BVq" firstAttribute="height" secondItem="1xB-FW-p7a" secondAttribute="height" multiplier="1/6" id="I8c-M2-hxw"/>
                             <constraint firstItem="YsB-OS-BVq" firstAttribute="trailing" secondItem="86r-1r-VAA" secondAttribute="trailing" id="oJk-rV-pqv"/>
                             <constraint firstItem="YsB-OS-BVq" firstAttribute="leading" secondItem="86r-1r-VAA" secondAttribute="leading" id="vyj-V0-dxy"/>

@@ -21,8 +21,8 @@ class TaskPopupViewController: UIViewController {
 
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissController)))
         
-        completeButton.layer.cornerRadius = 5.0
-        cancelButton.layer.cornerRadius = 5.0
+        completeButton.layer.cornerRadius = 3.0
+        cancelButton.layer.cornerRadius = 3.0
     }
     
     override func viewWillLayoutSubviews() {

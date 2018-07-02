@@ -15,12 +15,16 @@ class CustomPopupViewController: UIViewController {
     @IBOutlet weak var popupPickerView: UIPickerView!
     @IBOutlet weak var popupView: UIView!
     
+    var onSet: (() -> ())?
+    
     let customPickerView = CustomPickerView()
     var popupLabelText: String = "Select Gender"
     var popupButtonText: String = "SET GENDER"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(dismissController)))
         
         popupView.layer.cornerRadius = 10.0
         popupView.layer.masksToBounds = true
@@ -30,6 +34,10 @@ class CustomPopupViewController: UIViewController {
 
         popupLabel.lineBreakMode = .byWordWrapping
         popupLabel.numberOfLines = 0
+    }
+    
+    @objc func dismissController() {
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,15 +52,15 @@ class CustomPopupViewController: UIViewController {
     @IBAction func popupButtonAction(_ sender: Any) {
         if (popupLabelText == "Select Gender") {
             Main.appUser.gender = (popupPickerView.selectedRow(inComponent: 0) == 0) ? Gender.male : Gender.female
-            
         } else {
             Main.appUser.program = (popupPickerView.selectedRow(inComponent: 0) == 0) ? FitnessProgram.level1 : FitnessProgram.xt
         }
+        onSet?()
         self.dismiss(animated: false)
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        self.dismiss(animated: false)
+        self.dismiss(animated: true)
     }
     
     

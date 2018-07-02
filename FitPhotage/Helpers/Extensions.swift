@@ -80,29 +80,6 @@ extension UIImageView {
     }
 }
 
-//extension UIViewController {
-//
-//    func setupNavbar(navBarColor: UIColor?, statusBarColor: UIColor?, title: String?) {
-//        statusBarBackgroundView.backgroundColor = statusBarColor
-//        self.view.addSubview(statusBarBackgroundView)
-//        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-//        self.view.addConstraintsWithFormat(format: "V:|[v0(26)]|", views: statusBarBackgroundView)
-//
-//        let navBar = UINavigationBar(frame: CGRect(x: 0, y: 20, width: view.frame.width, height: 44))
-//        navBar.backgroundColor = navBarColor
-//        navBar.translatesAutoresizingMaskIntoConstraints = false
-//        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-//        navBar.titleTextAttributes = textAttributes
-//        navBar.shadowImage = UIImage()
-//        navBar.setBackgroundImage(UIImage(), for: .default)
-//        navigationItem.title = title
-//        navBar.items = [navigationItem]
-//        self.view.addSubview(navBar)
-//        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: navBar)
-//        self.view.addConstraintsWithFormat(format: "V:|-26-[v0]", views: navBar)
-//    }
-//}
-
 extension UICollectionViewCell {
     
     // Create floating card effect

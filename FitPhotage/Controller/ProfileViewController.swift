@@ -132,6 +132,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -146,7 +148,10 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 fitnessPickerPopup.popupLabelText = "Select Fitness Program"
                 fitnessPickerPopup.popupButtonText = "SET PROGRAM"
                 fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
-                self.present(fitnessPickerPopup, animated: false)
+                self.present(fitnessPickerPopup, animated: true)
+                fitnessPickerPopup.onSet = { [unowned self] in
+                    self.tableView.reloadData()
+                }
                 return
             case 3:
                 let datePicker: UIDatePicker = UIDatePicker()
@@ -159,7 +164,10 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let genderPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 genderPickerPopup.customPickerView.modelData = [Gender.male.rawValue, Gender.female.rawValue]
-                self.present(genderPickerPopup, animated: false)
+                self.present(genderPickerPopup, animated: true)
+                genderPickerPopup.onSet = { [unowned self] in
+                    self.tableView.reloadData()
+                }
                 return
             
             default: fatalError("Unknown section")
@@ -195,7 +203,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             let textField = promptPopUp.textFields?[0]
             let valueText = String((textField?.text)!)
             Main.appUser.phone = valueText
-        Main.databaseRef.child("Users").child(Main.appUser.uid!).child(keyText!).setValue(Main.appUser.phone)
+            Main.databaseRef.child("Users").child(Main.appUser.uid!).child(keyText!).setValue(Main.appUser.phone)
             UserDefaults.standard.set(Main.appUser.phone, forKey: keyText!)
             Main.appUser.phoneDef = Main.appUser.phone
             self.updateUI()

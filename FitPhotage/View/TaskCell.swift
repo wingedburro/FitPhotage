@@ -9,31 +9,44 @@
 import UIKit
 import Foundation
 
-class TaskCell: UICollectionViewCell {
+class TaskCell: CustomCollectionViewCell {
     override var isSelected: Bool {
         didSet {
-            //self.transform = isSelected ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
-            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : nil
-            self.thumbnailImageView.backgroundColor = isSelected ? UIColor.lightGray : nil
+//            self.transform = isSelected ? CGAffineTransform(scaleX: 0.95, y: 0.95) : CGAffineTransform.identity
+//            self.contentView.backgroundColor = isSelected ? UIColor.lightGray : nil
+//            self.thumbnailImageView.backgroundColor = isSelected ? UIColor.lightGray : nil
+        }
+    }
+    
+    var task: Task? {
+        didSet {
+            thumbnailImageView.image = task?.thumbnailImage
+            descriptionLabelView.text = task?.taskDescription
+            categoryLabelView.text = task?.category
+            if let isComplete = task?.isComplete {
+                if isComplete {
+                    completionImageView.image = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
+                } else {
+                    completionImageView.image = UIImage(named: "checklist_icon")
+                }
+            }
+            
         }
     }
     
     var thumbnailImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.green
-//        imageView.image = UIImage(named: "profile_icon")
-        imageView.layer.borderColor = UIColor.red.cgColor
-        imageView.layer.borderWidth = 2
+        imageView.backgroundColor = UIColor.CustomColors.whiteSmoke
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
     var completionImageView: UIImageView = {
         let imageView = UIImageView()
-        let tintImage = UIImage.init(named: "seven_icon")?.withRenderingMode(.alwaysTemplate)
-        imageView.image = tintImage
         imageView.tintColor = UIColor.rgb(red: 3, green: 124, blue: 50)
-        imageView.layer.borderColor = UIColor.green.cgColor
-        imageView.layer.borderWidth = 2
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
@@ -44,78 +57,55 @@ class TaskCell: UICollectionViewCell {
         label.numberOfLines = 3
         label.text = "N/A"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.layer.borderColor = UIColor.blue.cgColor
-        label.layer.borderWidth = 2
         return label
+    }()
+    
+    // Create separator line between each video cell
+    let separatorView: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     var categoryLabelView: UILabel = {
         let label = UILabel()
-        label.font = UIFont(descriptor: label.font.fontDescriptor, size: 12)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 3
+        label.font = UIFont(descriptor: label.font.fontDescriptor, size: 17)
         label.text = "Documents"
         label.textColor = UIColor.gray
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.layer.borderColor = UIColor.blue.cgColor
-        label.layer.borderWidth = 2
         return label
     }()
     
-    var backgroundImageView: UIImageView = {
+    var optionsButton: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = UIColor.blue
-        imageView.layer.borderColor = UIColor.orange.cgColor
-        imageView.layer.borderWidth = 2
+        imageView.image = UIImage(named: "three_dots_icon")
+        imageView.layer.masksToBounds = true
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews(thumbnail: UIImage(named: "profile_icon"), backgroundColor: UIColor.clear, description: "N/A", completedImage: UIImage(named: "one_icon"), isComplete: false)
-    }
-    
-    init(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, frame: CGRect, isComplete: Bool) {
-        super.init(frame: frame)
-        setupViews(thumbnail: thumbnail, backgroundColor: backgroundColor, description: description, completedImage: completedImage, isComplete: isComplete)
-    }
-    
-    func setupViews(thumbnail: UIImage?, backgroundColor: UIColor?, description: String?, completedImage: UIImage?, isComplete: Bool) {
-        thumbnailImageView.image = thumbnail
-        backgroundImageView.backgroundColor = backgroundColor
-        descriptionLabelView.text = description
-        if isComplete {
-            completionImageView.image = completedImage?.withRenderingMode(.alwaysTemplate)
-        } else {
-            completionImageView.image = completedImage
-        }
-        
-        addSubview(backgroundImageView)
+    override func setupViews() {
         addSubview(thumbnailImageView)
         addSubview(completionImageView)
         addSubview(descriptionLabelView)
         addSubview(categoryLabelView)
+        addSubview(optionsButton)
+        addSubview(separatorView)
         
         //Constraints
-        addConstraintsWithFormat(format: "H:|-50-[v0]-50-|", views: backgroundImageView)
-        addConstraintsWithFormat(format: "V:|-25-[v0(100)]-15-|", views: backgroundImageView)
-        addConstraintsWithFormat(format: "H:|-62.5-[v0(75)]-8-[v1]-62.5-|", views: thumbnailImageView, descriptionLabelView)
-        addConstraintsWithFormat(format: "V:|-37.5-[v0(75)]|", views: thumbnailImageView)
-        addConstraintsWithFormat(format: "H:|-[v0(25)]-62.5-|", views: completionImageView)
-        addConstraintsWithFormat(format: "V:|-37.5-[v0(50)]-|", views: descriptionLabelView)
-        addConstraint(NSLayoutConstraint(item: completionImageView, attribute: .top, relatedBy: .equal, toItem: descriptionLabelView, attribute: .bottom, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: completionImageView, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: 0))
+        addConstraintsWithFormat(format: "H:|[v0]|", views: categoryLabelView)
+        addConstraintsWithFormat(format: "H:|[v0(40)]-8-[v1]|", views: thumbnailImageView, descriptionLabelView)
+        addConstraintsWithFormat(format: "V:|[v0]-8-[v1(50)]-8-[v2(25)]-16-[v3(1)]|", views: categoryLabelView, descriptionLabelView, completionImageView, separatorView)
+        addConstraintsWithFormat(format: "V:|[v0]-8-[v1(50)]-8-[v2(25)]-16-[v3(1)]|", views: categoryLabelView, descriptionLabelView, optionsButton, separatorView)
+        addConstraintsWithFormat(format: "H:|[v0]|", views: separatorView)
+        addConstraintsWithFormat(format: "H:[v0]|", views: completionImageView)
+        addConstraintsWithFormat(format: "H:|[v0]", views: optionsButton)
         
-        addConstraint(NSLayoutConstraint(item: categoryLabelView, attribute: .top, relatedBy: .equal, toItem: descriptionLabelView, attribute: .bottom, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: categoryLabelView, attribute: .bottom, relatedBy: .equal, toItem: thumbnailImageView, attribute: .bottom, multiplier: 1, constant: 0))
-        
-        addConstraint(NSLayoutConstraint(item: categoryLabelView, attribute: .left, relatedBy: .equal, toItem: descriptionLabelView, attribute: .left, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: categoryLabelView, attribute: .right, relatedBy: .equal, toItem: completionImageView, attribute: .left, multiplier: 1, constant: 0))
-        
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .top, relatedBy: .equal, toItem: descriptionLabelView, attribute: .top, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: completionImageView, attribute: .width, relatedBy: .equal, toItem: completionImageView, attribute: .height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: optionsButton, attribute: .width, relatedBy: .equal, toItem: optionsButton, attribute: .height, multiplier: 1, constant: 0))
+        addConstraint(NSLayoutConstraint(item: thumbnailImageView, attribute: .height, relatedBy: .equal, toItem: thumbnailImageView, attribute: .width, multiplier: 1, constant: 0))
     }
 }
 

@@ -105,23 +105,23 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                let cellText = "Phone: \(Main.appUser.phoneDef ?? "N/A")"
+                let cellText = "Phone: \(Main.appUser.phone ?? "Tap to update")"
                 let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return phoneCell
             case 1:
-                let cellText = "Email: \(Main.appUser.email ?? "N/A")"
+                let cellText = "Email: \(Main.appUser.emailDefault ?? userID?.email ?? "N/A")"
                 let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return emailCell
             case 2:
-                let cellText = "Program: \(Main.appUser.program?.rawValue ?? "Tap to select")"
+                let cellText = "Program: \(Main.appUser.programDefault ?? "Tap to select")"
                 let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return programsCell
             case 3:
-                let cellText = "Date of Birth: "
+                let cellText = "Date of Birth: \(Main.appUser.birthday ?? "Tap to update")"
                 let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return birthCell
             case 4:
-                let cellText = "Gender: \(Main.appUser.gender?.rawValue ?? "Tap to select")"
+                let cellText = "Gender: \(Main.appUser.genderDefault ?? "Tap to select")"
                 return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
             default: fatalError("Unknown section")
             }
@@ -138,7 +138,12 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                updateField(keyText: "Phone", description: "Update Phone Number", board: UIKeyboardType.numberPad)
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let phonePopup = sb.instantiateViewController(withIdentifier: "PhonePopupViewController") as! PhonePopupViewController
+                self.present(phonePopup, animated: true)
+                phonePopup.onSet = { [unowned self] in
+                    self.tableView.reloadData()
+                }
             case 1:
                 return
             case 2:
@@ -146,7 +151,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let fitnessPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 fitnessPickerPopup.popupLabelText = "Select Fitness Program"
-                fitnessPickerPopup.popupButtonText = "SET PROGRAM"
+                fitnessPickerPopup.popupButtonText = "Set Program"
                 fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
                 self.present(fitnessPickerPopup, animated: true)
                 fitnessPickerPopup.onSet = { [unowned self] in
@@ -154,11 +159,12 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 }
                 return
             case 3:
-                let datePicker: UIDatePicker = UIDatePicker()
-                datePicker.frame = CGRect(x: 10, y: 50, width: self.view.frame.width, height: 200)
-                self.view.addSubview(datePicker)
-                datePicker.addTarget(self, action: #selector(self.datePickerValueChanged(_sender:)), for: .valueChanged)
-                return
+                let sb = UIStoryboard(name: "Main", bundle: nil)
+                let datePopup = sb.instantiateViewController(withIdentifier: "DatePopupViewController") as! DatePopupViewController
+                self.present(datePopup, animated: true)
+                datePopup.onSet = { [unowned self] in
+                    self.tableView.reloadData()
+                }
             case 4:
                 self.definesPresentationContext = true
                 let sb = UIStoryboard(name: "Main", bundle: nil)
@@ -192,37 +198,37 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         return ""
     }
     
-    func updateField(keyText: String?, description: String?,board: UIKeyboardType) {
-        
-        let promptPopUp = UIAlertController(title: description, message: nil, preferredStyle: .alert)
-        
-        promptPopUp.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [promptPopUp] (_) in
-            
-            promptPopUp.dismiss(animated: true, completion: nil)
-            promptPopUp.dismiss(animated: true, completion: nil)
-            let textField = promptPopUp.textFields?[0]
-            let valueText = String((textField?.text)!)
-            Main.appUser.phone = valueText
-            Main.databaseRef.child("Users").child(Main.appUser.uid!).child(keyText!).setValue(Main.appUser.phone)
-            UserDefaults.standard.set(Main.appUser.phone, forKey: keyText!)
-            Main.appUser.phoneDef = Main.appUser.phone
-            self.updateUI()
-        }))
-        promptPopUp.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [promptPopUp] (_) in
-            promptPopUp.dismiss(animated: true, completion: nil)
-        }))
-        
-        promptPopUp.addTextField { (textField) in
-            textField.keyboardType = board
-            textField.text = nil
-        }
-        
-        self.present(promptPopUp, animated: true, completion: nil)
-    }
-    
-    func updateUI() {
-        tableView.reloadData() //Viewdidappear() instead?
-    }
+//    func updateField(keyText: String?, description: String?,board: UIKeyboardType) {
+//
+//        let promptPopUp = UIAlertController(title: description, message: nil, preferredStyle: .alert)
+//
+//        promptPopUp.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [promptPopUp] (_) in
+//
+//            promptPopUp.dismiss(animated: true, completion: nil)
+//            promptPopUp.dismiss(animated: true, completion: nil)
+//            let textField = promptPopUp.textFields?[0]
+//            let valueText = String((textField?.text)!)
+//            Main.appUser.phone = valueText
+//            Main.databaseRef.child("Users").child(Main.appUser.uid!).child(keyText!).setValue(Main.appUser.phone)
+//            UserDefaults.standard.set(Main.appUser.phone, forKey: keyText!)
+//            Main.appUser.phoneDef = Main.appUser.phone
+//            self.updateUI()
+//        }))
+//        promptPopUp.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [promptPopUp] (_) in
+//            promptPopUp.dismiss(animated: true, completion: nil)
+//        }))
+//
+//        promptPopUp.addTextField { (textField) in
+//            textField.keyboardType = board
+//            textField.text = nil
+//        }
+//
+//        self.present(promptPopUp, animated: true, completion: nil)
+//    }
+//    
+//    func updateUI() {
+//        tableView.reloadData() //Viewdidappear() instead?
+//    }
     
     
 }

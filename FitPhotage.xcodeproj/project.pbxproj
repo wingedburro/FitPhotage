@@ -35,6 +35,9 @@
 		99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99088E2C20BC52FC004DDF49 /* WorkoutsViewController.swift */; };
 		990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990AE07020BFA11E00B2E088 /* TaskCell.swift */; };
 		990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990AE07220BFA23800B2E088 /* TasksViewController.swift */; };
+		992B635320F27A5500932BAB /* UpdateUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635220F27A5500932BAB /* UpdateUserData.swift */; };
+		992B635520F27EF600932BAB /* PhonePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635420F27EF600932BAB /* PhonePopupViewController.swift */; };
+		992B635920F2888700932BAB /* DatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635820F2888700932BAB /* DatePopupViewController.swift */; };
 		9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293920C1F5BA00F38704 /* DocumentsViewController.swift */; };
 		9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293B20C1F5FE00F38704 /* DocumentCell.swift */; };
 		9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */; };
@@ -75,6 +78,9 @@
 		99088E2C20BC52FC004DDF49 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		990AE07020BFA11E00B2E088 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		990AE07220BFA23800B2E088 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		992B635220F27A5500932BAB /* UpdateUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserData.swift; sourceTree = "<group>"; };
+		992B635420F27EF600932BAB /* PhonePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePopupViewController.swift; sourceTree = "<group>"; };
+		992B635820F2888700932BAB /* DatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupViewController.swift; sourceTree = "<group>"; };
 		9941293920C1F5BA00F38704 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		9941293B20C1F5FE00F38704 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
 		9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
@@ -157,6 +163,7 @@
 				10810DDA20BB1F6400BE941D /* User.swift */,
 				10810DDC20BB21C300BE941D /* Main.swift */,
 				104FAB0E20E72FFA006EC6A7 /* Data.swift */,
+				992B635220F27A5500932BAB /* UpdateUserData.swift */,
 				104FAB0D20E72FDE006EC6A7 /* Tasks */,
 			);
 			path = Model;
@@ -201,7 +208,9 @@
 			isa = PBXGroup;
 			children = (
 				10A392D920E0360C00A80240 /* CustomPopupViewController.swift */,
+				992B635420F27EF600932BAB /* PhonePopupViewController.swift */,
 				10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */,
+				992B635820F2888700932BAB /* DatePopupViewController.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -379,15 +388,18 @@
 				990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */,
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				1006279520DB3C8100024272 /* ButtonWithImage.swift in Sources */,
+				992B635520F27EF600932BAB /* PhonePopupViewController.swift in Sources */,
 				10810DDB20BB1F6400BE941D /* User.swift in Sources */,
 				1052884E20BE461800DA8511 /* RootViewController.swift in Sources */,
 				10D1A6EE20E7F30500BF3125 /* TaskPopupViewController.swift in Sources */,
 				104FAB0720E71333006EC6A7 /* Task.swift in Sources */,
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
+				992B635320F27A5500932BAB /* UpdateUserData.swift in Sources */,
 				10A392DA20E0360C00A80240 /* CustomPopupViewController.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */,
+				992B635920F2888700932BAB /* DatePopupViewController.swift in Sources */,
 				1003EB9C20C6300100599588 /* MeasurementsViewController.swift in Sources */,
 				9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */,
 				99F921E520D741D800E3797A /* CustomPickerView.swift in Sources */,

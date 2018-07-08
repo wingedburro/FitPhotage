@@ -13,18 +13,19 @@ import FirebaseAuthUI
 let userID = Auth.auth().currentUser
 
 class User: NSObject {
+    // Personal User Information
     var name: String?
-    var phone: String?
-    var email: String?
-    var program: FitnessProgram?
-    var gender: Gender?
-    var profileImageUrl: String?
+    var phone = UserDefaults.standard.object(forKey: "phone")
+    var emailDefault = UserDefaults.standard.object(forKey: "email")
+    var genderDefault = UserDefaults.standard.object(forKey: "gender")
+    var programDefault = UserDefaults.standard.object(forKey: "program")
+    var birthday = UserDefaults.standard.object(forKey: "birthday")
     
+    // User Identifiers
     let uid = userID?.uid
     
-    
-    var phoneDef = UserDefaults.standard.object(forKey: "Phone")
-    var genderDef = UserDefaults.standard.object(forKey: "Gender")
+    var program: FitnessProgram?
+    var gender: Gender?
 //    let photoURL = userID?.photoURL
 //    let email2 = userID?.email
 }

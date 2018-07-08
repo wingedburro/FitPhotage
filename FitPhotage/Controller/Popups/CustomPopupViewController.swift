@@ -19,7 +19,7 @@ class CustomPopupViewController: UIViewController {
     
     let customPickerView = CustomPickerView()
     var popupLabelText: String = "Select Gender"
-    var popupButtonText: String = "SET GENDER"
+    var popupButtonText: String = "Set Gender"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,16 +44,36 @@ class CustomPopupViewController: UIViewController {
         popupLabel.text = popupLabelText
         popupButton.setTitle(popupButtonText, for: .normal)
     }
-    
-//    Main.databaseRef.child("Users").child(Main.appUser.uid!).child("Gender").setValue("Male")
-//    UserDefaults.standard.set("Male", forKey: "Gender")
-//    Main.appUser.genderDef = "Male"
 
     @IBAction func popupButtonAction(_ sender: Any) {
         if (popupLabelText == "Select Gender") {
-            Main.appUser.gender = (popupPickerView.selectedRow(inComponent: 0) == 0) ? Gender.male : Gender.female
+//            Main.appUser.genderDef = (popupPickerView.selectedRow(inComponent: 0) == 0) ? Gender.male : Gender.female
+            if popupPickerView.selectedRow(inComponent: 0) == 0 {
+                Main.appUser.gender = Gender.male
+                Main.appUser.genderDefault = Gender.male.rawValue
+                UserDefaults.standard.set(Main.appUser.gender?.rawValue, forKey: "gender")
+                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("gender").setValue(Main.appUser.gender?.rawValue)
+            }
+            else {
+                Main.appUser.gender = Gender.female
+                Main.appUser.genderDefault = Gender.female.rawValue
+                UserDefaults.standard.set(Main.appUser.gender?.rawValue, forKey: "gender")
+                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("gender").setValue(Main.appUser.gender?.rawValue)
+            }
         } else {
-            Main.appUser.program = (popupPickerView.selectedRow(inComponent: 0) == 0) ? FitnessProgram.level1 : FitnessProgram.xt
+//            Main.appUser.program = (popupPickerView.selectedRow(inComponent: 0) == 0) ? FitnessProgram.level1 : FitnessProgram.xt
+            if popupPickerView.selectedRow(inComponent: 0) == 0 {
+                Main.appUser.program = FitnessProgram.level1
+                Main.appUser.programDefault = FitnessProgram.level1.rawValue
+                UserDefaults.standard.set(Main.appUser.program?.rawValue, forKey: "program")
+                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("program").setValue(Main.appUser.program?.rawValue)
+            }
+            else {
+                Main.appUser.program = FitnessProgram.xt
+                Main.appUser.programDefault = FitnessProgram.xt.rawValue
+                UserDefaults.standard.set(Main.appUser.program?.rawValue, forKey: "program")
+                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("program").setValue(Main.appUser.program?.rawValue)
+            }
         }
         onSet?()
         self.dismiss(animated: false)

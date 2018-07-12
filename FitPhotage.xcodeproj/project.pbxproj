@@ -35,13 +35,14 @@
 		99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99088E2C20BC52FC004DDF49 /* WorkoutsViewController.swift */; };
 		990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990AE07020BFA11E00B2E088 /* TaskCell.swift */; };
 		990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 990AE07220BFA23800B2E088 /* TasksViewController.swift */; };
-		992B635320F27A5500932BAB /* UpdateUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635220F27A5500932BAB /* UpdateUserData.swift */; };
 		992B635520F27EF600932BAB /* PhonePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635420F27EF600932BAB /* PhonePopupViewController.swift */; };
 		992B635920F2888700932BAB /* DatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635820F2888700932BAB /* DatePopupViewController.swift */; };
 		9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293920C1F5BA00F38704 /* DocumentsViewController.swift */; };
 		9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293B20C1F5FE00F38704 /* DocumentCell.swift */; };
 		9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */; };
 		99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */; };
+		99D39BC020F6F7A400E4B63B /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */; };
+		99D39BC620F70D4C00E4B63B /* PhotoPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D39BC520F70D4C00E4B63B /* PhotoPopupViewController.swift */; };
 		99F921E520D741D800E3797A /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F921E420D741D800E3797A /* CustomPickerView.swift */; };
 		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
 		99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */; };
@@ -78,13 +79,14 @@
 		99088E2C20BC52FC004DDF49 /* WorkoutsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewController.swift; sourceTree = "<group>"; };
 		990AE07020BFA11E00B2E088 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		990AE07220BFA23800B2E088 /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
-		992B635220F27A5500932BAB /* UpdateUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserData.swift; sourceTree = "<group>"; };
 		992B635420F27EF600932BAB /* PhonePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhonePopupViewController.swift; sourceTree = "<group>"; };
 		992B635820F2888700932BAB /* DatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupViewController.swift; sourceTree = "<group>"; };
 		9941293920C1F5BA00F38704 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		9941293B20C1F5FE00F38704 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
 		9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
+		99D39BC520F70D4C00E4B63B /* PhotoPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPopupViewController.swift; sourceTree = "<group>"; };
 		99F921E420D741D800E3797A /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		99FC86EB20BA480C00EB4EA5 /* BackgroundGradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundGradient.swift; sourceTree = "<group>"; };
@@ -163,7 +165,6 @@
 				10810DDA20BB1F6400BE941D /* User.swift */,
 				10810DDC20BB21C300BE941D /* Main.swift */,
 				104FAB0E20E72FFA006EC6A7 /* Data.swift */,
-				992B635220F27A5500932BAB /* UpdateUserData.swift */,
 				104FAB0D20E72FDE006EC6A7 /* Tasks */,
 			);
 			path = Model;
@@ -211,6 +212,7 @@
 				992B635420F27EF600932BAB /* PhonePopupViewController.swift */,
 				10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */,
 				992B635820F2888700932BAB /* DatePopupViewController.swift */,
+				99D39BC520F70D4C00E4B63B /* PhotoPopupViewController.swift */,
 			);
 			path = Popups;
 			sourceTree = "<group>";
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				10DD431B20BA473800E2DA1A /* Extensions.swift */,
+				99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */,
 				9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */,
 				990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */,
+				99D39BC620F70D4C00E4B63B /* PhotoPopupViewController.swift in Sources */,
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				1006279520DB3C8100024272 /* ButtonWithImage.swift in Sources */,
 				992B635520F27EF600932BAB /* PhonePopupViewController.swift in Sources */,
@@ -394,7 +398,6 @@
 				10D1A6EE20E7F30500BF3125 /* TaskPopupViewController.swift in Sources */,
 				104FAB0720E71333006EC6A7 /* Task.swift in Sources */,
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
-				992B635320F27A5500932BAB /* UpdateUserData.swift in Sources */,
 				10A392DA20E0360C00A80240 /* CustomPopupViewController.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
@@ -411,6 +414,7 @@
 				99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */,
 				10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */,
 				9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */,
+				99D39BC020F6F7A400E4B63B /* ImagePickerController.swift in Sources */,
 				1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */,
 				10810DDD20BB21C300BE941D /* Main.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,

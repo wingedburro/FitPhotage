@@ -198,37 +198,4 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         return ""
     }
     
-//    func updateField(keyText: String?, description: String?,board: UIKeyboardType) {
-//
-//        let promptPopUp = UIAlertController(title: description, message: nil, preferredStyle: .alert)
-//
-//        promptPopUp.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [promptPopUp] (_) in
-//
-//            promptPopUp.dismiss(animated: true, completion: nil)
-//            promptPopUp.dismiss(animated: true, completion: nil)
-//            let textField = promptPopUp.textFields?[0]
-//            let valueText = String((textField?.text)!)
-//            Main.appUser.phone = valueText
-//            Main.databaseRef.child("Users").child(Main.appUser.uid!).child(keyText!).setValue(Main.appUser.phone)
-//            UserDefaults.standard.set(Main.appUser.phone, forKey: keyText!)
-//            Main.appUser.phoneDef = Main.appUser.phone
-//            self.updateUI()
-//        }))
-//        promptPopUp.addAction(UIAlertAction(title: "Cancel", style: .default, handler: { [promptPopUp] (_) in
-//            promptPopUp.dismiss(animated: true, completion: nil)
-//        }))
-//
-//        promptPopUp.addTextField { (textField) in
-//            textField.keyboardType = board
-//            textField.text = nil
-//        }
-//
-//        self.present(promptPopUp, animated: true, completion: nil)
-//    }
-//    
-//    func updateUI() {
-//        tableView.reloadData() //Viewdidappear() instead?
-//    }
-    
-    
 }

@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import GoogleSignIn
 
-class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
     let tableView: UITableView = {
         let tableView = UITableView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), style: .grouped)
@@ -72,10 +72,16 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
-            handleSelectProfileImage()
+//            handleSelectProfileImageView()
+            let sb = UIStoryboard(name: "Main", bundle: nil)
+            let photoPopup = sb.instantiateViewController(withIdentifier: "PhotoPopupViewController") as! PhotoPopupViewController
+            self.present(photoPopup, animated: true)
+            photoPopup.onSet = { [unowned self] in
+                self.tableView.reloadData()
+            }
         }
         if indexPath.section == 1 {
-            handleSelectProfileImage()
+//            handleSelectProfileImageView()
         }
         if indexPath.section == 2 {
             self.navigationController?.pushViewController(MeasurementsViewController(), animated: true)
@@ -107,34 +113,34 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
         return ""
     }
     
-    @objc func handleSelectProfileImage() {
-        let picker = UIImagePickerController()
-        picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
-        picker.allowsEditing = true
-        present(picker, animated: true, completion: nil)
-    }
+//    @objc func handleSelectProfileImage() {
+//        let picker = UIImagePickerController()
+//        picker.delegate = self as UIImagePickerControllerDelegate & UINavigationControllerDelegate
+//        picker.allowsEditing = true
+//        present(picker, animated: true, completion: nil)
+//    }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        var selectedImageFromPicker: UIImage?
-        
-        if let editedImage = info["UIImagePickerControllerEditedImage"] {
-            selectedImageFromPicker = editedImage as? UIImage
-        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] {
-            selectedImageFromPicker = originalImage as? UIImage
-        }
-        
-//        if let selectedImage = selectedImageFromPicker {
-//            self.profileImage.image = selectedImage
-//            self.uploadProfileImageToDataBase(selectedImage: selectedImage)
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//
+//        var selectedImageFromPicker: UIImage?
+//
+//        if let editedImage = info["UIImagePickerControllerEditedImage"] {
+//            selectedImageFromPicker = editedImage as? UIImage
+//        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] {
+//            selectedImageFromPicker = originalImage as? UIImage
 //        }
-        
-        dismiss(animated: true, completion: nil)
-    }
+//
+////        if let selectedImage = selectedImageFromPicker {
+////            self.profileImage.image = selectedImage
+////            self.uploadProfileImageToDataBase(selectedImage: selectedImage)
+////        }
+//
+//        dismiss(animated: true, completion: nil)
+//    }
     
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        dismiss(animated: true, completion: nil)
+//    }
     
     
 }

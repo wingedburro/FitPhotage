@@ -10,5 +10,6 @@ target 'FitPhotage' do
   pod 'FirebaseUI/Auth'
   pod 'Firebase/Database'
   pod 'GoogleSignIn'
+  pod 'Firebase/Storage'
 
 end

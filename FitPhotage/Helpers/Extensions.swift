@@ -98,3 +98,9 @@ extension UICollectionViewCell {
     }
     
 }
+
+extension Date {
+    func toMillis() -> String {
+        return String(self.timeIntervalSince1970 * 1000)
+    }
+}

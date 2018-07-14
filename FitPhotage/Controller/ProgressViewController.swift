@@ -88,6 +88,7 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
         }
         if indexPath.section == 3 {
 //            self.navigationController?.pushViewController(ProfileViewController(), animated: true)
+
         }
         if indexPath.section == 4 {
 //            self.navigationController?.pushViewController(ProfileViewController(), animated: true)

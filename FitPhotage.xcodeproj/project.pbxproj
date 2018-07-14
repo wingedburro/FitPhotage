@@ -39,6 +39,8 @@
 		992B635920F2888700932BAB /* DatePopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992B635820F2888700932BAB /* DatePopupViewController.swift */; };
 		9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293920C1F5BA00F38704 /* DocumentsViewController.swift */; };
 		9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293B20C1F5FE00F38704 /* DocumentCell.swift */; };
+		9955408F20FA9DA200592AAA /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955408E20FA9DA200592AAA /* WorkoutDetailViewController.swift */; };
+		9955409120FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955409020FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift */; };
 		9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */; };
 		99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */; };
 		99D39BC020F6F7A400E4B63B /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */; };
@@ -83,6 +85,8 @@
 		992B635820F2888700932BAB /* DatePopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePopupViewController.swift; sourceTree = "<group>"; };
 		9941293920C1F5BA00F38704 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		9941293B20C1F5FE00F38704 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
+		9955408E20FA9DA200592AAA /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
+		9955409020FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				99F921E420D741D800E3797A /* CustomPickerView.swift */,
 				1006279420DB3C8100024272 /* ButtonWithImage.swift */,
 				104FAB0820E71BE8006EC6A7 /* CustomCollectionViewCell.swift */,
+				9955409020FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 				1077C07520C2F9A100139C48 /* PDFViewController.swift */,
 				99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */,
 				1003EB9B20C6300100599588 /* MeasurementsViewController.swift */,
+				9955408E20FA9DA200592AAA /* WorkoutDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -390,6 +396,7 @@
 				9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */,
 				990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */,
 				99D39BC620F70D4C00E4B63B /* PhotoPopupViewController.swift in Sources */,
+				9955409120FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift in Sources */,
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				1006279520DB3C8100024272 /* ButtonWithImage.swift in Sources */,
 				992B635520F27EF600932BAB /* PhonePopupViewController.swift in Sources */,
@@ -400,6 +407,7 @@
 				10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */,
 				10A392DA20E0360C00A80240 /* CustomPopupViewController.swift in Sources */,
 				1056165B20BC73C3006E8286 /* WorkoutCell.swift in Sources */,
+				9955408F20FA9DA200592AAA /* WorkoutDetailViewController.swift in Sources */,
 				10A437FA20BA1736006B12BC /* LoginViewController.swift in Sources */,
 				1077C07620C2F9A100139C48 /* PDFViewController.swift in Sources */,
 				992B635920F2888700932BAB /* DatePopupViewController.swift in Sources */,

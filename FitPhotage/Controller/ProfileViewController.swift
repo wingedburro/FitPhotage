@@ -7,12 +7,14 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 import GoogleSignIn
 
-class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource{
+class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    let databaseRef = Database.database().reference()
+    var userRef: DatabaseReference!
+    var profileListener: DatabaseHandle!
     
     let profileImageView: ProfileImageView = {
         let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
@@ -30,8 +32,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
+        self.userRef = Database.database().reference().child("Users").child(Main.appUser!.uid)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -39,22 +40,32 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         customizeView()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+    override func viewWillAppear(_ animated: Bool) {
+        // Load profile image from cache
+        if let imageUrl = ProfileViewModel.userInfo["profileImageUrl"] {
+            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        } else {
+            profileImageView.image = UIImage(named: "profile_icon")
+        }
+        
+        // Set listeners
+        self.profileListener = userRef.observe(.value, with: { [unowned self] (snapshot) in
+            for child in snapshot.children.allObjects as! [DataSnapshot] {
+                print("someting added")
+                ProfileViewModel.userInfo[child.key] = child.value as? String
+            }
+            self.tableView.reloadData()
+        }, withCancel: nil)
+//
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        profileImageView.image = UIImage(named: "profile_icon")
-//        if let imageUrl = Main.appUser.profileImageUrl {
-//            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-//        } else {
-//            profileImageView.loadImagesUsingCacheWithUrlString(urlString: "https://firebasestorage.googleapis.com/v0/b/fitphotage.appspot.com/o/workout_images%2Fcropped_1.jpg?alt=media&token=6ec70f07-ed4d-43d7-9beb-69d781739260")
-//        }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.userRef.removeAllObservers()
     }
     
     private func customizeView() {
         view.backgroundColor = UIColor.CustomColors.whiteSmoke
-        navigationItem.title = Main.appUser.name ?? "You"
+        navigationItem.title = ProfileViewModel.userInfo["name"] ?? "You"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }
@@ -105,23 +116,23 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         case 0:
             switch indexPath.row {
             case 0:
-                let cellText = "Phone: \(Main.appUser.phone ?? "Tap to update")"
+                let cellText = "Phone: \(String(describing: ProfileViewModel.userInfo["phone"] ?? "Tap to update"))"
                 let phoneCell = ProfileTableViewCell(style: .default, reuseIdentifier: "phoneCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return phoneCell
             case 1:
-                let cellText = "Email: \(Main.appUser.emailDefault ?? userID?.email ?? "N/A")"
+                let cellText = "Email: \(String(describing: ProfileViewModel.userInfo["email"] ?? "N/A"))"
                 let emailCell = ProfileTableViewCell(style: .default, reuseIdentifier: "emailCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return emailCell
             case 2:
-                let cellText = "Program: \(Main.appUser.programDefault ?? "Tap to select")"
+                let cellText = "Program: \(String(describing: ProfileViewModel.userInfo["program"] ?? "Tap to select"))"
                 let programsCell = ProfileTableViewCell(style: .default, reuseIdentifier: "programsCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return programsCell
             case 3:
-                let cellText = "Date of Birth: \(Main.appUser.birthday ?? "Tap to update")"
+                let cellText = "Date of Birth: \(String(describing: ProfileViewModel.userInfo["birthday"] ?? "Tap to select"))"
                 let birthCell = ProfileTableViewCell(style: .default, reuseIdentifier: "birthCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
                 return birthCell
             case 4:
-                let cellText = "Gender: \(Main.appUser.genderDefault ?? "Tap to select")"
+                let cellText = "Gender: \(String(describing: ProfileViewModel.userInfo["gender"] ?? "Tap to select"))"
                 return ProfileTableViewCell(style: .default, reuseIdentifier: "genderCell", text: cellText, textHighlightColor: textHighlightColor, disclosure: true)
             default: fatalError("Unknown section")
             }

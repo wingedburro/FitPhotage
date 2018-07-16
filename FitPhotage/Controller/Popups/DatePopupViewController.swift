@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class DatePopupViewController: UIViewController {
-
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
@@ -28,7 +28,6 @@ class DatePopupViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         popupView.layer.cornerRadius = 10.0
@@ -36,9 +35,7 @@ class DatePopupViewController: UIViewController {
     }
 
     @IBAction func confirmAction(_ sender: Any) {
-        Main.appUser.birthday = formattedDate
-        UserDefaults.standard.set(Main.appUser.birthday, forKey: "birthday")
-        Main.databaseRef.child("Users").child(Main.appUser.uid!).child("birthday").setValue(Main.appUser.birthday)
+        ProfileViewModel.updateUser(field: "birthday", value: formattedDate, completion: nil)
         dismiss(animated: true)
         onSet?()
     }

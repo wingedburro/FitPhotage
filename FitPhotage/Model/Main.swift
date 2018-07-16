@@ -7,13 +7,13 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class Main {
     
     // Global Variables
-    static let appUser = User()
-    static let databaseRef = Database.database().reference()
+    static var appUser: User?
     
     private init() {}
 }

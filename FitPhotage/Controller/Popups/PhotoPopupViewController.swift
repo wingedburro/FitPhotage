@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
 import FirebaseStorage
 
 class PhotoPopupViewController: UIViewController {
     
-    
+    var userRef: DatabaseReference!
+    var storageRef: StorageReference!
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var uploadImage: UIImageView!
@@ -23,10 +25,10 @@ class PhotoPopupViewController: UIViewController {
     
     var onSet: (() -> ())?
     
-    let storage = Storage.storage()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userRef = Database.database().reference().child("Users").child(Main.appUser!.uid)
+        storageRef = Storage.storage().reference()
         
         popupView.layer.cornerRadius = 10.0
         popupView.layer.masksToBounds = true
@@ -68,8 +70,7 @@ class PhotoPopupViewController: UIViewController {
         let dateString = dateFormatted.string(from: date as Date)
 
         let uploadData = UIImagePNGRepresentation(#imageLiteral(resourceName: "LivFit"))
-        let storageRef = Storage.storage().reference()
-        let testImagesRef = storageRef.child("user_images").child(imageName)
+        let testImagesRef = self.storageRef.child("user_images").child(imageName)
             
         testImagesRef.putData(uploadData!, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
@@ -80,8 +81,9 @@ class PhotoPopupViewController: UIViewController {
                     print("Error setting download URL")
                     return
                 }
-            // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
-                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("Images").child("Front Images").child(dateString).setValue(downloadURL)
+            
+                // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
+                self.userRef.child("Images").child("Front Images").child(dateString).setValue(downloadURL)
             }
         
         dismiss(animated: true)

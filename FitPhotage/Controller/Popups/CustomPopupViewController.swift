@@ -7,9 +7,11 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class CustomPopupViewController: UIViewController {
+    
     @IBOutlet weak var popupLabel: UILabel!
     @IBOutlet weak var popupButton: UIButton!
     @IBOutlet weak var popupPickerView: UIPickerView!
@@ -47,32 +49,17 @@ class CustomPopupViewController: UIViewController {
 
     @IBAction func popupButtonAction(_ sender: Any) {
         if (popupLabelText == "Select Gender") {
-//            Main.appUser.genderDef = (popupPickerView.selectedRow(inComponent: 0) == 0) ? Gender.male : Gender.female
             if popupPickerView.selectedRow(inComponent: 0) == 0 {
-                Main.appUser.gender = Gender.male
-                Main.appUser.genderDefault = Gender.male.rawValue
-                UserDefaults.standard.set(Main.appUser.gender?.rawValue, forKey: "gender")
-                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("gender").setValue(Main.appUser.gender?.rawValue)
+                ProfileViewModel.updateUser(field: "gender", value: Gender.male.rawValue, completion: nil)
             }
             else {
-                Main.appUser.gender = Gender.female
-                Main.appUser.genderDefault = Gender.female.rawValue
-                UserDefaults.standard.set(Main.appUser.gender?.rawValue, forKey: "gender")
-                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("gender").setValue(Main.appUser.gender?.rawValue)
+                ProfileViewModel.updateUser(field: "gender", value: Gender.female.rawValue, completion: nil)
             }
         } else {
-//            Main.appUser.program = (popupPickerView.selectedRow(inComponent: 0) == 0) ? FitnessProgram.level1 : FitnessProgram.xt
             if popupPickerView.selectedRow(inComponent: 0) == 0 {
-                Main.appUser.program = FitnessProgram.level1
-                Main.appUser.programDefault = FitnessProgram.level1.rawValue
-                UserDefaults.standard.set(Main.appUser.program?.rawValue, forKey: "program")
-                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("program").setValue(Main.appUser.program?.rawValue)
-            }
-            else {
-                Main.appUser.program = FitnessProgram.xt
-                Main.appUser.programDefault = FitnessProgram.xt.rawValue
-                UserDefaults.standard.set(Main.appUser.program?.rawValue, forKey: "program")
-                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("program").setValue(Main.appUser.program?.rawValue)
+                ProfileViewModel.updateUser(field: "program", value: FitnessProgram.level1.rawValue, completion: nil)
+            } else {
+                ProfileViewModel.updateUser(field: "program", value: FitnessProgram.xt.rawValue, completion: nil)
             }
         }
         onSet?()

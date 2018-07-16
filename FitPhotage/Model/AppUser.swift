@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  AppUser.swift
 //  FitPhotage
 //
 //  Created by Kevin Liao on 5/27/18.
@@ -10,9 +10,7 @@ import Foundation
 import Firebase
 import FirebaseAuthUI
 
-let userID = Auth.auth().currentUser
-
-class User: NSObject {
+class AppUser: NSObject {
     // Personal User Information
     var name: String?
     var phone = UserDefaults.standard.object(forKey: "phone")
@@ -20,10 +18,10 @@ class User: NSObject {
     var genderDefault = UserDefaults.standard.object(forKey: "gender")
     var programDefault = UserDefaults.standard.object(forKey: "program")
     var birthday = UserDefaults.standard.object(forKey: "birthday")
-    
+
     // User Identifiers
-    let uid = userID?.uid
-    
+    var uid: User?
+
     var program: FitnessProgram?
     var gender: Gender?
 //    let photoURL = userID?.photoURL

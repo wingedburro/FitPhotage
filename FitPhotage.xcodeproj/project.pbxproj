@@ -27,6 +27,8 @@
 		10A437FF20BA173A006B12BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A437FE20BA173A006B12BC /* Assets.xcassets */; };
 		10A4380220BA173A006B12BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A4380020BA173A006B12BC /* LaunchScreen.storyboard */; };
 		10AEA2BD20FC341E005D5F1D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AEA2BC20FC341E005D5F1D /* ProfileViewModel.swift */; };
+		10CB223720FD554000B0B027 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223620FD554000B0B027 /* Workout.swift */; };
+		10CB223B20FD6BFF00B0B027 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223A20FD6BFF00B0B027 /* WorkoutViewModel.swift */; };
 		10D1A6EE20E7F30500BF3125 /* TaskPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */; };
 		10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD431B20BA473800E2DA1A /* Extensions.swift */; };
 		10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD274120BB9683004E05FE /* CustomTabBarController.swift */; };
@@ -73,6 +75,8 @@
 		10A4380120BA173A006B12BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		10A4380320BA173A006B12BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		10AEA2BC20FC341E005D5F1D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		10CB223620FD554000B0B027 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
+		10CB223A20FD6BFF00B0B027 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPopupViewController.swift; sourceTree = "<group>"; };
 		10DD431B20BA473800E2DA1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		10FD274120BB9683004E05FE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -162,6 +166,7 @@
 				10810DDA20BB1F6400BE941D /* AppUser.swift */,
 				10810DDC20BB21C300BE941D /* Main.swift */,
 				104FAB0620E71333006EC6A7 /* Task.swift */,
+				10CB223620FD554000B0B027 /* Workout.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 			children = (
 				10AEA2BC20FC341E005D5F1D /* ProfileViewModel.swift */,
 				104FAB0B20E72C95006EC6A7 /* TaskViewModel.swift */,
+				10CB223A20FD6BFF00B0B027 /* WorkoutViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -392,6 +398,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */,
+				10CB223B20FD6BFF00B0B027 /* WorkoutViewModel.swift in Sources */,
 				99FC86EC20BA480C00EB4EA5 /* BackgroundGradient.swift in Sources */,
 				9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */,
 				990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */,
@@ -423,6 +430,7 @@
 				10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */,
 				9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */,
 				99D39BC020F6F7A400E4B63B /* ImagePickerController.swift in Sources */,
+				10CB223720FD554000B0B027 /* Workout.swift in Sources */,
 				1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */,
 				10810DDD20BB21C300BE941D /* Main.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,

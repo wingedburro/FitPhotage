@@ -36,9 +36,10 @@ class PhonePopupViewController: UIViewController {
     
     @IBAction func confirmAction(_ sender: Any) {
         if label.text != "" {
-            ProfileViewModel.updateUser(field: "phone", value: label.text!, completion: nil)
-            self.dismiss(animated: true)
-            self.onSet?()
+            ProfileViewModel.updateUser(field: "phone", value: label.text!) { [unowned self] in
+                self.onSet?()
+                self.dismiss(animated: true)
+            }
         }
     }
     

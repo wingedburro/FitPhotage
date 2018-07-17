@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }()
     
     override func viewDidLoad() {
-        self.userRef = Database.database().reference().child("Users").child(Main.appUser!.uid)
+        self.userRef = Database.database().reference().child("users").child(Main.appUser!.uid)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -42,10 +42,12 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     
     override func viewWillAppear(_ animated: Bool) {
         // Load profile image from cache
-        if let imageUrl = ProfileViewModel.userInfo["profileImageUrl"] {
-            profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-        } else {
-            profileImageView.image = UIImage(named: "profile_icon")
+        DispatchQueue.main.async { [unowned self] in
+            if let imageUrl = ProfileViewModel.userInfo["profileImageUrl"] {
+                self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+            } else {
+                self.profileImageView.image = UIImage(named: "profile_icon")
+            }
         }
         
         // Set listeners
@@ -54,9 +56,11 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 print("someting added")
                 ProfileViewModel.userInfo[child.key] = child.value as? String
             }
-            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }, withCancel: nil)
-//
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -145,45 +149,63 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        self.definesPresentationContext = true
+        
         switch indexPath.section {
         case 0:
             switch indexPath.row {
             case 0:
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let phonePopup = sb.instantiateViewController(withIdentifier: "PhonePopupViewController") as! PhonePopupViewController
-                self.present(phonePopup, animated: true)
-                phonePopup.onSet = { [unowned self] in
-                    self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.present(phonePopup, animated: true)
                 }
+                phonePopup.onSet = { [unowned self] in
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+                return
             case 1:
                 return
             case 2:
-                self.definesPresentationContext = true
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let fitnessPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 fitnessPickerPopup.popupLabelText = "Select Fitness Program"
                 fitnessPickerPopup.popupButtonText = "Set Program"
                 fitnessPickerPopup.customPickerView.modelData = [FitnessProgram.level1.rawValue, FitnessProgram.xt.rawValue]
-                self.present(fitnessPickerPopup, animated: true)
+                DispatchQueue.main.async {
+                    self.present(fitnessPickerPopup, animated: true)
+                }
                 fitnessPickerPopup.onSet = { [unowned self] in
-                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
                 return
             case 3:
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let datePopup = sb.instantiateViewController(withIdentifier: "DatePopupViewController") as! DatePopupViewController
-                self.present(datePopup, animated: true)
-                datePopup.onSet = { [unowned self] in
-                    self.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self.present(datePopup, animated: true)
                 }
+                datePopup.onSet = { [unowned self] in
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                }
+                return
             case 4:
-                self.definesPresentationContext = true
                 let sb = UIStoryboard(name: "Main", bundle: nil)
                 let genderPickerPopup = sb.instantiateViewController(withIdentifier: "CustomPopupViewController") as! CustomPopupViewController
                 genderPickerPopup.customPickerView.modelData = [Gender.male.rawValue, Gender.female.rawValue]
-                self.present(genderPickerPopup, animated: true)
+                DispatchQueue.main.async {
+                    self.present(genderPickerPopup, animated: true)
+                }
                 genderPickerPopup.onSet = { [unowned self] in
-                    self.tableView.reloadData()
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
                 }
                 return
             

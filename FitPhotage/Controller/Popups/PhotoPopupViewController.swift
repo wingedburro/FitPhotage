@@ -27,7 +27,7 @@ class PhotoPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userRef = Database.database().reference().child("Users").child(Main.appUser!.uid)
+        userRef = Database.database().reference().child("users").child(Main.appUser!.uid)
         storageRef = Storage.storage().reference()
         
         popupView.layer.cornerRadius = 10.0
@@ -72,7 +72,7 @@ class PhotoPopupViewController: UIViewController {
         let uploadData = UIImagePNGRepresentation(#imageLiteral(resourceName: "LivFit"))
         let testImagesRef = self.storageRef.child("user_images").child(imageName)
             
-        testImagesRef.putData(uploadData!, metadata: nil) { (metadata, error) in
+        testImagesRef.putData(uploadData!, metadata: nil) { [unowned self] (metadata, error) in
                 guard let metadata = metadata else {
                     print("Error in Image Upload to Firebase")
                     return
@@ -86,7 +86,9 @@ class PhotoPopupViewController: UIViewController {
                 self.userRef.child("Images").child("Front Images").child(dateString).setValue(downloadURL)
             }
         
-        dismiss(animated: true)
+        DispatchQueue.main.async { [unowned self] in
+            self.dismiss(animated: true)
+        }
     }
     
     

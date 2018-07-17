@@ -13,11 +13,11 @@ class ProfileViewModel {
     static var userInfo = [String: String]()
     static let userRef: DatabaseReference = {
         if let currentUser = Main.appUser {
-            return Database.database().reference().child("Users").child(currentUser.uid)
+            return Database.database().reference().child("users").child(currentUser.uid)
         }
         
         let uid = Auth.auth().currentUser?.uid
-        return Database.database().reference().child("Users").child(uid!)
+        return Database.database().reference().child("users").child(uid!)
     }()
     
     static func updateUser(field: String, value: String, completion: (() -> ())?) {

@@ -20,17 +20,18 @@ class TaskCell: CustomCollectionViewCell {
     
     var task: Task? {
         didSet {
-            thumbnailImageView.image = task?.thumbnailImage
-            descriptionLabelView.text = task?.taskDescription
-            categoryLabelView.text = task?.category
-            if let isComplete = task?.isComplete {
-                if isComplete {
-                    completionImageView.image = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
-                } else {
-                    completionImageView.image = UIImage(named: "checklist_icon")
+            DispatchQueue.main.async { [unowned self] in
+                self.thumbnailImageView.image = self.task?.thumbnailImage
+                self.descriptionLabelView.text = self.task?.taskDescription
+                self.categoryLabelView.text = self.task?.category
+                if let isComplete = self.task?.isComplete {
+                    if isComplete {
+                        self.completionImageView.image = UIImage.init(named: "ok_icon")?.withRenderingMode(.alwaysTemplate)
+                    } else {
+                        self.completionImageView.image = UIImage(named: "checklist_icon")
+                    }
                 }
             }
-            
         }
     }
     

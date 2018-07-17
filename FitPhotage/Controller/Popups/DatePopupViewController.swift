@@ -35,9 +35,10 @@ class DatePopupViewController: UIViewController {
     }
 
     @IBAction func confirmAction(_ sender: Any) {
-        ProfileViewModel.updateUser(field: "birthday", value: formattedDate, completion: nil)
-        dismiss(animated: true)
-        onSet?()
+        ProfileViewModel.updateUser(field: "birthday", value: formattedDate) { [unowned self] in
+            self.onSet?()
+            self.dismiss(animated: true)
+        }
     }
     
     @IBAction func cancelAction(_ sender: Any) {

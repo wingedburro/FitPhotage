@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if user != nil {
                 let databaseRef = Database.database().reference()
                 let uid = Auth.auth().currentUser?.uid
-                let userRef = databaseRef.child("Users").child(uid!)
+                let userRef = databaseRef.child("users").child(uid!)
                 Main.appUser = Auth.auth().currentUser
                 userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     if snapshot.hasChild("name") {

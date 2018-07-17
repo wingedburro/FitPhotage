@@ -62,8 +62,11 @@ class CustomPopupViewController: UIViewController {
                 ProfileViewModel.updateUser(field: "program", value: FitnessProgram.xt.rawValue, completion: nil)
             }
         }
-        onSet?()
-        self.dismiss(animated: false)
+        
+        DispatchQueue.main.async { [unowned self] in
+            self.onSet?()
+            self.dismiss(animated: true)
+        }
     }
     
     @IBAction func cancelAction(_ sender: Any) {

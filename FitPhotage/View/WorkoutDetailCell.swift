@@ -1,5 +1,5 @@
 //
-//  WorkoutDetailCollectionViewCell.swift
+//  WorkoutDetailCell.swift
 //  FitPhotage
 //
 //  Created by Weston Mauz on 7/14/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WorkoutDetailCollectionViewCell: CustomCollectionViewCell {
+class WorkoutDetailCell: CustomCollectionViewCell {
     
     var workoutDetail: WorkoutDetail? {
         didSet {
@@ -38,6 +38,7 @@ class WorkoutDetailCollectionViewCell: CustomCollectionViewCell {
     }()
     
     override func setupViews() {
+        descriptionLabelView.preferredMaxLayoutWidth = self.frame.width
         addSubview(descriptionLabelView)
         addSubview(workoutImageView)
         

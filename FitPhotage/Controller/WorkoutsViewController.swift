@@ -18,6 +18,12 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         super.viewDidLoad()
         customizeView()
         self.navigationController?.hidesBarsOnSwipe = true
+        
+        // Grab workouts
+        WorkoutViewModel.getWorkouts { [unowned self] in
+            self.collectionView?.reloadData()
+            self.collectionView?.collectionViewLayout.invalidateLayout()
+        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -62,19 +68,17 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return 8
+        return WorkoutViewModel.workouts.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WorkoutCell
-        cell?.workout = Workout(workoutDescription: nil, thumbnail: nil, imageSet: nil, isComplete: nil)
+        cell?.workout = WorkoutViewModel.workouts[indexPath.row]
         return cell!
     }
     
@@ -85,6 +89,11 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        let workoutDetailVC = WorkoutDetailViewController()
+        workoutDetailVC.workoutDetails = WorkoutViewModel.workouts[indexPath.row].workoutSet
+        DispatchQueue.main.async { [unowned self] in
+            self.present(workoutDetailVC, animated: true)
+        }
     }
 
 }

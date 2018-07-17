@@ -29,6 +29,8 @@
 		10AEA2BD20FC341E005D5F1D /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10AEA2BC20FC341E005D5F1D /* ProfileViewModel.swift */; };
 		10CB223720FD554000B0B027 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223620FD554000B0B027 /* Workout.swift */; };
 		10CB223B20FD6BFF00B0B027 /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223A20FD6BFF00B0B027 /* WorkoutViewModel.swift */; };
+		10CB223D20FD95CB00B0B027 /* WorkoutDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223C20FD95CB00B0B027 /* WorkoutDetailCell.swift */; };
+		10CB223F20FD997600B0B027 /* PhotoPopupExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223E20FD997600B0B027 /* PhotoPopupExtention.swift */; };
 		10D1A6EE20E7F30500BF3125 /* TaskPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */; };
 		10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD431B20BA473800E2DA1A /* Extensions.swift */; };
 		10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD274120BB9683004E05FE /* CustomTabBarController.swift */; };
@@ -42,10 +44,8 @@
 		9941293A20C1F5BA00F38704 /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293920C1F5BA00F38704 /* DocumentsViewController.swift */; };
 		9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9941293B20C1F5FE00F38704 /* DocumentCell.swift */; };
 		9955408F20FA9DA200592AAA /* WorkoutDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955408E20FA9DA200592AAA /* WorkoutDetailViewController.swift */; };
-		9955409120FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9955409020FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift */; };
 		9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */; };
 		99CFCB0620C45A9F00F43E3E /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */; };
-		99D39BC020F6F7A400E4B63B /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */; };
 		99D39BC620F70D4C00E4B63B /* PhotoPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D39BC520F70D4C00E4B63B /* PhotoPopupViewController.swift */; };
 		99F921E520D741D800E3797A /* CustomPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99F921E420D741D800E3797A /* CustomPickerView.swift */; };
 		99FC86E820BA461C00EB4EA5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */; };
@@ -77,6 +77,8 @@
 		10AEA2BC20FC341E005D5F1D /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		10CB223620FD554000B0B027 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
 		10CB223A20FD6BFF00B0B027 /* WorkoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
+		10CB223C20FD95CB00B0B027 /* WorkoutDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailCell.swift; sourceTree = "<group>"; };
+		10CB223E20FD997600B0B027 /* PhotoPopupExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPopupExtention.swift; sourceTree = "<group>"; };
 		10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPopupViewController.swift; sourceTree = "<group>"; };
 		10DD431B20BA473800E2DA1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		10FD274120BB9683004E05FE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
@@ -90,10 +92,8 @@
 		9941293920C1F5BA00F38704 /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		9941293B20C1F5FE00F38704 /* DocumentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentCell.swift; sourceTree = "<group>"; };
 		9955408E20FA9DA200592AAA /* WorkoutDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailViewController.swift; sourceTree = "<group>"; };
-		9955409020FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailCollectionViewCell.swift; sourceTree = "<group>"; };
 		9972FC0220C637AD00925030 /* ProgressTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTableViewCell.swift; sourceTree = "<group>"; };
 		99CFCB0520C45A9F00F43E3E /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerController.swift; sourceTree = "<group>"; };
 		99D39BC520F70D4C00E4B63B /* PhotoPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPopupViewController.swift; sourceTree = "<group>"; };
 		99F921E420D741D800E3797A /* CustomPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerView.swift; sourceTree = "<group>"; };
 		99FC86E720BA461C00EB4EA5 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				99F921E420D741D800E3797A /* CustomPickerView.swift */,
 				1006279420DB3C8100024272 /* ButtonWithImage.swift */,
 				104FAB0820E71BE8006EC6A7 /* CustomCollectionViewCell.swift */,
-				9955409020FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift */,
+				10CB223C20FD95CB00B0B027 /* WorkoutDetailCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				10DD431B20BA473800E2DA1A /* Extensions.swift */,
-				99D39BBF20F6F7A400E4B63B /* ImagePickerController.swift */,
+				10CB223E20FD997600B0B027 /* PhotoPopupExtention.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -403,9 +403,9 @@
 				9972FC0320C637AD00925030 /* ProgressTableViewCell.swift in Sources */,
 				990AE07320BFA23800B2E088 /* TasksViewController.swift in Sources */,
 				99D39BC620F70D4C00E4B63B /* PhotoPopupViewController.swift in Sources */,
-				9955409120FA9F4800592AAA /* WorkoutDetailCollectionViewCell.swift in Sources */,
 				10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */,
 				1006279520DB3C8100024272 /* ButtonWithImage.swift in Sources */,
+				10CB223D20FD95CB00B0B027 /* WorkoutDetailCell.swift in Sources */,
 				992B635520F27EF600932BAB /* PhonePopupViewController.swift in Sources */,
 				10810DDB20BB1F6400BE941D /* AppUser.swift in Sources */,
 				1052884E20BE461800DA8511 /* RootViewController.swift in Sources */,
@@ -427,9 +427,9 @@
 				990AE07120BFA11E00B2E088 /* TaskCell.swift in Sources */,
 				104FAB0920E71BE8006EC6A7 /* CustomCollectionViewCell.swift in Sources */,
 				99088E2D20BC52FC004DDF49 /* WorkoutsViewController.swift in Sources */,
+				10CB223F20FD997600B0B027 /* PhotoPopupExtention.swift in Sources */,
 				10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */,
 				9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */,
-				99D39BC020F6F7A400E4B63B /* ImagePickerController.swift in Sources */,
 				10CB223720FD554000B0B027 /* Workout.swift in Sources */,
 				1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */,
 				10810DDD20BB21C300BE941D /* Main.swift in Sources */,

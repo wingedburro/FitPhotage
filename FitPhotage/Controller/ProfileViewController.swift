@@ -53,7 +53,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         // Set listeners
         self.profileListener = userRef.observe(.value, with: { [unowned self] (snapshot) in
             for child in snapshot.children.allObjects as! [DataSnapshot] {
-                print("someting added")
                 ProfileViewModel.userInfo[child.key] = child.value as? String
             }
             

@@ -15,7 +15,13 @@ class WorkoutViewModel {
     
     static func getWorkouts(completion: (() -> ())?) {
         DispatchQueue.global(qos: .userInteractive).async {
-            <#code#>
+            if (WorkoutViewModel.workouts.count == 0) {
+                WorkoutViewModel.workouts.append(Workout())
+            }
+            
+            DispatchQueue.main.async {
+                completion?()
+            }
         }
     }
 }

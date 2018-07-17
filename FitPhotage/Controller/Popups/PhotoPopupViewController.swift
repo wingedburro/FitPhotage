@@ -70,7 +70,7 @@ class PhotoPopupViewController: UIViewController {
         let dateString = dateFormatted.string(from: date as Date)
 
         let uploadData = UIImagePNGRepresentation(#imageLiteral(resourceName: "LivFit"))
-        let testImagesRef = self.storageRef.child("user_images").child(imageName)
+        let testImagesRef = self.storageRef.child("users").child(Main.appUser!.uid).child(imageName)
             
         testImagesRef.putData(uploadData!, metadata: nil) { [unowned self] (metadata, error) in
                 guard let metadata = metadata else {
@@ -83,7 +83,7 @@ class PhotoPopupViewController: UIViewController {
                 }
             
                 // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
-                self.userRef.child("Images").child("Front Images").child(dateString).setValue(downloadURL)
+                self.userRef.child("front_images").child(dateString).setValue(downloadURL)
             }
         
         DispatchQueue.main.async { [unowned self] in

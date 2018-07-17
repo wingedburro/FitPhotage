@@ -1,5 +1,5 @@
 //
-//  ImagePickerController.swift
+//  PhotoPopupViewExtension.swift
 //  FitPhotage
 //
 //  Created by Weston Mauz on 7/11/18.
@@ -11,7 +11,7 @@ import UIKit
 
 extension PhotoPopupViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func handleSelectProfileImageView(){
+    func handleSelectProfileImageView() {
         let picker = UIImagePickerController()
         
         picker.delegate = self
@@ -20,16 +20,18 @@ extension PhotoPopupViewController: UIImagePickerControllerDelegate, UINavigatio
         
         
         func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-            picker.dismiss(animated: true, completion: nil)
+            DispatchQueue.main.async {
+                picker.dismiss(animated: true, completion: nil)
+            }
         }
         
-        func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWith Info: [String : Any]){
+        func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWith Info: [String : Any]) {
             
             var selectedImageFromPicker: UIImage?
             
             if let editedImage = Info[UIImagePickerControllerEditedImage] as? UIImage {
                 selectedImageFromPicker = editedImage
-            } else if let originalImage = Info[UIImagePickerControllerOriginalImage] as? UIImage{
+            } else if let originalImage = Info[UIImagePickerControllerOriginalImage] as? UIImage {
                 selectedImageFromPicker = originalImage
             }
             
@@ -37,14 +39,15 @@ extension PhotoPopupViewController: UIImagePickerControllerDelegate, UINavigatio
                 uploadImage.image = selectedImage
             }
             
-            picker.dismiss(animated: true, completion: nil)
-        
+            DispatchQueue.main.async {
+                picker.dismiss(animated: true, completion: nil)
+            }
+            
         }
         
-
-        
-        
-        present(picker, animated: true, completion: nil)
+        DispatchQueue.main.async { [unowned self] in
+            self.present(picker, animated: true, completion: nil)
+        }
     }
-
+    
 }

@@ -13,7 +13,11 @@ class WorkoutDetailCell: CustomCollectionViewCell {
     var workoutDetail: WorkoutDetail? {
         didSet {
             DispatchQueue.main.async { [unowned self] in
-                self.workoutImageView.image = self.workoutDetail?.workoutDetailImage
+                guard let urlString = self.workoutDetail?.workoutDetailImageUrl else {
+                    self.workoutImageView.image = UIImage(named: "yoga.png")
+                    return
+                }
+                self.workoutImageView.loadImagesUsingCacheWithUrlString(urlString: urlString)
                 self.descriptionLabelView.text = self.workoutDetail?.workoutDetailDescription
             }
         }
@@ -45,5 +49,6 @@ class WorkoutDetailCell: CustomCollectionViewCell {
         addConstraintsWithFormat(format: "H:|[v0]|", views: descriptionLabelView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: workoutImageView)
         addConstraintsWithFormat(format: "V:|[v0]-8-[v1]|", views: descriptionLabelView, workoutImageView)
+        descriptionLabelView.center = self.center
     }
 }

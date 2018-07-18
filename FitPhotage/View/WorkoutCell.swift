@@ -20,7 +20,11 @@ class WorkoutCell: CustomCollectionViewCell {
     var workout: Workout? {
         didSet {
             DispatchQueue.main.async { [unowned self] in
-                self.thumbnailImageView.image = self.workout?.thumbnail
+                guard let urlString = self.workout?.thumbnailUrl else {
+                    self.thumbnailImageView.image = UIImage(named: "yoga.png")
+                    return
+                }
+                self.thumbnailImageView.loadImagesUsingCacheWithUrlString(urlString: urlString)
                 self.descriptionLabelView.text = self.workout?.workoutDescription
                 if let isComplete = self.workout?.isComplete {
                     if isComplete {

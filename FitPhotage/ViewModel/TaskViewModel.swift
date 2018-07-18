@@ -13,11 +13,11 @@ class TaskViewModel {
     
     static func getTasks(completion: @escaping () -> ()) {
         DispatchQueue.global(qos: .userInteractive).async {
-            if (TaskViewModel.userTasks.count == 0) {
-                TaskViewModel.userTasks.append(Task(description: "Read Documents", category: "Documents", isComplete: false))
-                TaskViewModel.userTasks.append(Task(description: "Update Fitness Program", category: "Profile", isComplete: false))
-                TaskViewModel.userTasks.append(Task(description: "Update Gender", category: "Profile", isComplete: false))
-                TaskViewModel.userTasks.append(Task(description: "Update Phone Number", category: "Profile", isComplete: false))
+            if (userTasks.count == 0) {
+                userTasks.append(Task(description: "Read Documents", category: "Documents", isComplete: false))
+                userTasks.append(Task(description: "Update Fitness Program", category: "Profile", isComplete: false))
+                userTasks.append(Task(description: "Update Gender", category: "Profile", isComplete: false))
+                userTasks.append(Task(description: "Update Phone Number", category: "Profile", isComplete: false))
             }
             
             DispatchQueue.main.async {
@@ -28,7 +28,7 @@ class TaskViewModel {
     
     static func updateTask(index: Int, isComplete: Bool, completion: @escaping () -> ()) {
         DispatchQueue.global(qos: .userInteractive).async {
-            TaskViewModel.userTasks[index].isComplete = isComplete
+            userTasks[index].isComplete = isComplete
             
             DispatchQueue.main.async {
                 completion()

@@ -10,36 +10,36 @@ import UIKit
 
 class Workout {
     var workoutDescription: String
-    var thumbnail: UIImage
+    var thumbnailUrl: String
     var workoutSet: [WorkoutDetail]
     var isComplete: Bool
     
-    public init(workoutDescription: String, thumbnail: UIImage, workoutSet: [WorkoutDetail], isComplete: Bool) {
+    public init(workoutDescription: String, thumbnailUrl: String, workoutSet: [WorkoutDetail], isComplete: Bool) {
         self.workoutDescription = workoutDescription
-        self.thumbnail = thumbnail
+        self.thumbnailUrl = thumbnailUrl
         self.workoutSet = workoutSet
         self.isComplete = isComplete
     }
     
     public init() {
         self.workoutDescription = "Workout"
-        self.thumbnail = UIImage(named: "yoga.png")!
-        self.workoutSet = [WorkoutDetail(workoutDetailDescription: "Workout", workoutDetailImage: UIImage(named: "yoga.png")!)]
+        self.thumbnailUrl = "yoga.png"
+        self.workoutSet = [WorkoutDetail()]
         self.isComplete = false
     }
 }
 
 struct WorkoutDetail {
     var workoutDetailDescription: String
-    var workoutDetailImage: UIImage
+    var workoutDetailImageUrl: String
     
-    public init(workoutDetailDescription: String, workoutDetailImage: UIImage) {
+    public init(workoutDetailDescription: String, workoutDetailImageUrl: String) {
         self.workoutDetailDescription = workoutDetailDescription
-        self.workoutDetailImage = workoutDetailImage
+        self.workoutDetailImageUrl = workoutDetailImageUrl
     }
     
     public init() {
         self.workoutDetailDescription = "Workout Detail"
-        self.workoutDetailImage = UIImage(named: "yoga.png")!
+        self.workoutDetailImageUrl = "yoga.png"
     }
 }

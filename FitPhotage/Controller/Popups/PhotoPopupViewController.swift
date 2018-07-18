@@ -74,18 +74,23 @@ class PhotoPopupViewController: UIViewController {
         let testImagesRef = self.storageRef.child("users").child((Auth.auth().currentUser?.uid)!).child(imageName)
             
         testImagesRef.putData(uploadData!, metadata: nil) { [unowned self] (metadata, error) in
-                guard let metadata = metadata else {
-                    print("Error in Image Upload to Firebase")
-                    return
-                }
-                guard let downloadURL = metadata.downloadURL()?.absoluteString else {
-                    print("Error setting download URL")
-                    return
-                }
-            
-                // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
-                self.userRef.child("front_images").child(dateString).setValue(downloadURL)
+            if error != nil {
+                return
             }
+            
+            guard let metadata = metadata else {
+                print("Error in Image Upload to Firebase")
+                return
+            }
+            
+            guard let downloadURL = metadata.downloadURL()?.absoluteString else {
+                print("Error setting download URL")
+                return
+            }
+        
+            // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
+            self.userRef.child("front_images").child(dateString).setValue(downloadURL)
+        }
         
         DispatchQueue.main.async { [unowned self] in
             self.dismiss(animated: true)

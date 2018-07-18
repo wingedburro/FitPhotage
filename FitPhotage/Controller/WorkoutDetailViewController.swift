@@ -33,17 +33,20 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     }
     
     private func customizeView() {
+        let statusBarHeight = UIApplication.shared.statusBarFrame.height
         let statusBarBackgroundView: UIView = {
-            let status = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: UIApplication.shared.statusBarFrame.height))
+            let status = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: statusBarHeight))
             status.backgroundColor = UIColor.CustomColors.customLightOrange
+            status.translatesAutoresizingMaskIntoConstraints = false
             return status
         }()
         
         self.view.addSubview(statusBarBackgroundView)
         self.view.addSubview(detailCollectionView)
         
+        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
         self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: detailCollectionView)
-        self.view.addConstraintsWithFormat(format: "V:|[v0]|", views: detailCollectionView)
+        self.view.addConstraintsWithFormat(format: "V:|[v0(\(statusBarHeight))]-8-[v1(\(self.view.bounds.height - statusBarHeight))]|", views: statusBarBackgroundView, detailCollectionView)
         navigationItem.title = "This Workout"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -57,6 +60,7 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     
     private func setupCollectionFlowLayout() {
         detailCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: detailFlowLayout)
+        detailCollectionView.translatesAutoresizingMaskIntoConstraints = false
         detailCollectionView.backgroundColor = UIColor.white
         detailCollectionView.dataSource = self
         detailCollectionView.delegate = self

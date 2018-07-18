@@ -45,8 +45,18 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             self.userRef = Database.database().reference().child("users").child(user.uid)
         } else {
             DispatchQueue.main.async { [unowned self] in
-                self.perform(#selector(self.logoutHandler), with: nil, afterDelay: 0)
+                self.perform(#selector(self.handleLogout), with: nil, afterDelay: 0)
             }
+        }
+    }
+    
+    @objc private func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+            GIDSignIn.sharedInstance().signOut()
+            AppDelegate.shared.rootViewController.goToLogout()
+        } catch let logoutError {
+            print(logoutError)
         }
     }
     

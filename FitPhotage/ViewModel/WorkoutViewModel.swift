@@ -12,11 +12,24 @@ import FirebaseStorage
 
 class WorkoutViewModel {
     static var workouts = [Workout]()
+    static let workoutRef = Database.database().reference().child("workouts")
     
     static func getWorkouts(completion: (() -> ())?) {
         DispatchQueue.global(qos: .userInteractive).async {
-            if (WorkoutViewModel.workouts.count == 0) {
-                WorkoutViewModel.workouts.append(Workout())
+            if workouts.count == 0 {
+                workoutRef.observeSingleEvent(of: .value, with: { (snapshot) in
+                    for child in snapshot.children.allObjects as! [DataSnapshot] {
+                        if let dictionary = child.value as? [String: AnyObject] {
+                            let description = dictionary["description"] as! String
+                            let detail = dictionary["detail"] as! String
+                            let detailImage = dictionary["detail_image"] as! String
+                            let thumbnail = dictionary["thumbnail"] as! String
+                            let workoutDetail = WorkoutDetail(workoutDetailDescription: detail, workoutDetailImageUrl: detailImage)
+                            let newWorkout = Workout(workoutDescription: description, thumbnailUrl: thumbnail, workoutSet: [workoutDetail], isComplete: false)
+                            workouts.append(newWorkout)
+                        }
+                    }
+                }, withCancel: nil)
             }
             
             DispatchQueue.main.async {

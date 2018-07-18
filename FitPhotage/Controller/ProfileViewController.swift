@@ -94,6 +94,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
                 }
                 
                 DispatchQueue.main.async {
+                    self.navigationItem.title = ProfileViewModel.userInfo["name"] ?? "You"
                     self.tableView.reloadData()
                 }
             }, withCancel: nil)
@@ -108,7 +109,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     
     private func customizeView() {
         view.backgroundColor = UIColor.CustomColors.whiteSmoke
-        navigationItem.title = ProfileViewModel.userInfo["name"] ?? "You"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }

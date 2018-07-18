@@ -14,6 +14,23 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     
     private let cellsPerRow = 1
     
+    let statusBarBackgroundView: UIView = {
+        let status = UIView(frame: .zero)
+        status.backgroundColor = UIColor.CustomColors.customLightOrange
+        status.translatesAutoresizingMaskIntoConstraints = false
+        return status
+    }()
+    
+    let navBar: UINavigationBar = {
+        let navBar = UINavigationBar(frame: .zero)
+        navBar.translatesAutoresizingMaskIntoConstraints = false
+        navBar.shadowImage = UIImage()
+        navBar.isTranslucent = false
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
+        navBar.titleTextAttributes = textAttributes
+        return navBar
+    }()
+    
     let detailFlowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 0
@@ -34,22 +51,28 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     
     private func customizeView() {
         let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        let statusBarBackgroundView: UIView = {
-            let status = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: statusBarHeight))
-            status.backgroundColor = UIColor.CustomColors.customLightOrange
-            status.translatesAutoresizingMaskIntoConstraints = false
-            return status
-        }()
+        let navBarHeight: CGFloat = 44
+        let collectionViewHeight = view.frame.height - statusBarHeight - navBarHeight
+        let viewWidth = view.frame.width
+        
+        navigationItem.title = "This Workout"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
+        navBar.items = [navigationItem]
         
         self.view.addSubview(statusBarBackgroundView)
+        self.view.addSubview(navBar)
         self.view.addSubview(detailCollectionView)
         
-        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: statusBarBackgroundView)
-        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: detailCollectionView)
-        self.view.addConstraintsWithFormat(format: "V:|[v0(\(statusBarHeight))]-8-[v1(\(self.view.bounds.height - statusBarHeight))]|", views: statusBarBackgroundView, detailCollectionView)
-        navigationItem.title = "This Workout"
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
+        self.view.addConstraintsWithFormat(format: "H:|[v0(\(viewWidth))]|", views: statusBarBackgroundView)
+        self.view.addConstraintsWithFormat(format: "H:|[v0(\(viewWidth))]|", views: navBar)
+        self.view.addConstraintsWithFormat(format: "H:|[v0(\(viewWidth))]|", views: detailCollectionView)
+        self.view.addConstraintsWithFormat(format: "V:|[v0(\(statusBarHeight))]-0-[v1(\(navBarHeight))]-0-[v2(\(collectionViewHeight))]|", views: statusBarBackgroundView, navBar, detailCollectionView)
+    }
+    
+    @objc private func dismissView() {
+        DispatchQueue.main.async {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     override func viewWillLayoutSubviews() {

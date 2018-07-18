@@ -32,12 +32,38 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }()
     
     override func viewDidLoad() {
-        self.userRef = Database.database().reference().child("users").child(Main.appUser!.uid)
+        checkIfUserLoggedIn()
         tableView.delegate = self
         tableView.dataSource = self
         
         setupConstraints()
         customizeView()
+    }
+    
+    private func checkIfUserLoggedIn() {
+        if let user = Auth.auth().currentUser {
+            self.userRef = Database.database().reference().child("users").child(user.uid)
+        } else {
+            DispatchQueue.main.async { [unowned self] in
+                self.perform(#selector(self.logoutHandler), with: nil, afterDelay: 0)
+            }
+        }
+    }
+    
+    @objc private func logoutHandler() {
+        for user in (Auth.auth().currentUser?.providerData)! {
+            if (user.providerID == "google.com") {
+                GIDSignIn.sharedInstance().signOut()
+                AppDelegate.shared.rootViewController.goToLogout()
+            } else {
+                do {
+                    try Auth.auth().signOut()
+                    AppDelegate.shared.rootViewController.goToLogout()
+                } catch let logoutError {
+                    print(logoutError)
+                }
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,19 +77,23 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         }
         
         // Set listeners
-        self.profileListener = userRef.observe(.value, with: { [unowned self] (snapshot) in
-            for child in snapshot.children.allObjects as! [DataSnapshot] {
-                ProfileViewModel.userInfo[child.key] = child.value as? String
-            }
-            
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }, withCancel: nil)
+        if userRef != nil {
+            self.profileListener = userRef.observe(.value, with: { [unowned self] (snapshot) in
+                for child in snapshot.children.allObjects as! [DataSnapshot] {
+                    ProfileViewModel.userInfo[child.key] = child.value as? String
+                }
+                
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }, withCancel: nil)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.userRef.removeAllObservers()
+        if userRef != nil {
+            self.userRef.removeAllObservers()
+        }
     }
     
     private func customizeView() {
@@ -78,13 +108,8 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         logoutButton.backgroundColor = UIColor.orange
         logoutButton.setTitle("Logout", for: .normal)
         logoutButton.setTitleColor(UIColor.white, for: .normal)
-        logoutButton.addTarget(self, action: #selector(googleLogoutHandler), for: .touchUpInside)
+        logoutButton.addTarget(self, action: #selector(logoutHandler), for: .touchUpInside)
         view.addSubview(logoutButton)
-    }
-    
-    @objc private func googleLogoutHandler() {
-        GIDSignIn.sharedInstance().signOut()
-        AppDelegate.shared.rootViewController.goToLogout()
     }
     
     private func setupConstraints() {
@@ -94,7 +119,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         view.addSubview(profileImageView)
         view.addSubview(tableView)
         view.addConstraintsWithFormat(format: "H:|-\((view.frame.width-imageWidth)/2)-[v0(\(imageWidth))]", views: profileImageView)
-        view.addConstraintsWithFormat(format: "H:|-0-[v0]-0-|", views: tableView)
+        view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
         view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .height, relatedBy: .equal, toItem: profileImageView, attribute: .width, multiplier: 1, constant: 1))
         view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .top, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 16))
         view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: profileImageView, attribute: .bottom, multiplier: 1, constant: 8))
@@ -211,7 +236,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             default: fatalError("Unknown section")
             }
         case 1:
-           googleLogoutHandler()
+           logoutHandler()
         default: fatalError("Unknown section")
         }
     }

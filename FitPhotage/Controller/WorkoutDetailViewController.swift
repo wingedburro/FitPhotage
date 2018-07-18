@@ -22,32 +22,28 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
         return flowLayout
     }()
     
-    var detailCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = UIColor.white
-        
-        return collectionView
-    }()
+    var detailCollectionView: UICollectionView!
     
     var workoutDetails = [WorkoutDetail]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupCollectionFlowLayout()
         self.customizeView()
-        
-        setupCollectionFlowLayout()
     }
     
     private func customizeView() {
         let statusBarBackgroundView: UIView = {
             let status = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: UIApplication.shared.statusBarFrame.height))
             status.backgroundColor = UIColor.CustomColors.customLightOrange
-            status.translatesAutoresizingMaskIntoConstraints = false
             return status
         }()
         
-        view.addSubview(statusBarBackgroundView)
+        self.view.addSubview(statusBarBackgroundView)
+        self.view.addSubview(detailCollectionView)
+        
+        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: detailCollectionView)
+        self.view.addConstraintsWithFormat(format: "V:|[v0]|", views: detailCollectionView)
         navigationItem.title = "This Workout"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -60,9 +56,10 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     }
     
     private func setupCollectionFlowLayout() {
+        detailCollectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: detailFlowLayout)
+        detailCollectionView.backgroundColor = UIColor.white
         detailCollectionView.dataSource = self
         detailCollectionView.delegate = self
-        detailCollectionView.collectionViewLayout = detailFlowLayout
         detailCollectionView.contentInsetAdjustmentBehavior = .always
         detailCollectionView.register(WorkoutDetailCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     }

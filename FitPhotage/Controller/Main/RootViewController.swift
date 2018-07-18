@@ -13,7 +13,7 @@ class RootViewController: UIViewController {
     private var currentView: UIViewController
     
     init() {
-        self.currentView = SplashViewController()
+        self.currentView = CustomTabBarController()
         super.init(nibName: nil, bundle: nil)
     }
     

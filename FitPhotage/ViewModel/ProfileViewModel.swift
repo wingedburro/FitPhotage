@@ -12,7 +12,7 @@ import Firebase
 class ProfileViewModel {
     static var userInfo = [String: String]()
     static let userRef: DatabaseReference = {
-        if let currentUser = Main.appUser {
+        if let currentUser = Auth.auth().currentUser {
             return Database.database().reference().child("users").child(currentUser.uid)
         }
         

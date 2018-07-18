@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
 import FirebaseStorage
 
 class PhotoPopupViewController: UIViewController {
@@ -27,7 +28,7 @@ class PhotoPopupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        userRef = Database.database().reference().child("users").child(Main.appUser!.uid)
+        userRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
         storageRef = Storage.storage().reference()
         
         popupView.layer.cornerRadius = 10.0
@@ -70,7 +71,7 @@ class PhotoPopupViewController: UIViewController {
         let dateString = dateFormatted.string(from: date as Date)
 
         let uploadData = UIImagePNGRepresentation(#imageLiteral(resourceName: "LivFit"))
-        let testImagesRef = self.storageRef.child("users").child(Main.appUser!.uid).child(imageName)
+        let testImagesRef = self.storageRef.child("users").child((Auth.auth().currentUser?.uid)!).child(imageName)
             
         testImagesRef.putData(uploadData!, metadata: nil) { [unowned self] (metadata, error) in
                 guard let metadata = metadata else {

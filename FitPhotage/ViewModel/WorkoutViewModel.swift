@@ -13,10 +13,9 @@ import FirebaseStorage
 class WorkoutViewModel {
     static var workouts = [Workout]()
     
-    static func getWorkouts(completion: (() -> ())?) {
+    static func getWorkouts(databaseRef: DatabaseReference, completion: (() -> ())?) {
         DispatchQueue.global(qos: .userInteractive).async {
-            let workoutRef = Database.database().reference().child("workouts")
-            workoutRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            databaseRef.observeSingleEvent(of: .value, with: { (snapshot) in
                 for child in snapshot.children.allObjects as! [DataSnapshot] {
                     if let dictionary = child.value as? [String: AnyObject] {
                         let description = dictionary["description"] as! String

@@ -7,20 +7,25 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class WorkoutsViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     private let reuseIdentifier = "Cell"
     
     private let cellsPerRow = 2
+    
+    var workoutRef: DatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
         self.navigationController?.hidesBarsOnSwipe = true
         
+        workoutRef = Database.database().reference().child("workouts")
+        
         // Grab workouts
-        WorkoutViewModel.getWorkouts { [unowned self] in
+        WorkoutViewModel.getWorkouts(databaseRef: workoutRef) { [unowned self] in
             self.collectionView?.reloadData()
             self.collectionView?.collectionViewLayout.invalidateLayout()
         }

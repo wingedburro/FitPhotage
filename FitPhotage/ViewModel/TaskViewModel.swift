@@ -1,5 +1,5 @@
 //
-//  TaskFunctions.swift
+//  TaskViewModel.swift
 //  FitPhotage
 //
 //  Created by Kevin Liao on 6/29/18.
@@ -8,14 +8,16 @@
 
 import Foundation
 
-class TaskFunctions {
+class TaskViewModel {
+    static var userTasks = [Task]()
+    
     static func getTasks(completion: @escaping () -> ()) {
         DispatchQueue.global(qos: .userInteractive).async {
-            if (Data.userTasks.count == 0) {
-                Data.userTasks.append(Task(description: "Read Documents", category: "Documents", isComplete: false))
-                Data.userTasks.append(Task(description: "Update Fitness Program", category: "Profile", isComplete: false))
-                Data.userTasks.append(Task(description: "Update Gender", category: "Profile", isComplete: false))
-                Data.userTasks.append(Task(description: "Update Phone Number", category: "Profile", isComplete: false))
+            if (userTasks.count == 0) {
+                userTasks.append(Task(description: "Read Documents", category: "Documents", isComplete: false))
+                userTasks.append(Task(description: "Update Fitness Program", category: "Profile", isComplete: false))
+                userTasks.append(Task(description: "Update Gender", category: "Profile", isComplete: false))
+                userTasks.append(Task(description: "Update Phone Number", category: "Profile", isComplete: false))
             }
             
             DispatchQueue.main.async {
@@ -26,7 +28,7 @@ class TaskFunctions {
     
     static func updateTask(index: Int, isComplete: Bool, completion: @escaping () -> ()) {
         DispatchQueue.global(qos: .userInteractive).async {
-            Data.userTasks[index].isComplete = isComplete
+            userTasks[index].isComplete = isComplete
             
             DispatchQueue.main.async {
                 completion()

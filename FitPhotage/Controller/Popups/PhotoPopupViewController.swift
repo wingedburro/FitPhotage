@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+import FirebaseDatabase
+import FirebaseAuth
 import FirebaseStorage
 
 class PhotoPopupViewController: UIViewController {
     
-    
+    var userRef: DatabaseReference!
+    var storageRef: StorageReference!
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var uploadImage: UIImageView!
@@ -23,10 +26,10 @@ class PhotoPopupViewController: UIViewController {
     
     var onSet: (() -> ())?
     
-    let storage = Storage.storage()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        userRef = Database.database().reference().child("users").child((Auth.auth().currentUser?.uid)!)
+        storageRef = Storage.storage().reference()
         
         popupView.layer.cornerRadius = 10.0
         popupView.layer.masksToBounds = true
@@ -43,48 +46,57 @@ class PhotoPopupViewController: UIViewController {
     @IBAction func confirmAction(_ sender: Any) {
         
         // KEEP THESE COMMENTS FOR WHEN WE ARE ABLE TO RETRIEVE IMAGE FROM PICKER
-//        if uploadImage.image != nil {
-//            let storageRef = Storage.storage().reference().child("testImage.png")
-//
-//            if let uploadData = UIImagePNGRepresentation(uploadImage.image!){
-//                storageRef.putData(uploadData, metadata: nil)
-//            }
-//            print("successful dawg")
-//        }
-//        else {
-//            print("Not entered")
-//            dismiss(animated: true)
-//        }
-//        let timestamp = NSDate().timeIntervalSince1970
-        
-        // Unique Name for "Storage" in firebase to prevent duplicate Strings
-        let imageName = NSUUID().uuidString
-        
-        // Retrieving Unix Timestamp and Converting it to date format
-        let newestTime = Date().timeIntervalSince1970
-        let date = NSDate.init(timeIntervalSince1970: newestTime)
-        let dateFormatted = DateFormatter()
-        dateFormatted.dateFormat = "MM-dd-YYYY-hh:mm:ss"
-        let dateString = dateFormatted.string(from: date as Date)
-
-        let uploadData = UIImagePNGRepresentation(#imageLiteral(resourceName: "LivFit"))
-        let storageRef = Storage.storage().reference()
-        let testImagesRef = storageRef.child("user_images").child(imageName)
+        if uploadImage.image != nil {
+            // Retrieving Unix Timestamp and Converting it to date format
+            let newestTime = Date().timeIntervalSince1970
+            let date = NSDate.init(timeIntervalSince1970: newestTime)
+            let dateFormatted = DateFormatter()
+            dateFormatted.dateFormat = "MM-dd-YYYY-hh:mm:ss"
+            let dateString = dateFormatted.string(from: date as Date)
             
-        testImagesRef.putData(uploadData!, metadata: nil) { (metadata, error) in
-                guard let metadata = metadata else {
-                    print("Error in Image Upload to Firebase")
-                    return
+            // Unique Name for "Storage" in firebase to prevent duplicate Strings
+            let imageName = NSUUID().uuidString
+            
+            let imageRef = self.storageRef.child("users").child((Auth.auth().currentUser?.uid)!).child(imageName)
+
+            if let uploadData = UIImageJPEGRepresentation(uploadImage.image!, 0.8) {
+                imageRef.putData(uploadData, metadata: nil) { [unowned self] (metadata, error) in
+                    if error != nil {
+                        DispatchQueue.main.async { [unowned self] in
+                            self.dismiss(animated: true)
+                        }
+                        return
+                    }
+                    
+                    guard let metadata = metadata else {
+                        print("Error in Image Upload to Firebase")
+                        DispatchQueue.main.async { [unowned self] in
+                            self.dismiss(animated: true)
+                        }
+                        return
+                    }
+                    
+                    guard let downloadURL = metadata.downloadURL()?.absoluteString else {
+                        print("Error setting download URL")
+                        DispatchQueue.main.async { [unowned self] in
+                            self.dismiss(animated: true)
+                        }
+                        return
+                    }
+                    
+                    // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
+                    self.userRef.child("front_images").child(dateString).setValue(downloadURL)
+                    
+                    DispatchQueue.main.async { [unowned self] in
+                        self.dismiss(animated: true)
+                    }
                 }
-                guard let downloadURL = metadata.downloadURL()?.absoluteString else {
-                    print("Error setting download URL")
-                    return
-                }
-            // Taking ONLY THE FRONT IMAGE WITH THIS COMMAND
-                Main.databaseRef.child("Users").child(Main.appUser.uid!).child("Images").child("Front Images").child(dateString).setValue(downloadURL)
             }
-        
-        dismiss(animated: true)
+        } else {
+            DispatchQueue.main.async { [unowned self] in
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     

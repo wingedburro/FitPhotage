@@ -17,7 +17,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
-        TaskFunctions.getTasks { [unowned self] in
+        TaskViewModel.getTasks { [unowned self] in
             self.collectionView?.reloadData()
             self.collectionView?.collectionViewLayout.invalidateLayout()
         }
@@ -28,7 +28,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     private func customizeView() {
-        collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
+        collectionView?.backgroundColor = UIColor.white
         navigationItem.title = "Today's Tasks"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -62,14 +62,13 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
-        return Data.userTasks.count
+        return TaskViewModel.userTasks.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? TaskCell
-        if indexPath.row < Data.userTasks.count {
-            cell?.task = Data.userTasks[indexPath.row]
+        if indexPath.row < TaskViewModel.userTasks.count {
+            cell?.task = TaskViewModel.userTasks[indexPath.row]
         }
         return cell!
     }
@@ -81,7 +80,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
         let sb = UIStoryboard(name: "Main", bundle: nil)
         let tasksPopup = sb.instantiateViewController(withIdentifier: "TaskPopupViewController") as! TaskPopupViewController
         tasksPopup.didSet = { (isComplete) in
-            TaskFunctions.updateTask(index: indexPath.row, isComplete: isComplete, completion: { [unowned self] in
+            TaskViewModel.updateTask(index: indexPath.row, isComplete: isComplete, completion: { [unowned self] in
                 self.collectionView?.reloadData()
                 self.collectionView?.collectionViewLayout.invalidateLayout()
             })

@@ -8,7 +8,6 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 import GoogleSignIn
 
 @UIApplicationMain
@@ -18,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure() //Enable Firebase
+        Database.database().isPersistenceEnabled = true
         
         // Enable Google Sign In
         GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
@@ -76,31 +76,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if user != nil {
                 let databaseRef = Database.database().reference()
                 let uid = Auth.auth().currentUser?.uid
-                let userReference = databaseRef.child("Users").child(uid!)
-                userReference.observeSingleEvent(of: .value, with: { (snapshot) in
+                let userRef = databaseRef.child("users").child(uid!)
+                userRef.observeSingleEvent(of: .value, with: { (snapshot) in
                     if snapshot.hasChild("name") {
                         if let dictionary = snapshot.value as? [String: AnyObject] {
-                            Main.appUser.name = dictionary["name"] as? String
-                            Main.appUser.emailDefault = dictionary["email"] as? String
+                            ProfileViewModel.userInfo["name"] = dictionary["name"] as? String
+                            ProfileViewModel.userInfo["phone"] = dictionary["phone"] as? String
+                            ProfileViewModel.userInfo["email"] = dictionary["email"] as? String
+                            ProfileViewModel.userInfo["birthday"] = dictionary["birthday"] as? String
+                            ProfileViewModel.userInfo["gender"] = dictionary["gender"] as? String
+                            ProfileViewModel.userInfo["program"] = dictionary["program"] as? String
+                            ProfileViewModel.userInfo["profileImageUrl"] = dictionary["profileImageUrl"] as? String
                             self.rootViewController.switchToMainView()
                         }
                     } else {
-                        Main.appUser.name = user.profile.name
-                        Main.appUser.emailDefault = user.profile.email
-                        let values = ["name": Main.appUser.name, "email": Main.appUser.emailDefault]
-                        userReference.updateChildValues(values as Any as! [AnyHashable : Any], withCompletionBlock: { (error, ref) in
+                        ProfileViewModel.userInfo["name"] = user.profile.name
+                        ProfileViewModel.userInfo["email"] = user.profile.email
+                        let values = ["name": ProfileViewModel.userInfo["name"], "email": ProfileViewModel.userInfo["email"]]
+                        userRef.updateChildValues(values as Any as! [AnyHashable : Any], withCompletionBlock: { (error, ref) in
                             if error != nil {
                                 print("Error signing in with Google")
                             }
                         })
                         self.rootViewController.switchToMainView()
                     }
-                })
+                }, withCancel: nil)
             } else {
                 self.rootViewController.switchToLoginScreen()
             }
             
+            return
         }
+        
+        return
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {

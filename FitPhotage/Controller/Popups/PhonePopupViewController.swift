@@ -7,7 +7,8 @@
 //
 
 import Foundation
-import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class PhonePopupViewController: UIViewController {
     
@@ -34,11 +35,12 @@ class PhonePopupViewController: UIViewController {
     }
     
     @IBAction func confirmAction(_ sender: Any) {
-        Main.appUser.phone = label.text
-        UserDefaults.standard.set(Main.appUser.phone, forKey: "phone")
-        Main.databaseRef.child("Users").child(Main.appUser.uid!).child("phone").setValue(Main.appUser.phone)
-        dismiss(animated: true)
-        onSet?()
+        if label.text != "" {
+            ProfileViewModel.updateUser(field: "phone", value: label.text!) { [unowned self] in
+                self.onSet?()
+                self.dismiss(animated: true)
+            }
+        }
     }
     
     

@@ -470,17 +470,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anI-Ip-eaK">
-                                <rect key="frame" x="56" y="120.5" width="263" height="446.5"/>
+                                <rect key="frame" x="25" y="120.5" width="325" height="446.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nCa-yR-f4m">
-                                        <rect key="frame" x="0.0" y="0.0" width="263" height="56"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="325" height="56"/>
                                         <color key="backgroundColor" red="1" green="0.54117647059999996" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rq0-re-7oz">
-                                        <rect key="frame" x="8" y="408.5" width="119.5" height="30"/>
+                                        <rect key="frame" x="8" y="408.5" width="150.5" height="30"/>
                                         <color key="backgroundColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="lOO-2H-ZVi"/>
@@ -498,7 +498,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVO-xW-zSy">
-                                        <rect key="frame" x="135.5" y="408.5" width="119.5" height="30"/>
+                                        <rect key="frame" x="166.5" y="408.5" width="150.5" height="30"/>
                                         <color key="backgroundColor" red="1" green="0.43921568630000002" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="dvA-w1-JO9"/>
@@ -516,10 +516,10 @@
                                         </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7hc-0g-MNS">
-                                        <rect key="frame" x="15" y="71" width="233" height="291"/>
+                                        <rect key="frame" x="15" y="71" width="295" height="291"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dPj-Th-nSo">
-                                        <rect key="frame" x="55" y="370" width="153.5" height="30"/>
+                                        <rect key="frame" x="68" y="370" width="189.5" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="xVg-uH-eT9"/>
@@ -565,10 +565,10 @@
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.42299871579999998" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="anI-Ip-eaK" firstAttribute="centerX" secondItem="y54-68-DGT" secondAttribute="centerX" id="9hp-tF-T7g"/>
-                            <constraint firstItem="nE0-oB-XAb" firstAttribute="trailing" secondItem="anI-Ip-eaK" secondAttribute="trailing" constant="56" id="KG2-xc-hSY"/>
+                            <constraint firstItem="nE0-oB-XAb" firstAttribute="trailing" secondItem="anI-Ip-eaK" secondAttribute="trailing" constant="25" id="KG2-xc-hSY"/>
                             <constraint firstItem="nE0-oB-XAb" firstAttribute="bottom" secondItem="anI-Ip-eaK" secondAttribute="bottom" constant="100" id="MoM-1w-Rcb"/>
                             <constraint firstItem="anI-Ip-eaK" firstAttribute="top" secondItem="nE0-oB-XAb" secondAttribute="top" constant="100" id="g2K-g8-Jlk"/>
-                            <constraint firstItem="anI-Ip-eaK" firstAttribute="leading" secondItem="nE0-oB-XAb" secondAttribute="leading" constant="56" id="nYf-AC-hIN"/>
+                            <constraint firstItem="anI-Ip-eaK" firstAttribute="leading" secondItem="nE0-oB-XAb" secondAttribute="leading" constant="25" id="nYf-AC-hIN"/>
                             <constraint firstItem="anI-Ip-eaK" firstAttribute="centerY" secondItem="nE0-oB-XAb" secondAttribute="centerY" id="voy-CP-ggx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="nE0-oB-XAb"/>

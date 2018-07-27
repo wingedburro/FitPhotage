@@ -28,6 +28,7 @@ class TasksViewController: UICollectionViewController, UICollectionViewDelegateF
     }
     
     private func customizeView() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         collectionView?.backgroundColor = UIColor.white
         navigationItem.title = "Today's Tasks"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

@@ -32,6 +32,7 @@
 		10CB223F20FD997600B0B027 /* PhotoPopupExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10CB223E20FD997600B0B027 /* PhotoPopupExtention.swift */; };
 		10D1A6EE20E7F30500BF3125 /* TaskPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */; };
 		10DD431C20BA473800E2DA1A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10DD431B20BA473800E2DA1A /* Extensions.swift */; };
+		10E351CB210ABCAF00E26C7B /* WorkoutData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E351CA210ABCAF00E26C7B /* WorkoutData.swift */; };
 		10FD274220BB9683004E05FE /* CustomTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD274120BB9683004E05FE /* CustomTabBarController.swift */; };
 		10FD274420BBB944004E05FE /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10FD274320BBB944004E05FE /* ProfileImageView.swift */; };
 		41E3EFDDC2183AB73004EA98 /* Pods_FitPhotage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A988870400DC7C0234E6C009 /* Pods_FitPhotage.framework */; };
@@ -79,6 +80,7 @@
 		10CB223E20FD997600B0B027 /* PhotoPopupExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPopupExtention.swift; sourceTree = "<group>"; };
 		10D1A6ED20E7F30500BF3125 /* TaskPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskPopupViewController.swift; sourceTree = "<group>"; };
 		10DD431B20BA473800E2DA1A /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		10E351CA210ABCAF00E26C7B /* WorkoutData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutData.swift; sourceTree = "<group>"; };
 		10FD274120BB9683004E05FE /* CustomTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarController.swift; sourceTree = "<group>"; };
 		10FD274320BBB944004E05FE /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 		4DF3C6B736152613013CA963 /* Pods-FitPhotage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPhotage.release.xcconfig"; path = "Pods/Target Support Files/Pods-FitPhotage/Pods-FitPhotage.release.xcconfig"; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				10810DDC20BB21C300BE941D /* Main.swift */,
 				104FAB0620E71333006EC6A7 /* Task.swift */,
 				10CB223620FD554000B0B027 /* Workout.swift */,
+				10E351CA210ABCAF00E26C7B /* WorkoutData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				9941293C20C1F5FE00F38704 /* DocumentCell.swift in Sources */,
 				10CB223720FD554000B0B027 /* Workout.swift in Sources */,
 				1046FB1120BC8F7500370749 /* ProfileTableViewCell.swift in Sources */,
+				10E351CB210ABCAF00E26C7B /* WorkoutData.swift in Sources */,
 				10810DDD20BB21C300BE941D /* Main.swift in Sources */,
 				10A437F820BA1736006B12BC /* AppDelegate.swift in Sources */,
 			);

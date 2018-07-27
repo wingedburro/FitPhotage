@@ -10,45 +10,20 @@ import UIKit
 
 class WorkoutDetailCell: CustomCollectionViewCell {
     
-    var workoutDetail: WorkoutDetail? {
-        didSet {
-            DispatchQueue.main.async { [unowned self] in
-                guard let urlString = self.workoutDetail?.workoutDetailImageUrl else {
-                    self.workoutImageView.image = UIImage(named: "yoga.png")
-                    return
-                }
-                self.workoutImageView.loadImagesUsingCacheWithUrlString(urlString: urlString)
-                self.descriptionLabelView.text = self.workoutDetail?.workoutDetailDescription
-            }
-        }
-    }
-    
     var workoutImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.white
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 7.0
+        imageView.image = UIImage(named: "yoga")!
         return imageView
     }()
     
-    var descriptionLabelView: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(descriptor: label.font.fontDescriptor, size: 14)
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-    
     override func setupViews() {
-        descriptionLabelView.preferredMaxLayoutWidth = self.frame.width
-        addSubview(descriptionLabelView)
         addSubview(workoutImageView)
         
-        addConstraintsWithFormat(format: "H:|[v0]|", views: descriptionLabelView)
         addConstraintsWithFormat(format: "H:|[v0]|", views: workoutImageView)
-        addConstraintsWithFormat(format: "V:|[v0]-8-[v1]|", views: descriptionLabelView, workoutImageView)
-        descriptionLabelView.center = self.center
+        addConstraintsWithFormat(format: "V:|[v0]|", views: workoutImageView)
     }
 }

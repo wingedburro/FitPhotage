@@ -9,37 +9,31 @@
 import UIKit
 
 class Workout {
-    var workoutDescription: String
-    var thumbnailUrl: String
-    var workoutSet: [WorkoutDetail]
+    var thumbnail: UIImage
+    var week: Int
+    var description: String
+    var name: String
     var isComplete: Bool
+    var progressionImages: [UIImage]
     
-    public init(workoutDescription: String, thumbnailUrl: String, workoutSet: [WorkoutDetail], isComplete: Bool) {
-        self.workoutDescription = workoutDescription
-        self.thumbnailUrl = thumbnailUrl
-        self.workoutSet = workoutSet
+    public init(thumbnail: UIImage, week: Int, description: String, name: String, isComplete: Bool, progressionImages: [UIImage]) {
+        
+        self.thumbnail = thumbnail
+        self.week = week
+        self.description = description
+        self.name = name
         self.isComplete = isComplete
+        self.progressionImages = progressionImages
     }
     
-    public init() {
-        self.workoutDescription = "Workout"
-        self.thumbnailUrl = "yoga.png"
-        self.workoutSet = [WorkoutDetail()]
-        self.isComplete = false
-    }
-}
-
-struct WorkoutDetail {
-    var workoutDetailDescription: String
-    var workoutDetailImageUrl: String
+//    init() {
+//        self.thumbnail = UIImage()
+//        self.week = 1
+//        self.description = "Help too hard"
+//        self.name = "This workout will crush you"
+//        self.isComplete = false
+//        self.progressionImages
+//    }
     
-    public init(workoutDetailDescription: String, workoutDetailImageUrl: String) {
-        self.workoutDetailDescription = workoutDetailDescription
-        self.workoutDetailImageUrl = workoutDetailImageUrl
-    }
     
-    public init() {
-        self.workoutDetailDescription = "Workout Detail"
-        self.workoutDetailImageUrl = "yoga.png"
-    }
 }

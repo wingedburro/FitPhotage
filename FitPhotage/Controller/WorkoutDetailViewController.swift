@@ -14,34 +14,16 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     
     private let cellsPerRow = 1
     
-    let statusBarBackgroundView: UIView = {
-        let status = UIView(frame: .zero)
-        status.backgroundColor = UIColor.CustomColors.customLightOrange
-        status.translatesAutoresizingMaskIntoConstraints = false
-        return status
-    }()
-    
-    let navBar: UINavigationBar = {
-        let navBar = UINavigationBar(frame: .zero)
-        navBar.translatesAutoresizingMaskIntoConstraints = false
-        navBar.shadowImage = UIImage()
-        navBar.isTranslucent = false
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        navBar.titleTextAttributes = textAttributes
-        return navBar
-    }()
-    
     let detailFlowLayout: UICollectionViewFlowLayout = {
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.minimumInteritemSpacing = 0
         flowLayout.sectionInset = UIEdgeInsetsMake(16, 16, 16, 16)
         flowLayout.minimumLineSpacing = 16
+        flowLayout.scrollDirection = .horizontal
         return flowLayout
     }()
     
     var detailCollectionView: UICollectionView!
-    
-    var workoutDetails = [WorkoutDetail]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,29 +32,23 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     }
     
     private func customizeView() {
-        let statusBarHeight = UIApplication.shared.statusBarFrame.height
-        let navBarHeight: CGFloat = 44
-        let collectionViewHeight = view.frame.height - statusBarHeight - navBarHeight
-        let viewWidth = view.frame.width
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         
-        navigationItem.title = "This Workout"
+        if let workout = WorkoutViewModel.currentWorkout {
+            navigationItem.title = workout.name
+        } else {
+            navigationItem.title = "This Workout"
+        }
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissView))
-        navBar.items = [navigationItem]
         
-        self.view.addSubview(statusBarBackgroundView)
-        self.view.addSubview(navBar)
         self.view.addSubview(detailCollectionView)
-        
-        self.view.addConstraintsWithFormat(format: "H:|[v0(\(viewWidth))]|", views: statusBarBackgroundView)
-        self.view.addConstraintsWithFormat(format: "H:|[v0(\(viewWidth))]|", views: navBar)
-        self.view.addConstraintsWithFormat(format: "H:|[v0(\(viewWidth))]|", views: detailCollectionView)
-        self.view.addConstraintsWithFormat(format: "V:|[v0(\(statusBarHeight))]-0-[v1(\(navBarHeight))]-0-[v2(\(collectionViewHeight))]|", views: statusBarBackgroundView, navBar, detailCollectionView)
+        self.view.addConstraintsWithFormat(format: "H:|[v0]|", views: detailCollectionView)
+        self.view.addConstraintsWithFormat(format: "V:|[v0]|", views: detailCollectionView)
     }
     
     @objc private func dismissView() {
-        DispatchQueue.main.async {
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillLayoutSubviews() {
@@ -96,13 +72,19 @@ class WorkoutDetailViewController: UIViewController, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.workoutDetails.count
+        if let workout = WorkoutViewModel.currentWorkout {
+            return workout.progressionImages.count
+        }
+        
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! WorkoutDetailCell
         
-        cell.workoutDetail = self.workoutDetails[indexPath.row]
+        if let workout = WorkoutViewModel.currentWorkout {
+            cell.workoutImageView.image = workout.progressionImages[indexPath.row]
+        }
         
         return cell
     }

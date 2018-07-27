@@ -108,7 +108,10 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     private func customizeView() {
-        view.backgroundColor = UIColor.CustomColors.whiteSmoke
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        view.backgroundColor = UIColor.CustomColors.customLightOrange
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
     }

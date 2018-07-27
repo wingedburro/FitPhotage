@@ -25,7 +25,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
         workoutRef = Database.database().reference().child("workouts")
         
         // Grab workouts
-        WorkoutViewModel.getWorkouts(databaseRef: workoutRef) { [unowned self] in
+        WorkoutViewModel.getWorkouts() { [unowned self] in
             self.collectionView?.reloadData()
             self.collectionView?.collectionViewLayout.invalidateLayout()
         }
@@ -43,6 +43,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
             return status
         }()
         
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         view.addSubview(statusBarBackgroundView)
         collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "LivFit"
@@ -95,10 +96,8 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let workoutDetailVC = WorkoutDetailViewController()
-        workoutDetailVC.workoutDetails = WorkoutViewModel.workouts[indexPath.row].workoutSet
-        DispatchQueue.main.async { [unowned self] in
-            self.present(workoutDetailVC, animated: true)
-        }
+        WorkoutViewModel.currentWorkout = WorkoutViewModel.workouts[indexPath.row]
+        self.present(UINavigationController(rootViewController: workoutDetailVC), animated: true)
     }
 
 }

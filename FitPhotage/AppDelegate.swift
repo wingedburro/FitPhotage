@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //        UINavigationBar.appearance().layer.shadowColor = UIColor.gray.cgColor
 //        UINavigationBar.appearance().layer.shadowOpacity = 0.3
         UINavigationBar.appearance().tintColor = UIColor.black
-        UINavigationBar.appearance().barTintColor = UIColor.CustomColors.customLightOrange
+        UINavigationBar.appearance().barTintColor = UIColor.CustomColors.mainOrange
         
         // Set root view controller
         window = UIWindow(frame: UIScreen.main.bounds)

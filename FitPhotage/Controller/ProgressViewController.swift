@@ -32,6 +32,8 @@ class ProgressViewController: UIViewController, GIDSignInUIDelegate, UITableView
     
     private func customizeView() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
         view.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "Your Progress"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

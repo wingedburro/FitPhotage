@@ -20,7 +20,6 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         customizeView()
-        self.navigationController?.hidesBarsOnSwipe = true
         
         workoutRef = Database.database().reference().child("workouts")
         
@@ -36,15 +35,9 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     }
     
     private func customizeView() {
-        let statusBarBackgroundView: UIView = {
-            let status = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: UIApplication.shared.statusBarFrame.height))
-            status.backgroundColor = UIColor.CustomColors.customLightOrange
-            status.translatesAutoresizingMaskIntoConstraints = false
-            return status
-        }()
-        
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        view.addSubview(statusBarBackgroundView)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
         collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "LivFit"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
@@ -84,7 +77,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as? WorkoutCell
-        cell?.workout = WorkoutViewModel.workouts[indexPath.row]
+        cell?.workout = WorkoutViewModel.workouts[indexPath.row % WorkoutViewModel.workouts.count]
         return cell!
     }
     
@@ -96,7 +89,7 @@ class WorkoutsViewController: UICollectionViewController, UICollectionViewDelega
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let workoutDetailVC = WorkoutDetailViewController()
-        WorkoutViewModel.currentWorkout = WorkoutViewModel.workouts[indexPath.row]
+        WorkoutViewModel.currentWorkout = WorkoutViewModel.workouts[indexPath.row % WorkoutViewModel.workouts.count]
         self.present(UINavigationController(rootViewController: workoutDetailVC), animated: true)
     }
 

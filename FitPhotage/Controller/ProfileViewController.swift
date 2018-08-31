@@ -19,6 +19,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     let profileImageView: ProfileImageView = {
         let imageView = ProfileImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.height / 5, height: UIScreen.main.bounds.height / 5))
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -40,13 +41,20 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         customizeView()
     }
     
+    private func customizeView() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
+        view.backgroundColor = UIColor.CustomColors.mainOrange
+        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.CustomColors.primaryText]
+        navigationController?.navigationBar.titleTextAttributes = textAttributes
+    }
+    
     private func checkIfUserLoggedIn() {
         if let user = Auth.auth().currentUser {
             self.userRef = Database.database().reference().child("users").child(user.uid)
         } else {
-            DispatchQueue.main.async { [unowned self] in
-                self.perform(#selector(self.handleLogout), with: nil, afterDelay: 0)
-            }
+            self.perform(#selector(self.handleLogout), with: nil, afterDelay: 0)
         }
     }
     
@@ -82,7 +90,9 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
             if let imageUrl = ProfileViewModel.userInfo["profileImageUrl"] {
                 self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
             } else {
-                self.profileImageView.image = UIImage(named: "profile_icon")
+                self.profileImageView.image = UIImage.init(named: "profile_icon")?.withRenderingMode(.alwaysTemplate)
+                self.profileImageView.tintColor = .white
+                self.profileImageView.backgroundColor = UIColor.CustomColors.accent
             }
         }
         
@@ -107,15 +117,6 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         }
     }
     
-    private func customizeView() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = false
-        view.backgroundColor = UIColor.CustomColors.customLightOrange
-        let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]
-        navigationController?.navigationBar.titleTextAttributes = textAttributes
-    }
-    
     private func setupLogoutButton() {
         let logoutButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: view.frame.height/2 - 24, width: 200, height: 48))
         logoutButton.backgroundColor = UIColor.orange
@@ -135,8 +136,15 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
         view.addConstraintsWithFormat(format: "H:|[v0]|", views: tableView)
         view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .height, relatedBy: .equal, toItem: profileImageView, attribute: .width, multiplier: 1, constant: 1))
         view.addConstraint(NSLayoutConstraint(item: profileImageView, attribute: .top, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .top, multiplier: 1, constant: 16))
-        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: profileImageView, attribute: .bottom, multiplier: 1, constant: 8))
+        view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .top, relatedBy: .equal, toItem: profileImageView, attribute: .bottom, multiplier: 1, constant: 24))
         view.addConstraint(NSLayoutConstraint(item: tableView, attribute: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attribute: .bottom, multiplier: 1, constant: 0))
+        
+        profileImageView.layer.borderColor = UIColor.clear.cgColor;
+        profileImageView.layer.borderWidth = 0.5;
+        profileImageView.layer.shadowColor = UIColor.black.cgColor;
+        profileImageView.layer.shadowOffset = CGSize(width: 0, height: 1.0);
+        profileImageView.layer.shadowRadius = 5.0;
+        profileImageView.layer.shadowOpacity = 0.5;
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -152,7 +160,7 @@ class ProfileViewController: UIViewController, GIDSignInUIDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let textHighlightColor = UIColor.CustomColors.customOrange
+        let textHighlightColor = UIColor.CustomColors.mainOrange
         switch indexPath.section {
         case 0:
             switch indexPath.row {

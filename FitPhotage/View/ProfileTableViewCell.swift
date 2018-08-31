@@ -13,11 +13,11 @@ class ProfileTableViewCell: UITableViewCell {
     init(style: UITableViewCellStyle, reuseIdentifier: String?, text: String?, textHighlightColor: UIColor?, disclosure: Bool) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.textLabel?.text = text
-        self.backgroundColor = UIColor.white
-        self.textLabel?.textColor = UIColor.black
+        self.backgroundColor = .white
+        self.textLabel?.textColor = UIColor.CustomColors.primaryText
         self.textLabel?.highlightedTextColor = textHighlightColor
         let customSelectColor = UIView()
-        customSelectColor.backgroundColor = UIColor.clear
+        customSelectColor.backgroundColor = .clear
         self.selectedBackgroundView = customSelectColor
         if disclosure == true {
             self.accessoryType = .disclosureIndicator

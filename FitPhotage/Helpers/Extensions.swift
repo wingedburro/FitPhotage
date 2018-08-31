@@ -22,11 +22,13 @@ extension UIColor {
     
     struct CustomColors {
         static let lead = UIColor.rgb(red: 30, green: 30, blue: 30)
-        static let customLightOrange = UIColor.rgb(red: 247, green: 92, blue: 3)
+        static let mainOrange = UIColor.rgb(red: 255, green: 87, blue: 34)
+        static let accent = UIColor.rgb(red: 96, green: 125, blue: 139)
+        static let primaryText = UIColor.rgb(red: 33, green: 33, blue: 33)
+        static let lightOrange = UIColor.rgb(red: 255, green: 204, blue: 188)
         static let customOrange = UIColor.rgb(red: 255, green: 112, blue: 67)
         static let customDarkOrange = UIColor.rgb(red: 244, green: 81, blue: 30)
-        static let whiteSmoke = UIColor.rgb(red: 251, green: 245, blue: 240)
-        static let ghostWhite = UIColor.rgb(red: 248, green: 248, blue: 255)
+        static let whiteSmoke = UIColor.rgb(red: 248, green: 249, blue: 251)
     }
     
     static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat) -> UIColor {

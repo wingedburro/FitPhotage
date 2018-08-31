@@ -25,6 +25,8 @@ class DocumentsViewController: UICollectionViewController, UICollectionViewDeleg
     
     private func customizeView() {
         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = false
         collectionView?.backgroundColor = UIColor.CustomColors.whiteSmoke
         navigationItem.title = "Documents"
         let textAttributes = [NSAttributedStringKey.foregroundColor: UIColor.black]

@@ -13,9 +13,8 @@ class WorkoutDetailCell: CustomCollectionViewCell {
     var workoutImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.white
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.layer.cornerRadius = 7.0
         imageView.image = UIImage(named: "yoga")!
         return imageView
     }()

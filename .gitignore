@@ -39,4 +39,4 @@ fastlane/screenshots
 fastlane/test_output
 
 ## Plist files
-*.plist
+GoogleService-Info.plist

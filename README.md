@@ -10,7 +10,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/wingedburro/FitPhotage">
-    <img src="Images/liv-fit.jpg" alt="Logo" width="80" height="80">
+    <img src="Images/liv-fit-logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Fit Photage</h3>
@@ -122,6 +122,6 @@ Templates
 [status-link]: https://wmauz677.github.io/MyCaddie-Web/
 [license-shield]: https://img.shields.io/github/license/wmauz677/Gaming-Glove?color=red&style=for-the-badge
 [license-url]: https://github.com/wmauz677/Gaming-Glove/blob/master/LICENSE
-[product-screenshot]: Images/liv-fit.jpg
+[product-screenshot]: Images/liv-fit-logo.jpg
 [liao-screenshot]: Images/liao-screenshot.png
 [mauz-screenshot]: Images/mauz-screenshot.png
